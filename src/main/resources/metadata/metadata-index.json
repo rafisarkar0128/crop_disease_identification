@@ -1,0 +1,13 @@
+{
+    "schemaVersion": 1,
+    "basePath": "metadata",
+    "items": [
+        {
+            "id": "rice",
+            "name": "Rice",
+            "scientificName": "Oryza sativa",
+            "file": "rice.json",
+            "status": "active"
+        }
+    ]
+}

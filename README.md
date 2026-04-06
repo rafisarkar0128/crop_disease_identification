@@ -1,18 +1,22 @@
 # Crop Disease Identification
 
-Starter JavaFX application for a crop disease identification project.
+Crop Disease Identification is a JavaFX desktop application that is being built as a metadata-driven crop and disease information system. It combines a Java UI with JSON-based crop metadata to support scalable disease knowledge management.
 
-The current app is a minimal two-scene JavaFX UI used as a foundation:
+## Current Status
 
-- `primary.fxml` controlled by `PrimaryController`
-- `secondary.fxml` controlled by `SecondaryController`
-- scene switching handled through `Main.setRoot(...)`
+The project currently provides:
+
+- A working JavaFX application entry point
+- Modular Java setup with Java 25 and JavaFX 26
+- Resource folders for icons, images, and crop metadata
+- Metadata files for rice, including bacterial and fungal disease details
 
 ## Tech Stack
 
 - Java 25
 - Maven
-- JavaFX 26 (`javafx-controls`, `javafx-fxml`)
+- JavaFX 26
+- JSON metadata resources
 
 ## Project Structure
 
@@ -20,24 +24,40 @@ The current app is a minimal two-scene JavaFX UI used as a foundation:
 src/
 	main/
 		java/
-			com/main/
-				Main.java
-				PrimaryController.java
-				SecondaryController.java
+			module-info.java
+			com/
+				crop/
+					main/
+						Main.java
 		resources/
-			com/main/
-				primary.fxml
-				secondary.fxml
+			icons/
+				app_logo.png
+			images/
+				bacterial-blight.jpeg
+			metadata/
+				metadata-index.json
+				rice.json
+	test/
 ```
+
+## Metadata Design
+
+This project uses a lightweight index + per-crop metadata strategy:
+
+- metadata-index.json: catalog of available crop metadata files
+- One JSON file per crop, for example rice.json
+- Each crop JSON contains core crop information and a diseases array
+
+This approach allows adding new crops without changing Java code each time.
 
 ## Prerequisites
 
-Make sure you have:
+Install the following:
 
-- JDK 25 installed
-- Maven installed and available in your PATH
+- JDK 25
+- Maven 3.9+
 
-Check versions:
+Verify installation:
 
 ```bash
 java -version
@@ -52,12 +72,45 @@ From the project root:
 mvn clean javafx:run
 ```
 
-The app starts with the Primary view and lets you switch between Primary and Secondary scenes.
-
-## Build
+## Build the Project
 
 ```bash
 mvn clean package
 ```
 
-Compiled outputs are generated under `target/`.
+Build output is generated under target.
+
+## Resource Handling Guidelines
+
+For reliable execution in both IDE and packaged builds:
+
+- Keep static assets under src/main/resources
+- Load resources through classpath APIs
+- Avoid file system absolute or relative runtime paths for packaged assets
+
+## Next Milestones
+
+- Add metadata loader service in Java
+- Render crop and disease data dynamically in UI
+- Add search and filter for diseases by category
+- Add unit tests for metadata parsing and validation
+- Expand metadata for more crops
+
+## Contributing
+
+Contributions are welcome.
+
+Suggested workflow:
+
+1. Create a feature branch
+2. Make focused changes
+3. Run mvn clean package locally
+4. Open a pull request with clear notes
+
+## License
+
+This project is licensed under the Apache License 2.0.
+
+See [LICENSE](LICENSE) for details.
+
+Project attribution details are provided in [NOTICE](NOTICE).

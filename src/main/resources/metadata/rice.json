@@ -1,0 +1,548 @@
+{
+    "id": "rice",
+    "name": "Rice",
+    "scientificName": "Oryza sativa",
+    "description": "Rice (aka Oryza sativa), culturally and economically important grass and its edible starchy cereal grain. Roughly one-half of the world population is wholly dependent upon it as a staple food.",
+    "diseases": [
+        {
+            "id": "bacterial-blight",
+            "name": "Bacterial blight",
+            "pathogen": "Xanthomonas oryzae pv. oryzae",
+            "category": "Bacterial Disease",
+            "description": "A devastating bacterial disease characterized by wilting of young leaves and grayish-yellow stripes on leaf margins.",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Bacterial_blight_of_rice.jpeg/500px-Bacterial_blight_of_rice.jpeg",
+            "symptoms": [
+                "Water-soaked to yellowish stripes on leaf margins that enlarge and turn white to grayish-yellow",
+                "Wilting of young leaves (kresek phase in seedlings)",
+                "Milky or opaque bacterial ooze visible on cut leaf ends"
+            ],
+            "treatment": [
+                "Use resistant varieties (e.g. BRRI dhan28, IR64)",
+                "Treat seeds with copper-based bactericides",
+                "Apply copper oxychloride or streptomycin sulfate spray at early infection",
+                "Drain fields and avoid excess nitrogen fertilizer",
+                "Remove and destroy infected plant debris"
+            ]
+        },
+        {
+            "id": "bacterial-leaf-streak",
+            "name": "Bacterial leaf streak",
+            "pathogen": "Xanthomonas oryzae pv. oryzicola",
+            "category": "Bacterial Disease",
+            "description": "A bacterial disease causing translucent interveinal streaks that later turn brown.",
+            "image": "https://imgs.search.brave.com/Elh7Wb8GAah8hUj_xhysEWEBtKg3fujtJDzj1VZswm8/rs:fit:860:0:0:0/g:ce/aHR0cDovL3d3dy5rbm93bGVkZ2ViYW5rLmlycmkub3JnL2ltYWdlcy9zdG9yaWVzL2JhY3RlcmlhbC1sZWFmLXN0cmVhay0yLmpwZw",
+            "symptoms": [
+                "Interveinal, water-soaked, translucent streaks that turn brown and narrow",
+                "Lesions bordered by leaf veins and sometimes surrounded by a yellow halo",
+                "Bacterial ooze drying into beads on the leaf surface"
+            ],
+            "treatment": [
+                "Plant resistant varieties",
+                "Apply copper-based bactericides early",
+                "Avoid overhead irrigation",
+                "Reduce plant density for better air circulation",
+                "Avoid excessive nitrogen application"
+            ]
+        },
+        {
+            "id": "foot-rot",
+            "name": "Foot rot",
+            "pathogen": "Dickeya dadantii / Erwinia chrysanthemi",
+            "category": "Bacterial Disease",
+            "description": "A basal stem rot with foul smell that causes rapid collapse of affected tillers.",
+            "image": "https://imgs.search.brave.com/O1fXmZeaKwxQDjotGS2rV_LIcg8hgG6fWzOvhBRwQ-o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aC5iaW5nLmNvbS90aC9pZC9PSVAuRlZzZWVtQk1oa2xvSENIbERWQlVhZ0hhRXg_cnM9MSZwaWQ9SW1nRGV0TWFpbg",
+            "symptoms": [
+                "Dark, water-soaked rotting at the stem base",
+                "Characteristic foul odor",
+                "Rotted tillers pull out easily and plants collapse"
+            ],
+            "treatment": [
+                "Use certified disease-free seeds",
+                "Treat seeds with hot water or bleach solution before planting",
+                "Avoid waterlogging and improve drainage",
+                "Remove and burn infected plants immediately",
+                "Focus on prevention since curative control is limited"
+            ]
+        },
+        {
+            "id": "grain-rot",
+            "name": "Grain rot",
+            "pathogen": "Burkholderia glumae",
+            "category": "Bacterial Disease",
+            "description": "A bacterial panicle disease that causes floret rot, sterility, and shriveled grains.",
+            "image": "https://imgs.search.brave.com/9ecWuzbXvNBw8AC-AeZ8abIQhW1zXfhTmgXvmHNDWBA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cudWFleC51YWRhLmVkdS9mYXJtLXJhbmNoL3Blc3QtbWFuYWdlbWVudC9wbGFudC1kaXNlYXNlL2ltYWdlcy9yaWNlLWJsYXN0LmpwZw",
+            "symptoms": [
+                "Rotting of florets at or shortly after heading",
+                "Glumes turn pale brown to straw-colored",
+                "Grains fail to develop or remain empty and shriveled"
+            ],
+            "treatment": [
+                "Use resistant varieties",
+                "Treat seeds with oxolinic acid or flumequine-based bactericides",
+                "Apply propiconazole or iprodione at heading",
+                "Avoid dense planting and excess nitrogen",
+                "Improve field aeration and rotate crops"
+            ]
+        },
+        {
+            "id": "pecky-rice-bacterial",
+            "name": "Pecky rice (kernel spotting)",
+            "pathogen": "Bacterial complex with insect-associated grain spotting",
+            "category": "Bacterial Disease",
+            "description": "Grain spotting disorder where bacterial damage contributes to dark discolored kernels.",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Sarocladium_oryzae_5390549.png/500px-Sarocladium_oryzae_5390549.png",
+            "symptoms": [
+                "Small dark discolored spots on pericarp and endosperm",
+                "Kernels appear chalky, discolored, or necrotic",
+                "Damage often becomes obvious after milling"
+            ],
+            "treatment": [
+                "Control stink bug and other insect vectors",
+                "Apply fungicides during grain fill to reduce fungal contribution",
+                "Harvest at proper maturity",
+                "Use resistant varieties when available"
+            ]
+        },
+        {
+            "id": "sheath-brown-rot",
+            "name": "Sheath brown rot",
+            "pathogen": "Pseudomonas fuscovaginae",
+            "category": "Bacterial Disease",
+            "description": "A bacterial sheath disease causing panicle sterility and grain discoloration.",
+            "image": "https://imgs.search.brave.com/JrOUm3b54CE7KBu8K1P2r48DqcNwhRkQPAN2mXVyKJY/rs:fit:860:0:0:0/g:ce/aHR0cDovL3d3dy5rbm93bGVkZ2ViYW5rLmlycmkub3JnL2ltYWdlcy9zdG9yaWVzL2JhY3RlcmlhbC1zaGVhdGgtYnJvd24tcm90LmpwZw",
+            "symptoms": [
+                "Brown water-soaked lesions on leaf sheaths around nodes",
+                "Rotting of sheath enclosing the young panicle",
+                "Partial or complete panicle sterility with discolored grains"
+            ],
+            "treatment": [
+                "Use pathogen-free seed",
+                "Treat seeds with copper compounds or streptomycin",
+                "Avoid cold water irrigation during booting",
+                "Plant tolerant varieties and reduce density",
+                "Use balanced fertilization and avoid excess nitrogen"
+            ]
+        },
+        {
+            "id": "aggregate-sheath-spot",
+            "name": "Aggregate sheath spot",
+            "pathogen": "Ceratobasidium oryzae-sativae / Rhizoctonia oryzae-sativae",
+            "category": "Fungal Disease",
+            "description": "A sheath disease with elongated lesions that can aggregate and coalesce.",
+            "image": "https://imgs.search.brave.com/CIwPnWBI6kWRj1UA2y9UTkd3v8HM8SHbH3eL1UP_dxQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9leHRlbnNpb24ubWlzc291cmkuZWR1L21lZGlhL3d5c2l3eWcvRXh0ZW5zaW9uZGF0YS9QdWIvaW1hZ2VzL21wMDY0NmFydDAzLmpwZw",
+            "symptoms": [
+                "Oval to elongated lesions on sheaths with straw-colored centers and brown borders",
+                "Lesions aggregate and coalesce",
+                "Symptoms resemble sheath blight but are more elongated"
+            ],
+            "treatment": [
+                "Apply validamycin, hexaconazole, or propiconazole early",
+                "Reduce plant density",
+                "Avoid excess nitrogen",
+                "Drain fields periodically",
+                "Remove crop debris after harvest"
+            ]
+        },
+        {
+            "id": "black-horse-riding",
+            "name": "Black horse riding",
+            "pathogen": "Cochliobolus lunatus / Curvularia lunata",
+            "category": "Fungal Disease",
+            "description": "A Curvularia disease causing dark spotting on leaves and glumes with grain quality loss.",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/20201102.Hengnan.Hybrid_rice_Sanyou-1.6.jpg/500px-20201102.Hengnan.Hybrid_rice_Sanyou-1.6.jpg",
+            "symptoms": [
+                "Small brown to black spots on leaves and glumes",
+                "Spots may have yellow halos",
+                "Grain discoloration and reduced germination"
+            ],
+            "treatment": [
+                "Treat seed with thiram, carbendazim, or iprodione",
+                "Apply mancozeb or propiconazole sprays",
+                "Use certified healthy seed",
+                "Maintain balanced potassium fertilization"
+            ]
+        },
+        {
+            "id": "blast",
+            "name": "Blast (leaf, neck, nodal and collar)",
+            "pathogen": "Pyricularia oryzae / Magnaporthe grisea",
+            "category": "Fungal Disease",
+            "description": "A major fungal disease affecting leaves, nodes, collars, and panicle necks, often causing whiteheads.",
+            "image": "https://imgs.search.brave.com/blb34saXzb51wwRs_miXlp_o73oNZQLb1kqUzKPCBiA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cubHN1YWdjZW50ZXIuY29tL34vbWVkaWEvc3lzdGVtL2EvZC9jL2MvYWRjY2ExN2QxMWY1YjQ1NWViMDQ2ZjhjMzgxNDFhYTAvYmxhc3QyMS5qcGc_aD0yNTkyJmxhPWVuJnc9Mzg3Mg",
+            "symptoms": [
+                "Diamond-shaped leaf lesions with gray centers and brown to reddish borders",
+                "Neck infection causes panicle girdling and whitehead",
+                "Dark lesions on nodes and rotting at leaf collar"
+            ],
+            "treatment": [
+                "Use blast-resistant varieties",
+                "Apply tricyclazole, isoprothiolane, or azoxystrobin at booting and heading",
+                "Avoid excess nitrogen",
+                "Drain fields intermittently",
+                "Remove volunteer rice and weed hosts"
+            ]
+        },
+        {
+            "id": "brown-spot",
+            "name": "Brown spot",
+            "pathogen": "Cochliobolus miyabeanus / Bipolaris oryzae",
+            "category": "Fungal Disease",
+            "description": "A common foliar and grain disease with brown lesions and potential severe leaf blighting.",
+            "image": "https://imgs.search.brave.com/A3xf9fnKaxaV_NtQ9ldtrPaQNBLODEoZNeX6IGYSLXQ/rs:fit:860:0:0:0/g:ce/aHR0cDovL3d3dy5rbm93bGVkZ2ViYW5rLmlycmkub3JnL2ltYWdlcy9zdG9yaWVzL25hcnJvdy1icm93bi1zcG90LTIuanBn",
+            "symptoms": [
+                "Circular to oval brown spots with dark margins and gray to whitish centers",
+                "Spots can coalesce and kill leaves",
+                "Dark discoloration on glumes and kernels"
+            ],
+            "treatment": [
+                "Treat seeds with thiram or captan",
+                "Apply mancozeb, iprodione, or propiconazole",
+                "Correct silicon and potassium deficiency",
+                "Use healthy certified seed",
+                "Avoid water stress and nutrient imbalance"
+            ]
+        },
+        {
+            "id": "crown-sheath-rot",
+            "name": "Crown sheath rot",
+            "pathogen": "Gaeumannomyces graminis",
+            "category": "Fungal Disease",
+            "description": "A crown and lower sheath rot associated with root blackening and premature plant death.",
+            "image": "https://www.lsuagcenter.com/~/media/system/8/1/0/d/810d2cbb9cdaedcd5b81a384152b5336/crownsheathrot3.jpg?h=492&la=en&w=722",
+            "symptoms": [
+                "Dark rotting lesions at crown and lower sheaths",
+                "Blackening of roots",
+                "Plants yellow, die early, and pull out easily"
+            ],
+            "treatment": [
+                "Improve field drainage",
+                "Rotate with non-grass crops",
+                "Avoid soil compaction",
+                "Apply silicon fertilizers",
+                "Prioritize preventive soil health management"
+            ]
+        },
+        {
+            "id": "downy-mildew",
+            "name": "Downy mildew",
+            "pathogen": "Sclerophthora macrospora",
+            "category": "Fungal Disease",
+            "description": "An oomycete disease causing leaf distortion, downy growth, and malformed sterile panicles.",
+            "image": "https://i.ibb.co/zHGFVS68/image.jpg",
+            "symptoms": [
+                "Yellowing and distortion of leaves",
+                "White to grayish downy growth on lower leaf surface",
+                "Excess tillering with malformed sterile panicles"
+            ],
+            "treatment": [
+                "Improve drainage and reduce standing water",
+                "Apply metalaxyl or mefenoxam",
+                "Remove and destroy infected plants",
+                "Avoid waterlogged nurseries",
+                "Use resistant varieties when available"
+            ]
+        },
+        {
+            "id": "eyespot",
+            "name": "Eyespot",
+            "pathogen": "Drechslera gigantea",
+            "category": "Fungal Disease",
+            "description": "A foliar disease with pale-centered concentric lesions that resemble an eye.",
+            "image": "https://i.ibb.co/VWxp35zx/image.jpg",
+            "symptoms": [
+                "Oval to circular spots with pale centers and concentric brown rings",
+                "Eye-like lesions on leaf blades and sheaths",
+                "Progressive spotting under favorable conditions"
+            ],
+            "treatment": [
+                "Apply mancozeb or propiconazole",
+                "Use treated, disease-free seed",
+                "Remove crop debris",
+                "Maintain balanced fertilization"
+            ]
+        },
+        {
+            "id": "false-smut",
+            "name": "False smut",
+            "pathogen": "Ustilaginoidea virens",
+            "category": "Fungal Disease",
+            "description": "A grain disease where kernels are replaced by orange to green-black velvety smut balls.",
+            "image": "https://i.ibb.co/ZRfWPZ1W/image.jpg",
+            "symptoms": [
+                "Individual grains replaced by large velvety spore balls",
+                "Smut balls turn from orange-yellow to greenish-black",
+                "Only a few grains per panicle are usually affected"
+            ],
+            "treatment": [
+                "Apply propiconazole, tebuconazole, or copper oxychloride at booting",
+                "Avoid excess nitrogen",
+                "Use resistant varieties",
+                "Collect and destroy smut balls before rupture"
+            ]
+        },
+        {
+            "id": "kernel-smut",
+            "name": "Kernel smut",
+            "pathogen": "Tilletia barclayana / Neovossia horrida",
+            "category": "Fungal Disease",
+            "description": "A smut disease where mature grains are filled with black powdery teliospores.",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Sarocladium_oryzae_5390549.png/500px-Sarocladium_oryzae_5390549.png",
+            "symptoms": [
+                "Glumes gape open at maturity",
+                "Partially or fully smutted grains contain black powder",
+                "Distinctive foul odor"
+            ],
+            "treatment": [
+                "Treat seed with carboxin, thiram, or tebuconazole",
+                "Avoid contaminated seed lots",
+                "Apply propiconazole or hexaconazole at booting",
+                "Practice crop rotation"
+            ]
+        },
+        {
+            "id": "leaf-smut",
+            "name": "Leaf smut",
+            "pathogen": "Entyloma oryzae",
+            "category": "Fungal Disease",
+            "description": "A generally minor disease producing dark angular sori on both leaf surfaces.",
+            "image": "https://i.ibb.co/SXjC0dVX/image.jpg",
+            "symptoms": [
+                "Small angular black to dark olive sori on both leaf surfaces",
+                "Surrounding tissue may remain green",
+                "Heavy infection can cause yellowing and leaf death"
+            ],
+            "treatment": [
+                "Maintain balanced fertilization",
+                "Use disease-free seed",
+                "Remove infected debris after harvest",
+                "Apply mancozeb or copper fungicide if severe"
+            ]
+        },
+        {
+            "id": "leaf-scald",
+            "name": "Leaf scald",
+            "pathogen": "Microdochium oryzae / Rhynchosporium oryzae",
+            "category": "Fungal Disease",
+            "description": "A zonate leaf disease starting at tips and margins with concentric banding.",
+            "image": "https://i.ibb.co/zT02zdpM/image.jpg",
+            "symptoms": [
+                "Light brown to tan irregular lesions from leaf tips or margins",
+                "Onion-ring pattern with alternating dark and light bands",
+                "Severe infection causes complete leaf die-back"
+            ],
+            "treatment": [
+                "Apply propiconazole, tebuconazole, or iprodione",
+                "Use resistant varieties",
+                "Correct silicon and potassium deficiencies",
+                "Reduce plant density and remove infected debris"
+            ]
+        },
+        {
+            "id": "narrow-brown-leaf-spot",
+            "name": "Narrow brown leaf spot",
+            "pathogen": "Cercospora janseana / Cercospora oryzae / Sphaerulina oryzina",
+            "category": "Fungal Disease",
+            "description": "A Cercospora disease with narrow vein-parallel brown streaks and premature leaf death.",
+            "image": "https://i.ibb.co/ZzfThz99/image.jpg",
+            "symptoms": [
+                "Very narrow linear brown streaks parallel to veins",
+                "Lesions are usually less than 2 mm wide",
+                "Heavy infection causes leaf yellowing and early death"
+            ],
+            "treatment": [
+                "Apply carbendazim, propiconazole, or mancozeb",
+                "Correct nitrogen deficiency",
+                "Use resistant varieties",
+                "Treat seeds with thiram and remove infected debris"
+            ]
+        },
+        {
+            "id": "pecky-rice-fungal",
+            "name": "Pecky rice (kernel spotting)",
+            "pathogen": "Multiple fungi including Cochliobolus, Curvularia, Fusarium, Microdochium, and Sarocladium species",
+            "category": "Fungal Disease",
+            "description": "A complex grain spotting problem caused by multiple fungi, reducing milling quality.",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Sarocladium_oryzae_5390549.png/500px-Sarocladium_oryzae_5390549.png",
+            "symptoms": [
+                "Brown, black, or pink spots on pericarp or endosperm",
+                "Chalky, empty, or shriveled kernels",
+                "Reduced grain quality and marketability"
+            ],
+            "treatment": [
+                "Apply iprodione or propiconazole during grain fill",
+                "Control stink bug populations",
+                "Harvest at proper maturity",
+                "Use clean certified seed",
+                "Manage insects that create grain entry wounds"
+            ]
+        },
+        {
+            "id": "root-rots",
+            "name": "Root rots",
+            "pathogen": "Fusarium spp. / Pythium spp.",
+            "category": "Fungal Disease",
+            "description": "Root decay complex causing poor tillering, stunting, and weak anchorage.",
+            "image": "https://imgs.search.brave.com/VorBcwVjGs-D75GjT7VtuovJI4M0jT-z0LXuuGYuE7A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cudWFleC51YWRhLmVkdS9mYXJtLXJhbmNoL2Nyb3BzLWNvbW1lcmNpYWwtaG9ydGljdWx0dXJlL2ltYWdlcy9Ba2lvY2hpJTIwMjAxMy5qcGc",
+            "symptoms": [
+                "Browning and decay of roots",
+                "Yellowing and stunting of shoots",
+                "Poor tillering and easy plant uprooting"
+            ],
+            "treatment": [
+                "Improve drainage",
+                "Use metalaxyl for Pythium and carbendazim for Fusarium",
+                "Practice crop rotation",
+                "Improve soil organic matter",
+                "Avoid transplanting into cold waterlogged soils"
+            ]
+        },
+        {
+            "id": "rust",
+            "name": "Rust",
+            "pathogen": "Not applicable (rice is considered immune to rusts)",
+            "category": "Fungal Disease",
+            "description": "Rust is not considered a true disease concern in rice due to natural immunity.",
+            "image": "",
+            "symptoms": ["No rust symptoms in rice under normal field conditions"],
+            "treatment": ["No treatment needed"]
+        },
+        {
+            "id": "seedling-blight",
+            "name": "Seedling blight",
+            "pathogen": "Cochliobolus, Curvularia, Fusarium, Rhizoctonia, and other fungi",
+            "category": "Fungal Disease",
+            "description": "A damping-off disease complex causing poor emergence and early seedling death.",
+            "image": "https://i.ibb.co/B26cNMwn/image.jpg",
+            "symptoms": [
+                "Pre- or post-emergence damping-off",
+                "Yellowing, wilting, and death of seedlings",
+                "Rotting of seed, coleoptile, or hypocotyl"
+            ],
+            "treatment": [
+                "Treat seed with thiram, carbendazim, or captan",
+                "Use well-drained nursery beds",
+                "Apply validamycin or iprodione drench in nursery",
+                "Avoid over-seeding",
+                "Use certified disease-free seed"
+            ]
+        },
+        {
+            "id": "sheath-blight",
+            "name": "Sheath blight",
+            "pathogen": "Rhizoctonia solani",
+            "category": "Fungal Disease",
+            "description": "A major sheath disease with waterline lesions, upward canopy spread, and lodging risk.",
+            "image": "https://imgs.search.brave.com/w67dYhC33YGPqX8zBFvgRLnkTXH0e--cy_EyTPBdYds/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4ubW9zLmNtcy5mdXR1cmVjZG4ubmV0L2V4bldqZjZ5d1dwRFhIUzNvcm50SjcuanBn",
+            "symptoms": [
+                "Greenish-gray sheath lesions with wavy brown margins near waterline",
+                "Lesions spread upward to leaves and canopy",
+                "White mycelium and brown sclerotia on infected tissue"
+            ],
+            "treatment": [
+                "Apply validamycin, hexaconazole, propiconazole, or azoxystrobin",
+                "Reduce plant density",
+                "Avoid excess nitrogen",
+                "Drain field periodically",
+                "Remove sclerotia-containing debris after harvest"
+            ]
+        },
+        {
+            "id": "sheath-rot",
+            "name": "Sheath rot",
+            "pathogen": "Sarocladium oryzae",
+            "category": "Fungal Disease",
+            "description": "A booting-stage sheath infection causing enclosed panicle sterility and chaffy grains.",
+            "image": "https://imgs.search.brave.com/2RIch5ShV9GsGFKpfR-niPUGrhwG_gWDeWBN4FTrjAs/rs:fit:860:0:0:0/g:ce/aHR0cDovL3d3dy5rbm93bGVkZ2ViYW5rLmlycmkub3JnL2ltYWdlcy9zdG9yaWVzL3NoZWF0aC1yb3QtMy5qcGc",
+            "symptoms": [
+                "Irregular light brown sheath lesions with dark margins",
+                "Whitish to pinkish fungal growth inside sheath",
+                "Partially or fully sterile enclosed panicles"
+            ],
+            "treatment": [
+                "Apply carbendazim, propiconazole, or iprodione at booting",
+                "Control thrips and stem borers",
+                "Use resistant varieties",
+                "Avoid excess nitrogen",
+                "Treat seeds with thiram"
+            ]
+        },
+        {
+            "id": "sheath-spot",
+            "name": "Sheath spot",
+            "pathogen": "Waitea oryzae",
+            "category": "Fungal Disease",
+            "description": "A sheath disease with tan lesions and reddish-brown borders, often milder than sheath blight.",
+            "image": "https://i.ibb.co/G3Nyw4xj/image.jpg",
+            "symptoms": [
+                "Oval to elongated lesions on sheath",
+                "Tan to light brown centers with reddish-brown borders",
+                "Lesions can coalesce but are usually less severe than sheath blight"
+            ],
+            "treatment": [
+                "Apply validamycin or hexaconazole",
+                "Reduce plant density",
+                "Avoid excess nitrogen",
+                "Remove crop debris"
+            ]
+        },
+        {
+            "id": "stackburn",
+            "name": "Stackburn (Alternaria leaf spot)",
+            "pathogen": "Alternaria padwickii",
+            "category": "Fungal Disease",
+            "description": "An Alternaria disease causing leaf and grain spotting with poor seed viability.",
+            "image": "https://i.ibb.co/2Y17tF9f/image.jpg",
+            "symptoms": [
+                "Brown to dark brown oval or circular spots with yellow halos",
+                "Spots can occur on leaves, glumes, and grains",
+                "Infected seed may fail to germinate or produce weak seedlings"
+            ],
+            "treatment": [
+                "Treat seeds with thiram, captan, or iprodione",
+                "Apply mancozeb or propiconazole",
+                "Use certified healthy seed",
+                "Dry stored grain below 13 percent moisture"
+            ]
+        },
+        {
+            "id": "stem-rot",
+            "name": "Stem rot",
+            "pathogen": "Magnaporthe salvinii / Sclerotium oryzae",
+            "category": "Fungal Disease",
+            "description": "A lower stem disease with sclerotia formation that causes culm collapse and yield loss.",
+            "image": "https://imgs.search.brave.com/FFpuRvBKuw6BDuXE1BKHpJ6g6GCw9beAtH28LKi1Rx8/rs:fit:860:0:0:0/g:ce/aHR0cDovL3d3dy5rbm93bGVkZ2ViYW5rLmlycmkub3JnL2ltYWdlcy9zdG9yaWVzL3N0ZW0tcm90LmpwZw",
+            "symptoms": [
+                "Small irregular black lesions on outer sheath near waterline",
+                "Rotting of inner stem tissue and culm collapse",
+                "Deadheart or premature heading with empty grains"
+            ],
+            "treatment": [
+                "Apply hexaconazole, propiconazole, or carbendazim at early tillering",
+                "Drain fields to expose sclerotia",
+                "Plow deep after harvest to bury sclerotia",
+                "Maintain balanced potassium and silicon nutrition",
+                "Avoid waterlogging"
+            ]
+        },
+        {
+            "id": "water-mold",
+            "name": "Water-mold (seed-rot and seedling disease)",
+            "pathogen": "Achlya spp. / Fusarium spp. / Pythium spp.",
+            "category": "Fungal Disease",
+            "description": "A seed and seedling disease complex favored by cold, waterlogged nursery conditions.",
+            "image": "https://i.ibb.co/HTsxGKTN/image.jpg",
+            "symptoms": [
+                "Pre-germination seed decay",
+                "Post-germination damping-off with yellowing and wilting",
+                "Cottony mycelial growth on seed or seedling base under water"
+            ],
+            "treatment": [
+                "Treat seed with metalaxyl for Pythium and Achlya",
+                "Use thiram or carbendazim for Fusarium",
+                "Avoid seeding into cold waterlogged soils",
+                "Improve nursery drainage",
+                "Use vigorous certified seed"
+            ]
+        }
+    ]
+}
