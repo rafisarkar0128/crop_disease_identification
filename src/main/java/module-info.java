@@ -3,7 +3,7 @@ module crop.disease.identification {
     requires javafx.controls;
     requires javafx.fxml;
 
-    opens com.crop.main to javafx.fxml;
+    opens com.crop.app to javafx.fxml;
 
-    exports com.crop.main;
+    exports com.crop.app;
 }
