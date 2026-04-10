@@ -13,22 +13,7 @@
  * the License.
  */
 
-module crop.disease.identification {
-    // JavaFX modules
-    requires javafx.graphics;
-    requires transitive javafx.controls;
-    requires javafx.fxml;
+package com.crop.app.util;
 
-    // Jackson modules
-    requires com.fasterxml.jackson.core;
-    requires com.fasterxml.jackson.databind;
-    requires com.fasterxml.jackson.annotation;
-
-    // Opening packages for reflection
-    opens com.crop.app.classes to com.fasterxml.jackson.databind;
-    opens com.crop.app to javafx.fxml;
-
-    // Exporting packages
-    exports com.crop.app;
-    exports com.crop.app.classes;
+public class ReadFile {
 }

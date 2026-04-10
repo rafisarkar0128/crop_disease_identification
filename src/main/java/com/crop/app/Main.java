@@ -23,20 +23,37 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
+import com.crop.app.classes.Crop;
+import com.crop.app.classes.Disease;
 
 /**
  * JavaFX App
  */
 public class Main extends Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         launch();
+
+        Crop crop = new Crop("src/main/resources/metadata/rice.json");
+        for (Disease disease : crop.getDiseases()) {
+            System.out.println("Crop name: " + disease.getName());
+            System.out.println("Symptoms: ");
+            for (String symptom : disease.getSymptoms()) {
+                System.out.println(symptom);
+            }
+            System.out.println();
+            System.out.println("Treatments: ");
+            for (String treatment : disease.getTreatments()) {
+                System.out.println(treatment);
+            }
+            System.out.println();
+        }
     }
 
     @Override
     public void start(Stage stage) throws IOException {
         Group root = new Group();
-        Scene scene = new Scene(root, 640, 480, Color.PINK);
+        Scene scene = new Scene(root, 640, 480, Color.LIMEGREEN);
 
         stage.setTitle("Crop Identification System");
         stage.getIcons().add(new Image("file:src/main/resources/icons/app_logo.png"));

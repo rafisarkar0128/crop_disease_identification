@@ -16,7 +16,7 @@
                 "Wilting of young leaves (kresek phase in seedlings)",
                 "Milky or opaque bacterial ooze visible on cut leaf ends"
             ],
-            "treatment": [
+            "treatments": [
                 "Use resistant varieties (e.g. BRRI dhan28, IR64)",
                 "Treat seeds with copper-based bactericides",
                 "Apply copper oxychloride or streptomycin sulfate spray at early infection",
@@ -36,7 +36,7 @@
                 "Lesions bordered by leaf veins and sometimes surrounded by a yellow halo",
                 "Bacterial ooze drying into beads on the leaf surface"
             ],
-            "treatment": [
+            "treatments": [
                 "Plant resistant varieties",
                 "Apply copper-based bactericides early",
                 "Avoid overhead irrigation",
@@ -56,7 +56,7 @@
                 "Characteristic foul odor",
                 "Rotted tillers pull out easily and plants collapse"
             ],
-            "treatment": [
+            "treatments": [
                 "Use certified disease-free seeds",
                 "Treat seeds with hot water or bleach solution before planting",
                 "Avoid waterlogging and improve drainage",
@@ -76,7 +76,7 @@
                 "Glumes turn pale brown to straw-colored",
                 "Grains fail to develop or remain empty and shriveled"
             ],
-            "treatment": [
+            "treatments": [
                 "Use resistant varieties",
                 "Treat seeds with oxolinic acid or flumequine-based bactericides",
                 "Apply propiconazole or iprodione at heading",
@@ -96,7 +96,7 @@
                 "Kernels appear chalky, discolored, or necrotic",
                 "Damage often becomes obvious after milling"
             ],
-            "treatment": [
+            "treatments": [
                 "Control stink bug and other insect vectors",
                 "Apply fungicides during grain fill to reduce fungal contribution",
                 "Harvest at proper maturity",
@@ -115,7 +115,7 @@
                 "Rotting of sheath enclosing the young panicle",
                 "Partial or complete panicle sterility with discolored grains"
             ],
-            "treatment": [
+            "treatments": [
                 "Use pathogen-free seed",
                 "Treat seeds with copper compounds or streptomycin",
                 "Avoid cold water irrigation during booting",
@@ -135,7 +135,7 @@
                 "Lesions aggregate and coalesce",
                 "Symptoms resemble sheath blight but are more elongated"
             ],
-            "treatment": [
+            "treatments": [
                 "Apply validamycin, hexaconazole, or propiconazole early",
                 "Reduce plant density",
                 "Avoid excess nitrogen",
@@ -155,7 +155,7 @@
                 "Spots may have yellow halos",
                 "Grain discoloration and reduced germination"
             ],
-            "treatment": [
+            "treatments": [
                 "Treat seed with thiram, carbendazim, or iprodione",
                 "Apply mancozeb or propiconazole sprays",
                 "Use certified healthy seed",
@@ -174,7 +174,7 @@
                 "Neck infection causes panicle girdling and whitehead",
                 "Dark lesions on nodes and rotting at leaf collar"
             ],
-            "treatment": [
+            "treatments": [
                 "Use blast-resistant varieties",
                 "Apply tricyclazole, isoprothiolane, or azoxystrobin at booting and heading",
                 "Avoid excess nitrogen",
@@ -194,7 +194,7 @@
                 "Spots can coalesce and kill leaves",
                 "Dark discoloration on glumes and kernels"
             ],
-            "treatment": [
+            "treatments": [
                 "Treat seeds with thiram or captan",
                 "Apply mancozeb, iprodione, or propiconazole",
                 "Correct silicon and potassium deficiency",
@@ -214,7 +214,7 @@
                 "Blackening of roots",
                 "Plants yellow, die early, and pull out easily"
             ],
-            "treatment": [
+            "treatments": [
                 "Improve field drainage",
                 "Rotate with non-grass crops",
                 "Avoid soil compaction",
@@ -234,7 +234,7 @@
                 "White to grayish downy growth on lower leaf surface",
                 "Excess tillering with malformed sterile panicles"
             ],
-            "treatment": [
+            "treatments": [
                 "Improve drainage and reduce standing water",
                 "Apply metalaxyl or mefenoxam",
                 "Remove and destroy infected plants",
@@ -254,7 +254,7 @@
                 "Eye-like lesions on leaf blades and sheaths",
                 "Progressive spotting under favorable conditions"
             ],
-            "treatment": [
+            "treatments": [
                 "Apply mancozeb or propiconazole",
                 "Use treated, disease-free seed",
                 "Remove crop debris",
@@ -273,7 +273,7 @@
                 "Smut balls turn from orange-yellow to greenish-black",
                 "Only a few grains per panicle are usually affected"
             ],
-            "treatment": [
+            "treatments": [
                 "Apply propiconazole, tebuconazole, or copper oxychloride at booting",
                 "Avoid excess nitrogen",
                 "Use resistant varieties",
@@ -292,7 +292,7 @@
                 "Partially or fully smutted grains contain black powder",
                 "Distinctive foul odor"
             ],
-            "treatment": [
+            "treatments": [
                 "Treat seed with carboxin, thiram, or tebuconazole",
                 "Avoid contaminated seed lots",
                 "Apply propiconazole or hexaconazole at booting",
@@ -311,7 +311,7 @@
                 "Surrounding tissue may remain green",
                 "Heavy infection can cause yellowing and leaf death"
             ],
-            "treatment": [
+            "treatments": [
                 "Maintain balanced fertilization",
                 "Use disease-free seed",
                 "Remove infected debris after harvest",
@@ -330,7 +330,7 @@
                 "Onion-ring pattern with alternating dark and light bands",
                 "Severe infection causes complete leaf die-back"
             ],
-            "treatment": [
+            "treatments": [
                 "Apply propiconazole, tebuconazole, or iprodione",
                 "Use resistant varieties",
                 "Correct silicon and potassium deficiencies",
@@ -349,7 +349,7 @@
                 "Lesions are usually less than 2 mm wide",
                 "Heavy infection causes leaf yellowing and early death"
             ],
-            "treatment": [
+            "treatments": [
                 "Apply carbendazim, propiconazole, or mancozeb",
                 "Correct nitrogen deficiency",
                 "Use resistant varieties",
@@ -368,7 +368,7 @@
                 "Chalky, empty, or shriveled kernels",
                 "Reduced grain quality and marketability"
             ],
-            "treatment": [
+            "treatments": [
                 "Apply iprodione or propiconazole during grain fill",
                 "Control stink bug populations",
                 "Harvest at proper maturity",
@@ -388,7 +388,7 @@
                 "Yellowing and stunting of shoots",
                 "Poor tillering and easy plant uprooting"
             ],
-            "treatment": [
+            "treatments": [
                 "Improve drainage",
                 "Use metalaxyl for Pythium and carbendazim for Fusarium",
                 "Practice crop rotation",
@@ -404,7 +404,7 @@
             "description": "Rust is not considered a true disease concern in rice due to natural immunity.",
             "image": "",
             "symptoms": ["No rust symptoms in rice under normal field conditions"],
-            "treatment": ["No treatment needed"]
+            "treatments": ["No treatments needed"]
         },
         {
             "id": "seedling-blight",
@@ -418,7 +418,7 @@
                 "Yellowing, wilting, and death of seedlings",
                 "Rotting of seed, coleoptile, or hypocotyl"
             ],
-            "treatment": [
+            "treatments": [
                 "Treat seed with thiram, carbendazim, or captan",
                 "Use well-drained nursery beds",
                 "Apply validamycin or iprodione drench in nursery",
@@ -438,7 +438,7 @@
                 "Lesions spread upward to leaves and canopy",
                 "White mycelium and brown sclerotia on infected tissue"
             ],
-            "treatment": [
+            "treatments": [
                 "Apply validamycin, hexaconazole, propiconazole, or azoxystrobin",
                 "Reduce plant density",
                 "Avoid excess nitrogen",
@@ -458,7 +458,7 @@
                 "Whitish to pinkish fungal growth inside sheath",
                 "Partially or fully sterile enclosed panicles"
             ],
-            "treatment": [
+            "treatments": [
                 "Apply carbendazim, propiconazole, or iprodione at booting",
                 "Control thrips and stem borers",
                 "Use resistant varieties",
@@ -478,7 +478,7 @@
                 "Tan to light brown centers with reddish-brown borders",
                 "Lesions can coalesce but are usually less severe than sheath blight"
             ],
-            "treatment": [
+            "treatments": [
                 "Apply validamycin or hexaconazole",
                 "Reduce plant density",
                 "Avoid excess nitrogen",
@@ -497,7 +497,7 @@
                 "Spots can occur on leaves, glumes, and grains",
                 "Infected seed may fail to germinate or produce weak seedlings"
             ],
-            "treatment": [
+            "treatments": [
                 "Treat seeds with thiram, captan, or iprodione",
                 "Apply mancozeb or propiconazole",
                 "Use certified healthy seed",
@@ -516,7 +516,7 @@
                 "Rotting of inner stem tissue and culm collapse",
                 "Deadheart or premature heading with empty grains"
             ],
-            "treatment": [
+            "treatments": [
                 "Apply hexaconazole, propiconazole, or carbendazim at early tillering",
                 "Drain fields to expose sclerotia",
                 "Plow deep after harvest to bury sclerotia",
@@ -536,7 +536,7 @@
                 "Post-germination damping-off with yellowing and wilting",
                 "Cottony mycelial growth on seed or seedling base under water"
             ],
-            "treatment": [
+            "treatments": [
                 "Treat seed with metalaxyl for Pythium and Achlya",
                 "Use thiram or carbendazim for Fusarium",
                 "Avoid seeding into cold waterlogged soils",
