@@ -8,7 +8,7 @@
             "id": "bacterial-blight",
             "name": "Bacterial blight",
             "pathogen": "Xanthomonas oryzae pv. oryzae",
-            "category": "Bacterial Disease",
+            "category": "bacterial",
             "description": "A devastating bacterial disease characterized by wilting of young leaves and grayish-yellow stripes on leaf margins.",
             "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Bacterial_blight_of_rice.jpeg/500px-Bacterial_blight_of_rice.jpeg",
             "symptoms": [
@@ -28,7 +28,7 @@
             "id": "bacterial-leaf-streak",
             "name": "Bacterial leaf streak",
             "pathogen": "Xanthomonas oryzae pv. oryzicola",
-            "category": "Bacterial Disease",
+            "category": "bacterial",
             "description": "A bacterial disease causing translucent interveinal streaks that later turn brown.",
             "image": "https://imgs.search.brave.com/Elh7Wb8GAah8hUj_xhysEWEBtKg3fujtJDzj1VZswm8/rs:fit:860:0:0:0/g:ce/aHR0cDovL3d3dy5rbm93bGVkZ2ViYW5rLmlycmkub3JnL2ltYWdlcy9zdG9yaWVzL2JhY3RlcmlhbC1sZWFmLXN0cmVhay0yLmpwZw",
             "symptoms": [
@@ -48,7 +48,7 @@
             "id": "foot-rot",
             "name": "Foot rot",
             "pathogen": "Dickeya dadantii / Erwinia chrysanthemi",
-            "category": "Bacterial Disease",
+            "category": "bacterial",
             "description": "A basal stem rot with foul smell that causes rapid collapse of affected tillers.",
             "image": "https://imgs.search.brave.com/O1fXmZeaKwxQDjotGS2rV_LIcg8hgG6fWzOvhBRwQ-o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aC5iaW5nLmNvbS90aC9pZC9PSVAuRlZzZWVtQk1oa2xvSENIbERWQlVhZ0hhRXg_cnM9MSZwaWQ9SW1nRGV0TWFpbg",
             "symptoms": [
@@ -68,7 +68,7 @@
             "id": "grain-rot",
             "name": "Grain rot",
             "pathogen": "Burkholderia glumae",
-            "category": "Bacterial Disease",
+            "category": "bacterial",
             "description": "A bacterial panicle disease that causes floret rot, sterility, and shriveled grains.",
             "image": "https://imgs.search.brave.com/9ecWuzbXvNBw8AC-AeZ8abIQhW1zXfhTmgXvmHNDWBA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cudWFleC51YWRhLmVkdS9mYXJtLXJhbmNoL3Blc3QtbWFuYWdlbWVudC9wbGFudC1kaXNlYXNlL2ltYWdlcy9yaWNlLWJsYXN0LmpwZw",
             "symptoms": [
@@ -88,7 +88,7 @@
             "id": "pecky-rice-bacterial",
             "name": "Pecky rice (kernel spotting)",
             "pathogen": "Bacterial complex with insect-associated grain spotting",
-            "category": "Bacterial Disease",
+            "category": "bacterial",
             "description": "Grain spotting disorder where bacterial damage contributes to dark discolored kernels.",
             "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Sarocladium_oryzae_5390549.png/500px-Sarocladium_oryzae_5390549.png",
             "symptoms": [
@@ -107,7 +107,7 @@
             "id": "sheath-brown-rot",
             "name": "Sheath brown rot",
             "pathogen": "Pseudomonas fuscovaginae",
-            "category": "Bacterial Disease",
+            "category": "bacterial",
             "description": "A bacterial sheath disease causing panicle sterility and grain discoloration.",
             "image": "https://imgs.search.brave.com/JrOUm3b54CE7KBu8K1P2r48DqcNwhRkQPAN2mXVyKJY/rs:fit:860:0:0:0/g:ce/aHR0cDovL3d3dy5rbm93bGVkZ2ViYW5rLmlycmkub3JnL2ltYWdlcy9zdG9yaWVzL2JhY3RlcmlhbC1zaGVhdGgtYnJvd24tcm90LmpwZw",
             "symptoms": [
@@ -127,7 +127,7 @@
             "id": "aggregate-sheath-spot",
             "name": "Aggregate sheath spot",
             "pathogen": "Ceratobasidium oryzae-sativae / Rhizoctonia oryzae-sativae",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A sheath disease with elongated lesions that can aggregate and coalesce.",
             "image": "https://imgs.search.brave.com/CIwPnWBI6kWRj1UA2y9UTkd3v8HM8SHbH3eL1UP_dxQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9leHRlbnNpb24ubWlzc291cmkuZWR1L21lZGlhL3d5c2l3eWcvRXh0ZW5zaW9uZGF0YS9QdWIvaW1hZ2VzL21wMDY0NmFydDAzLmpwZw",
             "symptoms": [
@@ -147,7 +147,7 @@
             "id": "black-horse-riding",
             "name": "Black horse riding",
             "pathogen": "Cochliobolus lunatus / Curvularia lunata",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A Curvularia disease causing dark spotting on leaves and glumes with grain quality loss.",
             "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/20201102.Hengnan.Hybrid_rice_Sanyou-1.6.jpg/500px-20201102.Hengnan.Hybrid_rice_Sanyou-1.6.jpg",
             "symptoms": [
@@ -166,7 +166,7 @@
             "id": "blast",
             "name": "Blast (leaf, neck, nodal and collar)",
             "pathogen": "Pyricularia oryzae / Magnaporthe grisea",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A major fungal disease affecting leaves, nodes, collars, and panicle necks, often causing whiteheads.",
             "image": "https://imgs.search.brave.com/blb34saXzb51wwRs_miXlp_o73oNZQLb1kqUzKPCBiA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cubHN1YWdjZW50ZXIuY29tL34vbWVkaWEvc3lzdGVtL2EvZC9jL2MvYWRjY2ExN2QxMWY1YjQ1NWViMDQ2ZjhjMzgxNDFhYTAvYmxhc3QyMS5qcGc_aD0yNTkyJmxhPWVuJnc9Mzg3Mg",
             "symptoms": [
@@ -186,7 +186,7 @@
             "id": "brown-spot",
             "name": "Brown spot",
             "pathogen": "Cochliobolus miyabeanus / Bipolaris oryzae",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A common foliar and grain disease with brown lesions and potential severe leaf blighting.",
             "image": "https://imgs.search.brave.com/A3xf9fnKaxaV_NtQ9ldtrPaQNBLODEoZNeX6IGYSLXQ/rs:fit:860:0:0:0/g:ce/aHR0cDovL3d3dy5rbm93bGVkZ2ViYW5rLmlycmkub3JnL2ltYWdlcy9zdG9yaWVzL25hcnJvdy1icm93bi1zcG90LTIuanBn",
             "symptoms": [
@@ -206,7 +206,7 @@
             "id": "crown-sheath-rot",
             "name": "Crown sheath rot",
             "pathogen": "Gaeumannomyces graminis",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A crown and lower sheath rot associated with root blackening and premature plant death.",
             "image": "https://www.lsuagcenter.com/~/media/system/8/1/0/d/810d2cbb9cdaedcd5b81a384152b5336/crownsheathrot3.jpg?h=492&la=en&w=722",
             "symptoms": [
@@ -226,7 +226,7 @@
             "id": "downy-mildew",
             "name": "Downy mildew",
             "pathogen": "Sclerophthora macrospora",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "An oomycete disease causing leaf distortion, downy growth, and malformed sterile panicles.",
             "image": "https://i.ibb.co/zHGFVS68/image.jpg",
             "symptoms": [
@@ -246,7 +246,7 @@
             "id": "eyespot",
             "name": "Eyespot",
             "pathogen": "Drechslera gigantea",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A foliar disease with pale-centered concentric lesions that resemble an eye.",
             "image": "https://i.ibb.co/VWxp35zx/image.jpg",
             "symptoms": [
@@ -265,7 +265,7 @@
             "id": "false-smut",
             "name": "False smut",
             "pathogen": "Ustilaginoidea virens",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A grain disease where kernels are replaced by orange to green-black velvety smut balls.",
             "image": "https://i.ibb.co/ZRfWPZ1W/image.jpg",
             "symptoms": [
@@ -284,7 +284,7 @@
             "id": "kernel-smut",
             "name": "Kernel smut",
             "pathogen": "Tilletia barclayana / Neovossia horrida",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A smut disease where mature grains are filled with black powdery teliospores.",
             "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Sarocladium_oryzae_5390549.png/500px-Sarocladium_oryzae_5390549.png",
             "symptoms": [
@@ -303,7 +303,7 @@
             "id": "leaf-smut",
             "name": "Leaf smut",
             "pathogen": "Entyloma oryzae",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A generally minor disease producing dark angular sori on both leaf surfaces.",
             "image": "https://i.ibb.co/SXjC0dVX/image.jpg",
             "symptoms": [
@@ -322,7 +322,7 @@
             "id": "leaf-scald",
             "name": "Leaf scald",
             "pathogen": "Microdochium oryzae / Rhynchosporium oryzae",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A zonate leaf disease starting at tips and margins with concentric banding.",
             "image": "https://i.ibb.co/zT02zdpM/image.jpg",
             "symptoms": [
@@ -341,7 +341,7 @@
             "id": "narrow-brown-leaf-spot",
             "name": "Narrow brown leaf spot",
             "pathogen": "Cercospora janseana / Cercospora oryzae / Sphaerulina oryzina",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A Cercospora disease with narrow vein-parallel brown streaks and premature leaf death.",
             "image": "https://i.ibb.co/ZzfThz99/image.jpg",
             "symptoms": [
@@ -360,7 +360,7 @@
             "id": "pecky-rice-fungal",
             "name": "Pecky rice (kernel spotting)",
             "pathogen": "Multiple fungi including Cochliobolus, Curvularia, Fusarium, Microdochium, and Sarocladium species",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A complex grain spotting problem caused by multiple fungi, reducing milling quality.",
             "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Sarocladium_oryzae_5390549.png/500px-Sarocladium_oryzae_5390549.png",
             "symptoms": [
@@ -380,7 +380,7 @@
             "id": "root-rots",
             "name": "Root rots",
             "pathogen": "Fusarium spp. / Pythium spp.",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "Root decay complex causing poor tillering, stunting, and weak anchorage.",
             "image": "https://imgs.search.brave.com/VorBcwVjGs-D75GjT7VtuovJI4M0jT-z0LXuuGYuE7A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cudWFleC51YWRhLmVkdS9mYXJtLXJhbmNoL2Nyb3BzLWNvbW1lcmNpYWwtaG9ydGljdWx0dXJlL2ltYWdlcy9Ba2lvY2hpJTIwMjAxMy5qcGc",
             "symptoms": [
@@ -400,7 +400,7 @@
             "id": "rust",
             "name": "Rust",
             "pathogen": "Not applicable (rice is considered immune to rusts)",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "Rust is not considered a true disease concern in rice due to natural immunity.",
             "image": "",
             "symptoms": ["No rust symptoms in rice under normal field conditions"],
@@ -410,7 +410,7 @@
             "id": "seedling-blight",
             "name": "Seedling blight",
             "pathogen": "Cochliobolus, Curvularia, Fusarium, Rhizoctonia, and other fungi",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A damping-off disease complex causing poor emergence and early seedling death.",
             "image": "https://i.ibb.co/B26cNMwn/image.jpg",
             "symptoms": [
@@ -430,7 +430,7 @@
             "id": "sheath-blight",
             "name": "Sheath blight",
             "pathogen": "Rhizoctonia solani",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A major sheath disease with waterline lesions, upward canopy spread, and lodging risk.",
             "image": "https://imgs.search.brave.com/w67dYhC33YGPqX8zBFvgRLnkTXH0e--cy_EyTPBdYds/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4ubW9zLmNtcy5mdXR1cmVjZG4ubmV0L2V4bldqZjZ5d1dwRFhIUzNvcm50SjcuanBn",
             "symptoms": [
@@ -450,7 +450,7 @@
             "id": "sheath-rot",
             "name": "Sheath rot",
             "pathogen": "Sarocladium oryzae",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A booting-stage sheath infection causing enclosed panicle sterility and chaffy grains.",
             "image": "https://imgs.search.brave.com/2RIch5ShV9GsGFKpfR-niPUGrhwG_gWDeWBN4FTrjAs/rs:fit:860:0:0:0/g:ce/aHR0cDovL3d3dy5rbm93bGVkZ2ViYW5rLmlycmkub3JnL2ltYWdlcy9zdG9yaWVzL3NoZWF0aC1yb3QtMy5qcGc",
             "symptoms": [
@@ -470,7 +470,7 @@
             "id": "sheath-spot",
             "name": "Sheath spot",
             "pathogen": "Waitea oryzae",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A sheath disease with tan lesions and reddish-brown borders, often milder than sheath blight.",
             "image": "https://i.ibb.co/G3Nyw4xj/image.jpg",
             "symptoms": [
@@ -489,7 +489,7 @@
             "id": "stackburn",
             "name": "Stackburn (Alternaria leaf spot)",
             "pathogen": "Alternaria padwickii",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "An Alternaria disease causing leaf and grain spotting with poor seed viability.",
             "image": "https://i.ibb.co/2Y17tF9f/image.jpg",
             "symptoms": [
@@ -508,7 +508,7 @@
             "id": "stem-rot",
             "name": "Stem rot",
             "pathogen": "Magnaporthe salvinii / Sclerotium oryzae",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A lower stem disease with sclerotia formation that causes culm collapse and yield loss.",
             "image": "https://imgs.search.brave.com/FFpuRvBKuw6BDuXE1BKHpJ6g6GCw9beAtH28LKi1Rx8/rs:fit:860:0:0:0/g:ce/aHR0cDovL3d3dy5rbm93bGVkZ2ViYW5rLmlycmkub3JnL2ltYWdlcy9zdG9yaWVzL3N0ZW0tcm90LmpwZw",
             "symptoms": [
@@ -528,7 +528,7 @@
             "id": "water-mold",
             "name": "Water-mold (seed-rot and seedling disease)",
             "pathogen": "Achlya spp. / Fusarium spp. / Pythium spp.",
-            "category": "Fungal Disease",
+            "category": "fungal",
             "description": "A seed and seedling disease complex favored by cold, waterlogged nursery conditions.",
             "image": "https://i.ibb.co/HTsxGKTN/image.jpg",
             "symptoms": [

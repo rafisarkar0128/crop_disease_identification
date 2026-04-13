@@ -184,3 +184,7 @@ Rice _(Oryza sativa, family Poaceae)_ is the lifeblood of Bangladesh — not jus
 - _Tryporhyza_ — Deadheart and whitehead; entry holes on stems; frass and boring tunnels inside the culm; characteristic stem borer damage pattern
 
 ---
+
+> **Note:** Images shown are for illustrative reference. Some pathogens share visual characteristics with other crop diseases — field diagnosis should be confirmed by a plant pathologist or agricultural extension officer.
+
+---

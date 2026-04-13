@@ -1,0 +1,217 @@
+{
+    "id": "jute",
+    "name": "Jute",
+    "scientificName": "Corchorus olitorius / Corchorus capsularis",
+    "description": "Jute (Corchorus spp.) is a major biodegradable bast fiber crop, widely known as the Golden Fibre and economically important across Bangladesh and South Asia.",
+    "diseases": [
+        {
+            "id": "stem-rot",
+            "name": "Stem Rot",
+            "pathogen": "Macrophomina phaseolina",
+            "category": "fungal",
+            "description": "A severe jute disease that causes internal stem rot, plant collapse, and major yield loss under favorable conditions.",
+            "image": "https://imgs.search.brave.com/qr7zcnGx9VWU69L0UuplVlrjVXlVo_p-hMcAcZNYnzk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGlmeS5jb20v/cy9maWxlcy8xLzA1/NTAvOTQwMS84MTI1/L2ZpbGVzL0p1dGVf/U3RlbV9Sb3RfNDgw/eDQ4MC5qcGc_dj0x/NzIwNjc3NzQ0",
+            "symptoms": [
+                "Leaves first turn pale gray and later blacken",
+                "Internal stem tissues rot progressively",
+                "Whole plants collapse, especially in severe fields"
+            ],
+            "treatments": [
+                "Treat seed with Thiram or Carbendazim at 2-3 g/kg before sowing",
+                "Spray carbendazim (Bavistin 50 WP) at 1 g/L at early onset",
+                "Rotate with non-host crops and remove infected debris",
+                "Avoid prolonged waterlogging and improve drainage"
+            ]
+        },
+        {
+            "id": "black-band",
+            "name": "Black Band",
+            "pathogen": "Botryodiplodia theobromae",
+            "category": "fungal",
+            "description": "Blackish lesions on stems enlarge and girdle plants, weakening bark and reducing fiber quality.",
+            "image": "https://i.ibb.co/zTy7THsc/image.jpg",
+            "symptoms": [
+                "Blackish-brown stem patches appear and enlarge",
+                "Lesions encircle stems and form dark bands",
+                "Bark becomes dark, brittle, and damaged"
+            ],
+            "treatments": [
+                "Spray Mancozeb (0.25%) or copper oxychloride early",
+                "Remove and burn infected plant portions",
+                "Avoid mechanical stem injury",
+                "Maintain balanced fertilization and field drainage"
+            ]
+        },
+        {
+            "id": "anthracnose",
+            "name": "Anthracnose",
+            "pathogen": "Colletotrichum corchorum",
+            "category": "fungal",
+            "description": "A stem canker disease that can girdle plants and render fibers shredded and unusable.",
+            "image": "https://imgs.search.brave.com/Zq2ScaifHPe_5nPaO7gk5xmOXKb0D5MlbfOKuRHcvlA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90cmVl/ZnJ1aXQud3N1LmVk/dS93cC1jb250ZW50/L3VwbG9hZHMvMjAx/Ny8wMi9Zb3VuZ1Ry/dW5rLWNhbmtlci0y/MjV4MzAwLmpwZw",
+            "symptoms": [
+                "Small water-soaked spots expand into sunken lesions",
+                "Large cankers girdle stems",
+                "Affected fiber becomes shredded and poor quality"
+            ],
+            "treatments": [
+                "Treat seed with Carbendazim at 2 g/kg",
+                "Spray Mancozeb 75 WP (2.5 g/L) or copper oxychloride (3 g/L)",
+                "Repeat sprays at 15-day intervals from symptom onset",
+                "Use disease-free seed and avoid dense sowing"
+            ]
+        },
+        {
+            "id": "soft-rot",
+            "name": "Soft Rot",
+            "pathogen": "Sclerotium rolfsii",
+            "category": "fungal",
+            "description": "A collar-region stem rot with white mycelial growth that causes sudden lodging and death.",
+            "image": "https://i.ibb.co/xSTsQH7G/image.jpg",
+            "symptoms": [
+                "White cottony mycelial growth near the collar",
+                "Stem rots at soil level and plants collapse",
+                "Mustard-like sclerotia appear in mycelial mats"
+            ],
+            "treatments": [
+                "Drench collar soil with Carbendazim (1 g/L) or Validamycin",
+                "Remove infected debris and nearby contaminated soil",
+                "Avoid excess irrigation and improve drainage",
+                "Deep plough and apply Trichoderma-based biocontrol"
+            ]
+        },
+        {
+            "id": "die-back",
+            "name": "Die Back",
+            "pathogen": "Seed-, soil-, and air-borne fungi (complex)",
+            "category": "fungal",
+            "description": "A progressive top-down drying disorder that causes withering and stem death, especially in olitorius types.",
+            "image": "https://i.ibb.co/Swk6bgxX/image.jpg",
+            "symptoms": [
+                "Drying begins from shoot tip and advances downward",
+                "Leaves wither and drop",
+                "Stems die back toward the base"
+            ],
+            "treatments": [
+                "Treat seeds with Thiram or Mancozeb at 3 g/kg",
+                "Spray Mancozeb 0.25% or Zineb 0.2% at 10-day intervals",
+                "Ensure proper field drainage",
+                "Use healthy certified seed and avoid late waterlogging"
+            ]
+        },
+        {
+            "id": "wilting",
+            "name": "Wilting",
+            "pathogen": "Rhizoctonia solani",
+            "category": "fungal",
+            "description": "A soil-borne wilt that causes sudden flaccidity and plant death, often severe near flowering stage.",
+            "image": "https://i.ibb.co/hxPt2hvD/image.jpg",
+            "symptoms": [
+                "Leaves become flaccid and wilt suddenly",
+                "Rapid decline and plant death",
+                "More severe damage in susceptible varieties"
+            ],
+            "treatments": [
+                "Drench root zone with Carbendazim (0.1%) or Iprodione",
+                "Apply Trichoderma harzianum at planting",
+                "Avoid monoculture and maintain balanced soil moisture",
+                "Use resistant cultivars where available"
+            ]
+        },
+        {
+            "id": "seedling-blight",
+            "name": "Seedling Blight",
+            "pathogen": "Fusarium rolfsii and related pathogens",
+            "category": "fungal",
+            "description": "An early-stage seedling disease causing basal lesions, collapse, and stand loss soon after germination.",
+            "image": "https://i.ibb.co/0jhRSTz0/image.jpg",
+            "symptoms": [
+                "Brown to black lesions at seedling base",
+                "Seedlings collapse shortly after emergence",
+                "High mortality in wet, poorly drained conditions"
+            ],
+            "treatments": [
+                "Treat seed with Thiram (3 g/kg) or Captan before sowing",
+                "Apply Carbendazim (Bavistin) soil drench at germination",
+                "Avoid overly wet or compacted seedbeds",
+                "Rotate with cereals and remove dead seedlings promptly"
+            ]
+        },
+        {
+            "id": "powdery-mildew",
+            "name": "Powdery Mildew",
+            "pathogen": "Erysiphe spp. / powdery mildew fungi",
+            "category": "fungal",
+            "description": "A foliar fungal disease with white powdery growth that weakens plants and promotes defoliation.",
+            "image": "https://i.ibb.co/r2Mzc8hC/image.jpg",
+            "symptoms": [
+                "Fine white powder appears on upper leaf surfaces",
+                "Disease intensifies in humid or foggy weather",
+                "Leaf drop and reduced plant vigor"
+            ],
+            "treatments": [
+                "Spray Wettable Sulphur (2-3 g/L) or Karathane (0.5 mL/L)",
+                "Repeat spray after 10-14 days when needed",
+                "Reduce canopy density to improve airflow",
+                "Avoid excessive nitrogen and remove heavily infected leaves"
+            ]
+        },
+        {
+            "id": "leaf-mosaic",
+            "name": "Leaf Mosaic",
+            "pathogen": "Jute Mosaic Virus (JMV); vector: whitefly (Bemisia tabaci)",
+            "category": "viral",
+            "description": "A viral disease causing yellow mosaic mottling, leaf distortion, and growth stunting.",
+            "image": "https://imgs.search.brave.com/zofIb-eLeDtslx-MuLuwBeF5y6kSrmHuajBY601rTF4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGlmeS5jb20v/cy9maWxlcy8xLzA1/NTAvOTQwMS84MTI1/L2ZpbGVzL0p1dGVf/TGVhZl9Nb3NhaWNf/VmlydXNfNDgweDQ4/MC5qcGc_dj0xNzIw/Njc3NzMz",
+            "symptoms": [
+                "Green-yellow mosaic mottling on leaves",
+                "Distorted foliage with uneven chlorophyll",
+                "Stunted growth and weak plant development"
+            ],
+            "treatments": [
+                "Control whiteflies with Imidacloprid 17.8 SL (0.5 mL/L) or Thiamethoxam",
+                "Rogue and destroy infected plants early",
+                "Use disease-free certified seed",
+                "Protect nurseries with fine mesh and avoid infected nearby fields"
+            ]
+        },
+        {
+            "id": "leaf-curling",
+            "name": "Leaf Curling",
+            "pathogen": "Jute Leaf Curl Virus (JLCV)",
+            "category": "viral",
+            "description": "A viral curling disorder with rough, thickened leaves and reduced fiber performance.",
+            "image": "https://i.ibb.co/bR8RT61N/image.jpg",
+            "symptoms": [
+                "Leaves become pale, thick, rough, and curled",
+                "Mosaic green-yellow patterns develop",
+                "Plants become stunted with poor fiber development"
+            ],
+            "treatments": [
+                "Use virus-free certified seeds",
+                "Control vectors with Imidacloprid or Acetamiprid",
+                "Rogue and burn infected plants early",
+                "Incorporate infected debris after harvest and avoid seed from diseased fields"
+            ]
+        },
+        {
+            "id": "root-knot",
+            "name": "Root Knot",
+            "pathogen": "Meloidogyne incognita, M. javanica, and M. enterolobii",
+            "category": "nematode",
+            "description": "A nematode disease causing root galls, poor nutrient uptake, stunting, and reduced fiber yield.",
+            "image": "https://imgs.search.brave.com/f77Y5zQoYW0S4a40aXEmHC2BWMV9Xf8Rr5Y7-xhuV2U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YWxtYW5hYy5jb20v/c2l0ZXMvZGVmYXVs/dC9maWxlcy9pbmZl/Y3RlZC1wbGFudC1r/bm90cy1zaHV0dGVy/c3RvY2tfMjU1OTM5/NDIwMS5qcGc",
+            "symptoms": [
+                "Roots show swollen galls and knot formation",
+                "Plants are stunted, yellow, and unthrifty",
+                "Reduced water and nutrient uptake limits growth"
+            ],
+            "treatments": [
+                "Apply Carbofuran 3G (33 kg/ha) or Phorate 10G at sowing",
+                "Use neem cake (250 kg/ha) as soil amendment",
+                "Rotate with non-host crops such as cereals",
+                "Deep plough and use resistant or tolerant varieties"
+            ]
+        }
+    ]
+}
