@@ -18,8 +18,9 @@ package com.crop.app.infrastructure.mapper;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import com.crop.app.Main;
+import com.crop.app.common.exception.MetadataReadException;
 import com.crop.app.domain.model.Crop;
+import com.crop.app.infrastructure.loader.ResourceLoader;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
@@ -46,20 +47,15 @@ public class CropMetadataMapper {
     public static Crop mapFromJson(String cropId) {
         Gson gson = new Gson();
 
-        try (InputStream iStream = Main.class.getResourceAsStream("metadata/" + cropId + ".json")) {
+        try (InputStream iStream = ResourceLoader.getMetadataStream(cropId);
+                InputStreamReader reader = new InputStreamReader(iStream)) {
 
-            if (iStream == null) {
-                System.err.println(
-                        "Error: Could not find file in resources: metadata/" + cropId + ".json");
-                return null;
-            }
+            return gson.fromJson(reader, Crop.class);
 
-            try (InputStreamReader reader = new InputStreamReader(iStream)) {
-                return gson.fromJson(reader, Crop.class);
-            }
         } catch (IOException | JsonSyntaxException e) {
-            e.printStackTrace();
-            return null;
+            throw new MetadataReadException("Failed to map JSON for crop: " + cropId + " at path: "
+                    + ResourceLoader.getMetadata(cropId), e);
         }
+
     }
 }

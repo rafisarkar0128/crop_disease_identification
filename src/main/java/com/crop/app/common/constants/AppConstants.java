@@ -41,7 +41,9 @@ public final class AppConstants {
     public static final String APP_LICENSE_URL = "http://www.apache.org/licenses/LICENSE-2.0";
     public static final String APP_DESCRIPTION =
             "A Java application for identifying crop diseases based on metadata.";
-    public static final String METADATA_PATH = "metadata/";
-    public static final String IMAGES_PATH = "images/";
-    public static final String ICONS_PATH = "icons/";
+    public static final String BASE_PACKAGE_PATH = "com/crop/app";
+    public static final String METADATA_PATH = "metadata";
+    public static final String METADATA_INDEX = "metadata-index.json";
+    public static final String IMAGES_PATH = "images";
+    public static final String ICONS_PATH = "icons";
 }

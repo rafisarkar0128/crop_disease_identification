@@ -24,6 +24,7 @@ import javafx.scene.paint.Color;
 import java.io.IOException;
 import com.crop.app.domain.model.Crop;
 import com.crop.app.domain.model.Disease;
+import com.crop.app.infrastructure.loader.ResourceLoader;
 import com.crop.app.infrastructure.mapper.CropMetadataMapper;
 
 /**
@@ -50,33 +51,36 @@ public class Main extends Application {
      */
     public static void main(String[] args) {
         launch();
-
-        Crop crop = CropMetadataMapper.mapFromJson("jute");
-        System.out.println("Crop name: " + crop.getName());
-        System.out.println("Diseases:");
-        for (Disease disease : crop.getDiseases()) {
-            System.out.println("Disease name: " + disease.getName());
-            System.out.println("Symptoms: ");
-            for (String symptom : disease.getSymptoms()) {
-                System.out.println(symptom);
-            }
-        }
+        testCropMetadataMapper();
     }
 
     /**
      * The start method is called when the JavaFX application is launched. It sets up the primary
      * stage of the application, including the scene and its properties such as title and icon.
      *
-     * @param stage the primary stage of the application
+     * @param primaryStage the primary stage of the application
      */
     @Override
-    public void start(Stage stage) throws IOException {
-        Group root = new Group();
-        Scene scene = new Scene(root, 640, 480, Color.LIMEGREEN);
+    public void start(Stage primaryStage) throws IOException {
+        Scene scene = new Scene(new Group(), 640, 480, Color.LIMEGREEN);
 
-        stage.setTitle("Crop Identification System");
-        stage.getIcons().add(new Image("file:src/main/resources/icons/app_logo.png"));
-        stage.setScene(scene);
-        stage.show();
+        primaryStage.setTitle("Crop Identification System");
+        primaryStage.getIcons().add(new Image(ResourceLoader.getIcon("logo.png")));
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void testCropMetadataMapper() {
+        Crop crop = CropMetadataMapper.mapFromJson("jute.json");
+        System.out.println("Crop Name: " + crop.getName());
+        System.out.println("Diseases:");
+        for (Disease disease : crop.getDiseases()) {
+            System.out.println("- " + disease.getName());
+            System.out.println("  Symptoms:");
+            for (String symptom : disease.getSymptoms()) {
+                System.out.println("    * " + symptom);
+            }
+        }
+
     }
 }
