@@ -16,11 +16,11 @@
 package com.crop.app.common.constants;
 
 /**
- * AppConstants is a utility class that holds constant values used throughout the Crop Disease
- * Identification application. This includes application metadata, file paths, and other static
- * values that are referenced in multiple places within the application. By centralizing these
- * constants, we can ensure consistency and make it easier to manage changes to these values in the
- * future.
+ * Centralized application constants.
+ *
+ * <p>
+ * Contains static metadata fields (name, version, author, license) and classpath-relative resource
+ * path constants used by resource loading and UI setup.
  *
  * @author Md. Rafi Sarkar (rafisarkar0128)
  * @version 1.0

@@ -18,14 +18,15 @@ package com.crop.app.domain.model;
 import java.util.ArrayList;
 
 /**
- * Disease class represents a disease that affects a crop. It contains properties such as id, name,
- * pathogen, category, description, image, symptoms, and treatments. The class provides
- * constructors, getters, and setters for these properties. It serves as a data model for
- * representing disease information in the application.
+ * Mutable domain model representing a disease record for a crop.
+ *
+ * <p>
+ * Contains identification fields and descriptive metadata, including symptoms and treatment
+ * suggestions loaded from JSON metadata.
  *
  * @author Md. Rafi Sarkar (rafisarkar0128)
  * @version 1.0
- * @since 2026-04-14
+ * @since 14-04-2026
  */
 public class Disease {
 
@@ -39,11 +40,7 @@ public class Disease {
     private ArrayList<String> treatments;
 
     /**
-     * Default constructor initializes the Disease object with default values. The id, name,
-     * pathogen, category, description, image, symptoms, and treatments are set to empty strings,
-     * and the symptoms and treatments lists are initialized as empty ArrayLists. This constructor
-     * allows for creating a Disease object with default values, which can be later modified using
-     * the setter methods.
+     * Creates an empty disease model with initialized collection fields.
      */
     public Disease() {
         this.id = "";
@@ -57,9 +54,7 @@ public class Disease {
     }
 
     /**
-     * Parameterized constructor initializes the Disease object with the provided values for id,
-     * name, pathogen, category, description, image, symptoms, and treatments. It allows for
-     * creating a Disease object with specific details and associated symptoms and treatments.
+     * Creates a disease model with all fields initialized.
      *
      * @param id the unique identifier for the disease
      * @param name the common name of the disease

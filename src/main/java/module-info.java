@@ -15,12 +15,13 @@
 
 
 /**
- * The module-info.java file defines the module for the Crop Disease Identification application. It
- * specifies the required modules, including JavaFX modules for GUI development and Jackson and Gson
- * modules for JSON processing. The file also opens specific packages for reflection to allow
- * libraries like Jackson and Gson to access the classes in those packages. Additionally, it exports
- * the main application package and the domain model package to make them accessible to other
- * modules if needed.
+ * Defines module dependencies and package visibility for the Crop Disease Identification
+ * application.
+ *
+ * <p>
+ * The module requires JavaFX for the UI and Gson for JSON deserialization. It opens the domain
+ * model package to Gson for reflective field access and opens the main package to JavaFX FXML. It
+ * exports the application entry package and the domain model package.
  *
  * @author Md. Rafi Sarkar (rafisarkar0128)
  * @version 1.0
@@ -35,11 +36,11 @@ module crop.disease.identification {
     // Gson module
     requires com.google.gson;
 
-    // Opening packages for reflection
+    // Opened for runtime reflection
     opens com.crop.app.domain.model to com.google.gson;
     opens com.crop.app to javafx.fxml;
 
-    // Exporting packages
+    // Exported API packages
     exports com.crop.app;
     exports com.crop.app.domain.model;
 }

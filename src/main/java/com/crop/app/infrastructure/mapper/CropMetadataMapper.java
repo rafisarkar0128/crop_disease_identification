@@ -18,6 +18,7 @@ package com.crop.app.infrastructure.mapper;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import com.crop.app.common.exception.MetadataReadException;
 import com.crop.app.domain.model.Crop;
 import com.crop.app.infrastructure.loader.ResourceLoader;
@@ -25,37 +26,43 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 /**
- * CropMetadataMapper is responsible for converting JSON metadata files into Crop domain objects. It
- * uses the Gson library to parse JSON data and populate the fields of the Crop class. This
- * separation of concerns allows the repositories to focus on data access while the mapper handles
- * the transformation logic. The mapFromJson method takes a crop identifier (e.g., "rice") and
- * attempts to read the corresponding JSON file from the resources, returning a fully populated Crop
- * object or null if an error occurs during the mapping process.
+ * Maps crop metadata JSON into {@link Crop} domain objects.
+ *
+ * <p>
+ * This utility reads crop metadata from classpath resources via {@link ResourceLoader} and
+ * deserializes it with Gson.
  *
  * @author Md. Rafi Sarkar (rafisarkar0128)
  * @version 1.0
  * @since 14-04-2026
  */
-public class CropMetadataMapper {
+public final class CropMetadataMapper {
+
+    private static final Gson GSON = new Gson();
+
     /**
-     * Maps JSON metadata for a crop to a Crop domain object.
+     * Prevents instantiation of this utility class.
+     */
+    private CropMetadataMapper() {
+        // Utility class
+    }
+
+    /**
+     * Reads crop metadata JSON and converts it to a {@link Crop} object.
      *
-     * @param cropId The identifier for the crop (e.g., "rice", "wheat")
-     * @return A Crop object populated with data from the corresponding JSON file, or null if an
-     *         error occurs during mapping.
+     * @param cropId the identifier for the crop (e.g., "rice", "wheat")
+     * @return a crop object populated from the corresponding JSON metadata
+     * @throws MetadataReadException if an error occurs during the mapping process
      */
     public static Crop mapFromJson(String cropId) {
-        Gson gson = new Gson();
-
         try (InputStream iStream = ResourceLoader.getMetadataStream(cropId);
-                InputStreamReader reader = new InputStreamReader(iStream)) {
+                InputStreamReader reader = new InputStreamReader(iStream, StandardCharsets.UTF_8)) {
 
-            return gson.fromJson(reader, Crop.class);
+            return GSON.fromJson(reader, Crop.class);
 
         } catch (IOException | JsonSyntaxException e) {
             throw new MetadataReadException("Failed to map JSON for crop: " + cropId + " at path: "
                     + ResourceLoader.getMetadata(cropId), e);
         }
-
     }
 }

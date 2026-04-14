@@ -16,12 +16,11 @@
 package com.crop.app.common.exception;
 
 /**
- * MetadataReadException is a custom exception class that extends RuntimeException. It is used to
- * indicate errors that occur during the reading of metadata files in the application. This
- * exception can be thrown when a metadata file cannot be found, accessed, or read properly. By
- * creating a specific exception for metadata reading issues, it allows for more precise error
- * handling and better debugging when problems arise in the CropMetadataMapper class or related
- * components that deal with metadata processing.
+ * Unchecked exception for metadata parsing and metadata read failures.
+ *
+ * <p>
+ * Used by the metadata mapping flow to signal that crop metadata could not be converted into domain
+ * objects.
  *
  * @author Md. Rafi Sarkar (rafisarkar0128)
  * @version 1.0
@@ -29,20 +28,19 @@ package com.crop.app.common.exception;
  */
 public class MetadataReadException extends RuntimeException {
     /**
-     * Constructor that accepts a message describing the exception.
+     * Creates an exception with a detail message.
      *
-     * @param message The error message describing the exception.
+     * @param message the detail message
      */
     public MetadataReadException(String message) {
         super(message);
     }
 
     /**
-     * Constructor that accepts a message and a "cause" (another exception). This is useful if an
-     * IOException caused your resource failure.
+     * Creates an exception with a detail message and root cause.
      *
-     * @param message The error message describing the exception.
-     * @param cause The underlying cause of the exception.
+     * @param message the detail message
+     * @param cause the underlying cause
      */
     public MetadataReadException(String message, Throwable cause) {
         super(message, cause);

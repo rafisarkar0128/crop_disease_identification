@@ -17,11 +17,12 @@ package com.crop.app.domain.model;
 
 import java.util.ArrayList;
 
-/***
- * Crop class represents a crop with its details and associated diseases. It contains properties
- * such as id, name, scientific name, description, and a list of diseases that affect the crop. The
- * class provides constructors, getters, and setters for these properties. It serves as a data model
- * for representing crop information in the application.
+/**
+ * Mutable domain model representing a crop and its associated diseases.
+ *
+ * <p>
+ * This type is used as a data container for metadata loaded from JSON and consumed by application
+ * services and UI components.
  *
  * @author Md. Rafi Sarkar (rafisarkar0128)
  * @version 1.0
@@ -36,10 +37,7 @@ public class Crop {
     private ArrayList<Disease> diseases;
 
     /**
-     * Default constructor initializes the Crop object with default values. The id, name, scientific
-     * name, and description are set to empty strings, and the diseases list is initialized as an
-     * empty ArrayList. This constructor allows for creating a Crop object with default values,
-     * which can be later modified using the setter methods.
+     * Creates an empty crop model with initialized collection fields.
      */
     public Crop() {
         this.id = "";
@@ -50,9 +48,7 @@ public class Crop {
     }
 
     /**
-     * Parameterized constructor initializes the Crop object with the provided values for id, name,
-     * scientific name, description, and diseases. It allows for creating a Crop object with
-     * specific details and associated diseases.
+     * Creates a crop model with all fields initialized.
      *
      * @param id the unique identifier for the crop
      * @param name the common name of the crop
