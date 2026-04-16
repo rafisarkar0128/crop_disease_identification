@@ -16,7 +16,7 @@
 package com.crop.app;
 
 import com.crop.app.common.constants.AppConstants;
-import com.crop.app.gui.view.HomePage;
+import com.crop.app.gui.view.IntroPage;
 import com.crop.app.infrastructure.loader.ResourceLoader;
 
 import javafx.application.Application;
@@ -28,8 +28,7 @@ import javafx.stage.Stage;
  * JavaFX entry point for the Crop Disease Identification application.
  *
  * <p>
- * This class launches the JavaFX runtime and initializes the primary stage with
- * a basic scene,
+ * This class launches the JavaFX runtime and initializes the primary stage with a basic scene,
  * application title, and window icon loaded from bundled resources.
  *
  * @author Md. Rafi Sarkar (rafisarkar0128)
@@ -54,10 +53,10 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-        Scene scene = HomePage.createHomePage();
+        Scene scene = IntroPage.createHomePage();
 
         primaryStage.setTitle(AppConstants.APP_NAME + " - " + AppConstants.APP_VERSION);
-        primaryStage.getIcons().add(new Image(ResourceLoader.getIcon("logo.png")));
+        primaryStage.getIcons().add(new Image(ResourceLoader.getIcon("logo-main.png")));
         primaryStage.setScene(scene);
         primaryStage.show();
     }
