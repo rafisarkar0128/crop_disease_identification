@@ -2,19 +2,25 @@ package com.crop.app.gui.view;
 
 import com.crop.app.gui.controller.IntroPageController;
 import com.crop.app.infrastructure.loader.ResourceLoader;
-
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 public class IntroPage {
 
     public static Scene createHomePage() {
 
-        Image logoImage = new Image(ResourceLoader.getIcon("logo-with-text.png"));
+        Image backgroundImage = new Image(ResourceLoader.getImage("background.png"));
+        ImageView backgroundView = new ImageView(backgroundImage);
+        // backgroundView.setFitWidth(600);
+        // backgroundView.setFitHeight(600);
+
+        Image logoImage = new Image(ResourceLoader.getIcon("logo-main.png"));
         ImageView logoView = new ImageView(logoImage);
         logoView.setFitWidth(300);
         logoView.setFitHeight(300);
@@ -36,10 +42,14 @@ public class IntroPage {
 
         // Layout
         VBox root = new VBox(20);
-        root.setStyle("-fx-background-color: white; -fx-alignment: center; -fx-padding: 40px;");
+        root.setStyle("-fx-alignment: center; -fx-padding: 40px;");
         root.getChildren().addAll(logoView, welcomeLabel, subtitleLabel, startButton);
 
+        StackPane stackpane = new StackPane();
+        stackpane.getChildren().addAll(backgroundView, root);
+
         // Scene and Stage
-        return new Scene(root, 600, 600);
+        Scene introPageScene = new Scene(stackpane, 600, 600, Color.color(0.968, 0.957, 0.937));
+        return introPageScene;
     }
 }

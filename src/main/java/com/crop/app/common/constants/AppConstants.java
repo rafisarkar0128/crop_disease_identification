@@ -46,4 +46,5 @@ public final class AppConstants {
     public static final String METADATA_INDEX = "metadata-index.json";
     public static final String IMAGES_PATH = "images";
     public static final String ICONS_PATH = "icons";
+    public static final String FXML_PATH = "fxml";
 }

@@ -58,9 +58,20 @@ public final class ResourceLoader {
      * @param cropId the crop identifier or metadata filename
      * @return the formatted metadata path (e.g., "metadata/rice.json" for cropId "rice")
      */
-    private static String formatMetadataPath(String cropId) {
+    public static String formatMetadataPath(String cropId) {
         String filename = cropId.endsWith(".json") ? cropId : cropId + ".json";
         return AppConstants.METADATA_PATH + "/" + filename;
+    }
+
+    /**
+     * Builds an FXML resource path for the given FXML identifier.
+     *
+     * @param fxmlId the FXML identifier or filename (e.g., "IntroPage.fxml" for fxmlId "IntroPage")
+     * @return the formatted FXML path (e.g., "fxml/IntroPage.fxml" for fxmlId "IntroPage")
+     */
+    public static String formatFxmlPath(String fxmlId) {
+        String filename = fxmlId.endsWith(".fxml") ? fxmlId : fxmlId + ".fxml";
+        return AppConstants.FXML_PATH + "/" + filename;
     }
 
     /**
@@ -100,6 +111,26 @@ public final class ResourceLoader {
     }
 
     /**
+     * Resolves an FXML resource path to an external URL string.
+     *
+     * @param fxml the name of the FXML resource (e.g., "IntroPage.fxml" or "IntroPage").
+     * @return the external form of the FXML resource path
+     */
+    public static String getFxml(String fxml) {
+        return getResourcePath(formatFxmlPath(fxml));
+    }
+
+    /**
+     * Opens an FXML resource as an input stream.
+     *
+     * @param fxml the name of the FXML resource (e.g., "IntroPage.fxml" or "IntroPage").
+     * @return an input stream for the specified FXML resource path
+     */
+    public static InputStream getFxmlStream(String fxml) {
+        return getResourceStream(formatFxmlPath(fxml));
+    }
+
+    /**
      * Resolves an icon resource path to an external URL string.
      *
      * @param icon the name of the icon resource (e.g., "logo.png"). Remember to include the file
@@ -119,6 +150,29 @@ public final class ResourceLoader {
      */
     public static InputStream getIconStream(String icon) {
         return getResourceStream(AppConstants.ICONS_PATH + "/" + icon);
+    }
+
+
+    /**
+     * Resolves an image resource path to an external URL string.
+     *
+     * @param image the name of the image resource (e.g., "background.png"). Remember to include the
+     *        file extension.
+     * @return the external form of the image resource path
+     */
+    public static String getImage(String image) {
+        return getResourcePath(AppConstants.IMAGES_PATH + "/" + image);
+    }
+
+    /**
+     * Opens an image resource as an input stream.
+     *
+     * @param image the name of the image resource (e.g., "background.png"). Remember to include the
+     *        file extension.
+     * @return an input stream for the specified image resource path
+     */
+    public static InputStream getImageStream(String image) {
+        return getResourceStream(AppConstants.IMAGES_PATH + "/" + image);
     }
 
     /**

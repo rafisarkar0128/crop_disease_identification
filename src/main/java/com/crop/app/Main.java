@@ -18,7 +18,6 @@ package com.crop.app;
 import com.crop.app.common.constants.AppConstants;
 import com.crop.app.gui.view.IntroPage;
 import com.crop.app.infrastructure.loader.ResourceLoader;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
