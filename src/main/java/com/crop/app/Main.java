@@ -17,10 +17,9 @@ package com.crop.app;
 
 import com.crop.app.common.constants.AppConstants;
 import com.crop.app.gui.view.IntroPage;
-import com.crop.app.infrastructure.loader.ResourceLoader;
+import com.crop.app.infrastructure.loader.IconLoader;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -55,7 +54,7 @@ public class Main extends Application {
         Scene scene = IntroPage.createHomePage();
 
         primaryStage.setTitle(AppConstants.APP_NAME + " - " + AppConstants.APP_VERSION);
-        primaryStage.getIcons().add(new Image(ResourceLoader.getIcon("logo-main.png")));
+        primaryStage.getIcons().add(IconLoader.getIconAsImage("logo-main.png"));
         primaryStage.setScene(scene);
         primaryStage.show();
     }

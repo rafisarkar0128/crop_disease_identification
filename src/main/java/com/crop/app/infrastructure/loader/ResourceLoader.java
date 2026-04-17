@@ -23,8 +23,8 @@ import com.crop.app.common.exception.ResourceLoaderException;
  * Utility for loading application resources from the classpath.
  *
  * <p>
- * Provides helpers for resolving absolute classpath resource paths and reading icon/metadata
- * resources as URLs or input streams.
+ * Provides helpers for resolving absolute resource paths and reading resources as URLs or input
+ * streams.
  *
  * @author Md. Rafi Sarkar (rafisarkar0128)
  * @version 1.0
@@ -34,9 +34,7 @@ public final class ResourceLoader {
     /**
      * Prevents instantiation of this utility class.
      */
-    private ResourceLoader() {
-        // Utility class
-    }
+    private ResourceLoader() {}
 
     /**
      * Returns an absolute classpath path for an application resource.
@@ -50,28 +48,6 @@ public final class ResourceLoader {
             return path;
         }
         return "/" + AppConstants.BASE_PACKAGE_PATH + "/" + path;
-    }
-
-    /**
-     * Builds a metadata resource path for the given crop identifier.
-     *
-     * @param cropId the crop identifier or metadata filename
-     * @return the formatted metadata path (e.g., "metadata/rice.json" for cropId "rice")
-     */
-    public static String formatMetadataPath(String cropId) {
-        String filename = cropId.endsWith(".json") ? cropId : cropId + ".json";
-        return AppConstants.METADATA_PATH + "/" + filename;
-    }
-
-    /**
-     * Builds an FXML resource path for the given FXML identifier.
-     *
-     * @param fxmlId the FXML identifier or filename (e.g., "IntroPage.fxml" for fxmlId "IntroPage")
-     * @return the formatted FXML path (e.g., "fxml/IntroPage.fxml" for fxmlId "IntroPage")
-     */
-    public static String formatFxmlPath(String fxmlId) {
-        String filename = fxmlId.endsWith(".fxml") ? fxmlId : fxmlId + ".fxml";
-        return AppConstants.FXML_PATH + "/" + filename;
     }
 
     /**
@@ -108,92 +84,5 @@ public final class ResourceLoader {
                     + ". Ensure the file exists in src/main/resources" + absolutePath);
         }
         return is;
-    }
-
-    /**
-     * Resolves an FXML resource path to an external URL string.
-     *
-     * @param fxml the name of the FXML resource (e.g., "IntroPage.fxml" or "IntroPage").
-     * @return the external form of the FXML resource path
-     */
-    public static String getFxml(String fxml) {
-        return getResourcePath(formatFxmlPath(fxml));
-    }
-
-    /**
-     * Opens an FXML resource as an input stream.
-     *
-     * @param fxml the name of the FXML resource (e.g., "IntroPage.fxml" or "IntroPage").
-     * @return an input stream for the specified FXML resource path
-     */
-    public static InputStream getFxmlStream(String fxml) {
-        return getResourceStream(formatFxmlPath(fxml));
-    }
-
-    /**
-     * Resolves an icon resource path to an external URL string.
-     *
-     * @param icon the name of the icon resource (e.g., "logo.png"). Remember to include the file
-     *        extension.
-     * @return the external form of the icon resource path
-     */
-    public static String getIcon(String icon) {
-        return getResourcePath(AppConstants.ICONS_PATH + "/" + icon);
-    }
-
-    /**
-     * Opens an icon resource as an input stream.
-     *
-     * @param icon the name of the icon resource (e.g., "logo.png"). Remember to include the file
-     *        extension.
-     * @return an input stream for the specified icon resource path
-     */
-    public static InputStream getIconStream(String icon) {
-        return getResourceStream(AppConstants.ICONS_PATH + "/" + icon);
-    }
-
-
-    /**
-     * Resolves an image resource path to an external URL string.
-     *
-     * @param image the name of the image resource (e.g., "background.png"). Remember to include the
-     *        file extension.
-     * @return the external form of the image resource path
-     */
-    public static String getImage(String image) {
-        return getResourcePath(AppConstants.IMAGES_PATH + "/" + image);
-    }
-
-    /**
-     * Opens an image resource as an input stream.
-     *
-     * @param image the name of the image resource (e.g., "background.png"). Remember to include the
-     *        file extension.
-     * @return an input stream for the specified image resource path
-     */
-    public static InputStream getImageStream(String image) {
-        return getResourceStream(AppConstants.IMAGES_PATH + "/" + image);
-    }
-
-    /**
-     * Resolves metadata for a crop to an external URL string.
-     *
-     * @param cropId the name of the metadata resource (e.g., "rice"). File extension is optional;
-     *        if not provided, ".json" will be appended automatically.
-     * @return the external form of the metadata resource path
-     */
-    public static String getMetadata(String cropId) {
-        return getResourcePath(formatMetadataPath(cropId));
-    }
-
-    /**
-     * Opens metadata for a crop as an input stream.
-     *
-     * @param cropId the name of the metadata resource (e.g., "rice"). File extension is optional;
-     *        if not provided, ".json" will be appended automatically.
-     * @return an input stream for the specified metadata resource path
-     */
-    public static InputStream getMetadataStream(String cropId) {
-        return getResourceStream(formatMetadataPath(cropId));
     }
 }

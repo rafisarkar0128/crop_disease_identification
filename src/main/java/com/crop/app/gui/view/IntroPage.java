@@ -1,11 +1,10 @@
 package com.crop.app.gui.view;
 
 import com.crop.app.gui.controller.IntroPageController;
-import com.crop.app.infrastructure.loader.ResourceLoader;
+import com.crop.app.infrastructure.loader.ImageLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -14,16 +13,14 @@ import javafx.scene.paint.Color;
 public class IntroPage {
 
     public static Scene createHomePage() {
-
-        Image backgroundImage = new Image(ResourceLoader.getImage("background.png"));
-        ImageView backgroundView = new ImageView(backgroundImage);
+        ImageView backgroundView = ImageLoader.getImageAsImageView("background.png");
         // backgroundView.setFitWidth(600);
         // backgroundView.setFitHeight(600);
 
-        Image logoImage = new Image(ResourceLoader.getIcon("logo-main.png"));
-        ImageView logoView = new ImageView(logoImage);
-        logoView.setFitWidth(300);
-        logoView.setFitHeight(300);
+        // Image logoImage = new Image(ResourceLoader.getIcon("logo-main.png"));
+        // ImageView logoView = new ImageView(logoImage);
+        // logoView.setFitWidth(300);
+        // logoView.setFitHeight(300);
 
         Label welcomeLabel = new Label("Welcome to Crop Disease Identification Application");
         welcomeLabel
@@ -43,7 +40,7 @@ public class IntroPage {
         // Layout
         VBox root = new VBox(20);
         root.setStyle("-fx-alignment: center; -fx-padding: 40px;");
-        root.getChildren().addAll(logoView, welcomeLabel, subtitleLabel, startButton);
+        root.getChildren().addAll(welcomeLabel, subtitleLabel, startButton);
 
         StackPane stackpane = new StackPane();
         stackpane.getChildren().addAll(backgroundView, root);

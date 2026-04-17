@@ -21,7 +21,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import com.crop.app.common.exception.MetadataReadException;
 import com.crop.app.domain.model.Crop;
-import com.crop.app.infrastructure.loader.ResourceLoader;
+import com.crop.app.infrastructure.loader.MetadataLoader;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
@@ -29,7 +29,7 @@ import com.google.gson.JsonSyntaxException;
  * Maps crop metadata JSON into {@link Crop} domain objects.
  *
  * <p>
- * This utility reads crop metadata from classpath resources via {@link ResourceLoader} and
+ * This utility reads crop metadata from classpath resources via {@link MetadataLoader} and
  * deserializes it with Gson.
  *
  * @author Md. Rafi Sarkar (rafisarkar0128)
@@ -55,14 +55,14 @@ public final class CropMetadataMapper {
      * @throws MetadataReadException if an error occurs during the mapping process
      */
     public static Crop mapFromJson(String cropId) {
-        try (InputStream iStream = ResourceLoader.getMetadataStream(cropId);
+        try (InputStream iStream = MetadataLoader.getMetadataStream(cropId);
                 InputStreamReader reader = new InputStreamReader(iStream, StandardCharsets.UTF_8)) {
 
             return GSON.fromJson(reader, Crop.class);
 
         } catch (IOException | JsonSyntaxException e) {
             throw new MetadataReadException("Failed to map JSON for crop: " + cropId + " at path: "
-                    + ResourceLoader.getMetadata(cropId), e);
+                    + MetadataLoader.getMetadata(cropId), e);
         }
     }
 }
