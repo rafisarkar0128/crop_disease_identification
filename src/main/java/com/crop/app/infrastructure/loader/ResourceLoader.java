@@ -64,14 +64,14 @@ public final class ResourceLoader {
      *
      * @param absolutePath the absolute classpath path to the resource
      * @return the resolved resource URL
-    * @throws ResourceLoaderException if the resource cannot be found at the given absolute path
+     * @throws ResourceLoaderException if the resource cannot be found at the given absolute path
      */
     private static URL resolveResource(String absolutePath) throws ResourceLoaderException {
         var resource = ResourceLoader.class.getResource(absolutePath);
 
         if (resource == null) {
             throw new ResourceLoaderException("Resource not found at: " + absolutePath
-                    + ". Ensure the file exists in src/main/resources.");
+                    + ". Ensure the file exists in src/main/resources" + absolutePath + ".");
         }
 
         return resource;
@@ -117,7 +117,7 @@ public final class ResourceLoader {
 
         if (inputStream == null) {
             throw new ResourceLoaderException("Stream could not be opened for: " + absolutePath
-                    + ". Ensure the file exists in src/main/resources" + absolutePath);
+                    + ". Ensure the file exists in src/main/resources" + absolutePath + ".");
         }
 
         return inputStream;
