@@ -16,14 +16,17 @@
 package com.crop.app.infrastructure.loader;
 
 import java.io.InputStream;
+import java.net.URL;
 import com.crop.app.common.constants.AppConstants;
+import com.crop.app.common.exception.ResourceLoaderException;
 
 /**
  * Utility for loading metadata resources from the classpath.
  *
  * <p>
- * Provides helpers for resolving absolute metadata paths and reading metadata resources as URLs,
- * input streams, and more.
+ * Provides helpers for resolving metadata paths and reading metadata resources as URLs or input
+ * streams. Crop identifiers are validated and automatically normalized to a `.json` filename when
+ * no extension is provided.
  *
  * @author Md. Rafi Sarkar (rafisarkar0128)
  * @version 1.0
@@ -36,25 +39,43 @@ public class MetadataLoader {
     private MetadataLoader() {}
 
     /**
+     * Ensures the crop identifier is present before metadata path formatting.
+     *
+     * @param cropId the crop identifier or metadata filename
+     * @return the validated crop identifier
+     * @throws ResourceLoaderException if the crop identifier is null or blank
+     */
+    private static String requireCropId(String cropId) throws ResourceLoaderException {
+        if (cropId == null || cropId.isBlank()) {
+            throw new ResourceLoaderException("Crop identifier cannot be null or blank.");
+        }
+
+        return cropId;
+    }
+
+    /**
      * Builds a metadata resource path for the given crop identifier.
      *
      * @param cropId the crop identifier or metadata filename
      * @return the formatted metadata path (e.g., "metadata/rice.json" for cropId "rice")
+    * @throws ResourceLoaderException if the crop identifier is null or blank
      */
-    public static String formatMetadataPath(String cropId) {
-        String filename = cropId.endsWith(".json") ? cropId : cropId + ".json";
+    private static String format(String cropId) {
+        String validatedCropId = requireCropId(cropId);
+        String filename =
+                validatedCropId.endsWith(".json") ? validatedCropId : validatedCropId + ".json";
         return AppConstants.METADATA_PATH + "/" + filename;
     }
 
     /**
-     * Builds a relative metadata path for the given crop identifier.
+     * Resolves the relative metadata resource path for the given crop identifier.
      *
      * @param cropId the crop identifier or metadata filename
-     * @return the relative path to the metadata resource (e.g., "metadata/rice.json" for cropId
-     *         "rice")
+     * @return the relative path to the metadata resource
+    * @throws ResourceLoaderException if the crop identifier is null or blank
      */
-    public static String getMetadataPath(String cropId) {
-        return formatMetadataPath(cropId);
+    public static String resolveMetadataPath(String cropId) {
+        return format(cropId);
     }
 
     /**
@@ -63,20 +84,24 @@ public class MetadataLoader {
      * @param cropId the crop identifier or metadata filename
      * @return the absolute path to the metadata resource (e.g., "/com/crop/app/metadata/rice.json"
      *         for cropId "rice")
+    * @throws ResourceLoaderException if the crop identifier is null or blank
      */
     public static String getMetadataPathAbsolute(String cropId) {
-        return ResourceLoader.getAbsolutePath(getMetadataPath(cropId));
+        return ResourceLoader.getAbsolutePath(format(cropId));
     }
 
     /**
-     * Resolves metadata for a crop to an external URL string.
+    * Resolves metadata for a crop to a URL.
      *
      * @param cropId the name of the metadata resource (e.g., "rice"). File extension is optional;
      *        if not provided, ".json" will be appended automatically.
-     * @return the external form of the metadata resource path
+    * @return the URL of the metadata resource (e.g., URL of resource "metadata/rice.json" for
+    *         cropId "rice")
+    * @throws ResourceLoaderException if the crop identifier is null or blank, or if the resource
+    *         cannot be found
      */
-    public static String getMetadata(String cropId) {
-        return ResourceLoader.getResourcePath(formatMetadataPath(cropId));
+    public static URL getMetadata(String cropId) {
+        return ResourceLoader.getResource(format(cropId));
     }
 
     /**
@@ -85,8 +110,10 @@ public class MetadataLoader {
      * @param cropId the name of the metadata resource (e.g., "rice"). File extension is optional;
      *        if not provided, ".json" will be appended automatically.
      * @return an input stream for the specified metadata resource path
+     * @throws ResourceLoaderException if the crop identifier is null or blank, or if the resource
+     *         stream cannot be opened
      */
     public static InputStream getMetadataStream(String cropId) {
-        return ResourceLoader.getResourceStream(formatMetadataPath(cropId));
+        return ResourceLoader.getResourceStream(format(cropId));
     }
 }
