@@ -16,14 +16,17 @@
 package com.crop.app.infrastructure.loader;
 
 import java.io.InputStream;
+import java.net.URL;
 import com.crop.app.common.constants.AppConstants;
+import com.crop.app.common.exception.ResourceLoaderException;
 
 /**
  * Utility for loading FXML resources from the classpath.
  *
  * <p>
- * Provides helpers for resolving absolute FXML paths and reading FXML resources as URLs, input
- * streams, and more.
+ * Provides helpers for resolving FXML paths and reading FXML resources as URLs or input streams.
+ * FXML identifiers are validated and automatically normalized to a `.fxml` filename when no
+ * extension is provided.
  *
  * @author Md. Rafi Sarkar (rafisarkar0128)
  * @version 1.0
@@ -36,13 +39,31 @@ public class FxmlLoader {
     private FxmlLoader() {}
 
     /**
+     * Ensures the FXML identifier is present before path formatting.
+     *
+     * @param fxmlId the FXML identifier or filename
+     * @return the validated FXML identifier
+     * @throws ResourceLoaderException if the FXML identifier is null or blank
+     */
+    private static String requireFxmlId(String fxmlId) throws ResourceLoaderException {
+        if (fxmlId == null || fxmlId.isBlank()) {
+            throw new ResourceLoaderException("FXML identifier cannot be null or blank.");
+        }
+
+        return fxmlId;
+    }
+
+    /**
      * Builds an FXML resource path for the given FXML identifier.
      *
      * @param fxmlId the FXML identifier or filename (e.g., "IntroPage.fxml" for fxmlId "IntroPage")
      * @return the formatted FXML path (e.g., "fxml/IntroPage.fxml" for fxmlId "IntroPage")
+    * @throws ResourceLoaderException if the FXML identifier is null or blank
      */
-    public static String formatFxmlPath(String fxmlId) {
-        String filename = fxmlId.endsWith(".fxml") ? fxmlId : fxmlId + ".fxml";
+    public static String format(String fxmlId) {
+        String validatedFxmlId = requireFxmlId(fxmlId);
+        String filename =
+                validatedFxmlId.endsWith(".fxml") ? validatedFxmlId : validatedFxmlId + ".fxml";
         return AppConstants.FXML_PATH + "/" + filename;
     }
 
@@ -52,9 +73,10 @@ public class FxmlLoader {
      * @param fxml the FXML identifier or filename (e.g., "IntroPage.fxml" for fxmlId "IntroPage")
      * @return the relative path to the FXML resource (e.g., "fxml/IntroPage.fxml" for fxml
      *         "IntroPage")
+    * @throws ResourceLoaderException if the FXML identifier is null or blank
      */
-    public static String getFxmlPath(String fxml) {
-        return formatFxmlPath(fxml);
+    public static String resolveFxmlPath(String fxml) {
+        return format(fxml);
     }
 
     /**
@@ -63,19 +85,22 @@ public class FxmlLoader {
      * @param fxml the FXML identifier or filename (e.g., "IntroPage.fxml" for fxmlId "IntroPage")
      * @return the absolute path to the FXML resource (e.g., "/com/crop/app/fxml/IntroPage.fxml" for
      *         fxml "IntroPage")
+    * @throws ResourceLoaderException if the FXML identifier is null or blank
      */
     public static String getFxmlPathAbsolute(String fxml) {
-        return ResourceLoader.getAbsolutePath(getFxmlPath(fxml));
+        return ResourceLoader.getAbsolutePath(format(fxml));
     }
 
     /**
-     * Resolves an FXML resource path to an external URL string.
+    * Resolves an FXML resource path to a URL.
      *
      * @param fxml the name of the FXML resource (e.g., "IntroPage.fxml" or "IntroPage").
-     * @return the external form of the FXML resource path
+    * @return the URL of the FXML resource
+    * @throws ResourceLoaderException if the FXML identifier is null or blank, or if the resource
+    *         cannot be found
      */
-    public static String getFxml(String fxml) {
-        return ResourceLoader.getResourcePath(getFxmlPath(fxml));
+    public static URL getFxml(String fxml) {
+        return ResourceLoader.getResource(format(fxml));
     }
 
     /**
@@ -83,8 +108,10 @@ public class FxmlLoader {
      *
      * @param fxml the name of the FXML resource (e.g., "IntroPage.fxml" or "IntroPage").
      * @return an input stream for the specified FXML resource path
+     * @throws ResourceLoaderException if the FXML identifier is null or blank, or if the resource
+     *         stream cannot be opened
      */
     public static InputStream getFxmlStream(String fxml) {
-        return ResourceLoader.getResourceStream(getFxmlPath(fxml));
+        return ResourceLoader.getResourceStream(format(fxml));
     }
 }

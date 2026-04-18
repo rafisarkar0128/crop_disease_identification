@@ -16,7 +16,9 @@
 package com.crop.app.infrastructure.loader;
 
 import java.io.InputStream;
+import java.net.URL;
 import com.crop.app.common.constants.AppConstants;
+import com.crop.app.common.exception.ResourceLoaderException;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -24,8 +26,9 @@ import javafx.scene.image.ImageView;
  * Utility for loading image resources from the classpath.
  *
  * <p>
- * Provides helpers for resolving absolute image paths and reading image resources as URLs, input
- * streams, and more.
+ * Provides helpers for resolving image paths and reading image resources as URLs, input streams,
+ * and JavaFX image objects. Image identifiers are validated; if no extension is provided, `.png`
+ * is used by default.
  *
  * @author Md. Rafi Sarkar (rafisarkar0128)
  * @version 1.0
@@ -38,15 +41,52 @@ public class ImageLoader {
     private ImageLoader() {}
 
     /**
+     * Ensures the image identifier is present before path formatting.
+     *
+     * @param image the image identifier or filename
+     * @return the validated image identifier
+     * @throws ResourceLoaderException if the image identifier is null or blank
+     */
+    private static String requireImage(String image) throws ResourceLoaderException {
+        if (image == null || image.isBlank()) {
+            throw new ResourceLoaderException("Image identifier cannot be null or blank.");
+        }
+
+        return image;
+    }
+
+    /**
+    * Builds an image resource path for the given image.
+     *
+    * @param image the image identifier or filename. Include an extension for formats other than
+    *        PNG (e.g., "background.jpg"). If the extension is missing (e.g., "background"),
+    *        `.png` will be appended.
+     * @return the formatted image path (e.g., "images/background.png" for image "background.png" or
+     *         "background")
+    * @throws ResourceLoaderException if the image identifier is null or blank
+     */
+    private static String format(String image) {
+        String validatedImage = requireImage(image);
+        String lower = validatedImage.toLowerCase();
+
+        boolean hasExtension =
+                lower.endsWith(".png") || lower.endsWith(".jpg") || lower.endsWith(".jpeg");
+
+        String filename = hasExtension ? validatedImage : validatedImage + ".png";
+        return AppConstants.IMAGES_PATH + "/" + filename;
+    }
+
+    /**
      * Builds a relative image path for the given image identifier.
      *
-     * @param image the image identifier or filename (e.g., "background.png" for imageId
-     *        "background"). Remember to include the file extension.
+    * @param image the image identifier or filename (e.g., "background.png" or "background"). If
+    *        no extension is provided, `.png` will be appended.
      * @return the relative path to the image resource (e.g., "images/background.png" for image
      *         "background.png")
+    * @throws ResourceLoaderException if the image identifier is null or blank
      */
-    public static String getImagePath(String image) {
-        return AppConstants.IMAGES_PATH + "/" + image;
+    public static String resolveImagePath(String image) {
+        return format(image);
     }
 
     /**
@@ -56,20 +96,23 @@ public class ImageLoader {
      *        the file extension.
      * @return the absolute path to the image resource (e.g., "/com/crop/app/images/background.png"
      *         for image "background.png")
+    * @throws ResourceLoaderException if the image identifier is null or blank
      */
     public static String getImagePathAbsolute(String image) {
-        return ResourceLoader.getAbsolutePath(getImagePath(image));
+        return ResourceLoader.getAbsolutePath(format(image));
     }
 
     /**
-     * Resolves an image resource path to an external URL string.
+    * Resolves an image resource path to a URL.
      *
      * @param image the name of the image resource (e.g., "background.png"). Remember to include the
      *        file extension.
-     * @return the external form of the image resource path
+    * @return the URL of the image resource
+    * @throws ResourceLoaderException if the image identifier is null or blank, or if the resource
+    *         cannot be found
      */
-    public static String getImage(String image) {
-        return ResourceLoader.getResourcePath(getImagePath(image));
+    public static URL getImage(String image) {
+        return ResourceLoader.getResource(format(image));
     }
 
     /**
@@ -78,9 +121,11 @@ public class ImageLoader {
      * @param image the name of the image resource (e.g., "background.png"). Remember to include the
      *        file extension.
      * @return an input stream for the specified image resource path
+    * @throws ResourceLoaderException if the image identifier is null or blank, or if the resource
+    *         stream cannot be opened
      */
     public static InputStream getImageStream(String image) {
-        return ResourceLoader.getResourceStream(getImagePath(image));
+        return ResourceLoader.getResourceStream(format(image));
     }
 
     /**
@@ -89,9 +134,11 @@ public class ImageLoader {
      * @param image the name of the image resource (e.g., "background.png"). Remember to include the
      *        file extension.
      * @return a JavaFX Image object for the specified image resource path
+    * @throws ResourceLoaderException if the image identifier is null or blank, or if the resource
+    *         cannot be found
      */
     public static Image getImageAsImage(String image) {
-        return new Image(getImage(image));
+        return new Image(getImage(image).toExternalForm());
     }
 
     /**
@@ -100,6 +147,8 @@ public class ImageLoader {
      * @param image the name of the image resource (e.g., "background.png"). Remember to include the
      *        file extension.
      * @return a JavaFX ImageView object containing the specified image resource
+     * @throws ResourceLoaderException if the image identifier is null or blank, or if the resource
+     *         cannot be found
      */
     public static ImageView getImageAsImageView(String image) {
         return new ImageView(getImageAsImage(image));
