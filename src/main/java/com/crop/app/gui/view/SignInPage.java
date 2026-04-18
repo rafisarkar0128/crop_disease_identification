@@ -1,6 +1,5 @@
 package com.crop.app.gui.view;
 
-import com.crop.app.gui.controller.IntroPageController;
 import com.crop.app.infrastructure.loader.ImageLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -16,22 +15,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-public class IntroPage {
+public class SignInPage {
 
-    private Stage primaryStage;
+    public Stage primaryStage;
 
-    public IntroPage() {}
+    public SignInPage() {}
 
-    public IntroPage(Stage primaryStage) {
+    public SignInPage(Stage primaryStage) {
         this.primaryStage = primaryStage;
-    }
-
-    public void setStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-    }
-
-    public Stage getStage() {
-        return this.primaryStage;
     }
 
     public Scene createPage() {
@@ -39,15 +30,14 @@ public class IntroPage {
         ImageView backgroundView = ImageLoader.getImageAsImageView("background.png");
 
         // Welcome Text
-        Label welcomeLabel = new Label("Welcome to Crop Disease Identification Application");
-        welcomeLabel.setTextFill(Color.web("#2e7d32"));
-        welcomeLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
-        welcomeLabel.setWrapText(true);
+        Label username = new Label("Enter your username/email");
+        username.setFont(Font.font("Verdana", 14));
+        username.setTextFill(Color.web("#555555"));
 
         // Subtitle Text
-        Label subtitleLabel = new Label("Sign in or sign up to get started");
-        subtitleLabel.setFont(Font.font("Verdana", 14));
-        subtitleLabel.setTextFill(Color.web("#555555"));
+        Label password = new Label("Enter your password");
+        password.setFont(Font.font("Verdana", 14));
+        password.setTextFill(Color.web("#555555"));
 
         // Sign in Buttons
         Button signInButton = new Button("Sign In");
@@ -56,25 +46,25 @@ public class IntroPage {
         signInButton.setTextFill(Color.WHITE);
         signInButton.setPrefHeight(45);
         signInButton.setPrefWidth(150);
-        signInButton.setOnAction(new IntroPageController(getStage()).signInButtonHandler);
+        // signInButton.setOnAction(SignInPageController.signInButtonHandler);
 
         // Sign up Button
-        Button signUpButton = new Button("Sign Up");
-        signUpButton.setBackground(Background.fill(Color.web("#2e7d32")));
-        signUpButton.setFont(Font.font("Verdana", FontWeight.BOLD, 14));
-        signUpButton.setTextFill(Color.WHITE);
-        signUpButton.setPrefHeight(45);
-        signUpButton.setPrefWidth(150);
-        // signUpButton.setOnAction(IntroPageController.signUpButtonHandler);
+        Button guestLoginButton = new Button("Guest Login");
+        guestLoginButton.setBackground(Background.fill(Color.web("#555555")));
+        guestLoginButton.setFont(Font.font("Verdana", FontWeight.BOLD, 14));
+        guestLoginButton.setTextFill(Color.WHITE);
+        guestLoginButton.setPrefHeight(45);
+        guestLoginButton.setPrefWidth(150);
+        // guestLoginButton.setOnAction(SignInPageController.guestLoginButtonHandler);
 
         // Button Container
-        HBox buttonBox = new HBox(20, signInButton, signUpButton);
+        HBox buttonBox = new HBox(20, signInButton, guestLoginButton);
         buttonBox.setAlignment(Pos.CENTER);
 
         // Root Container
         VBox root = new VBox(20);
         root.setStyle("-fx-alignment: center; -fx-padding: 40px;");
-        root.getChildren().addAll(welcomeLabel, subtitleLabel, buttonBox);
+        root.getChildren().addAll(username, password, buttonBox);
 
         // StackPane to hold background and content
         StackPane stackpane = new StackPane();
@@ -85,9 +75,5 @@ public class IntroPage {
         return introPageScene;
     }
 
-    public void setScene() {
-        if (primaryStage != null) {
-            primaryStage.setScene(createPage());
-        }
-    }
+    // public static
 }

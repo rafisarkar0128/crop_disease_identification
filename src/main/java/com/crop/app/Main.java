@@ -19,7 +19,6 @@ import com.crop.app.common.constants.AppConstants;
 import com.crop.app.gui.view.IntroPage;
 import com.crop.app.infrastructure.loader.IconLoader;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -51,11 +50,10 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-        Scene scene = IntroPage.createHomePage();
-
+        IntroPage introPage = new IntroPage(primaryStage);
+        introPage.setScene();
         primaryStage.setTitle(AppConstants.APP_NAME + " - " + AppConstants.APP_VERSION);
         primaryStage.getIcons().add(IconLoader.getIconAsImage("logo-main.png"));
-        primaryStage.setScene(scene);
         primaryStage.show();
     }
 }
