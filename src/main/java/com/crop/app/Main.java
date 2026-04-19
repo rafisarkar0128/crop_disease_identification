@@ -50,11 +50,9 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-        LoginPage loginPage = new LoginPage(primaryStage);
-        loginPage.setSceneToStage();
-
         primaryStage.setTitle(AppConstants.APP_NAME + " - " + AppConstants.APP_VERSION);
         primaryStage.getIcons().add(IconLoader.getIconAsImage("logo-main.png"));
+        primaryStage.setScene(new LoginPage(primaryStage).createScene());
         primaryStage.show();
     }
 }
