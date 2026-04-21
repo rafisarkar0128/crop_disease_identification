@@ -17,10 +17,10 @@ package com.crop.app.gui.view;
 
 import java.io.IOException;
 import java.util.Objects;
+import com.crop.app.common.constants.SceneConstants;
 import com.crop.app.common.exception.FxmlLoaderException;
 import com.crop.app.gui.controller.LoginPageController;
 import com.crop.app.infrastructure.loader.FxmlLoader;
-import com.crop.app.infrastructure.loader.StyleLoader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -38,10 +38,6 @@ import javafx.stage.Stage;
  * @since 19-04-2026
  */
 public class LoginPage {
-
-    private static final int SCENE_WIDTH = 960;
-    private static final int SCENE_HEIGHT = 640;
-
     /**
      * Primary stage where the scene will be displayed.
      */
@@ -71,8 +67,9 @@ public class LoginPage {
             LoginPageController controller = loader.getController();
             controller.setStage(primaryStage);
 
-            Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
-            scene.getStylesheets().add(StyleLoader.getStyle("LoginPage").toExternalForm());
+            Scene scene =
+                    new Scene(root, SceneConstants.DEFAULT_WIDTH, SceneConstants.DEFAULT_HEIGHT);
+            // scene.getStylesheets().add(StyleLoader.getStyle("LoginPage").toExternalForm());
             return scene;
         } catch (IOException exception) {
             throw new FxmlLoaderException("Unable to load the login page UI.", exception);

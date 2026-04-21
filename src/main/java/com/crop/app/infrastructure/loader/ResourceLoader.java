@@ -17,7 +17,7 @@ package com.crop.app.infrastructure.loader;
 
 import java.io.InputStream;
 import java.net.URL;
-import com.crop.app.common.constants.AppConstants;
+import com.crop.app.common.constants.ResourceConstants;
 import com.crop.app.common.exception.ResourceLoaderException;
 
 /**
@@ -56,7 +56,7 @@ public final class ResourceLoader {
             return path;
         }
 
-        return "/" + AppConstants.BASE_PACKAGE_PATH + "/" + path;
+        return "/" + ResourceConstants.BASE_PACKAGE_PATH + "/" + path;
     }
 
     /**

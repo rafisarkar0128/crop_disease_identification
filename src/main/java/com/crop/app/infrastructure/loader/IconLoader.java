@@ -17,7 +17,7 @@ package com.crop.app.infrastructure.loader;
 
 import java.io.InputStream;
 import java.net.URL;
-import com.crop.app.common.constants.AppConstants;
+import com.crop.app.common.constants.ResourceConstants;
 import com.crop.app.common.exception.ResourceLoaderException;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,9 +27,9 @@ import javafx.scene.image.ImageView;
  * Utility for loading icon resources from the classpath.
  *
  * <p>
- * Provides helpers for resolving icon paths and reading icon resources as URLs, input streams,
- * and JavaFX image objects. Icon identifiers are validated; if no extension is provided, `.png`
- * is used by default.
+ * Provides helpers for resolving icon paths and reading icon resources as URLs, input streams, and
+ * JavaFX image objects. Icon identifiers are validated; if no extension is provided, `.png` is used
+ * by default.
  *
  * @author Md. Rafi Sarkar (rafisarkar0128)
  * @version 1.0
@@ -59,12 +59,12 @@ public class IconLoader {
     /**
      * Builds a relative icon path for the given icon identifier.
      *
-    * @param icon the icon identifier or filename. Include an extension for formats other than PNG
-    *        (e.g., "logo.jpg"). If the extension is missing (e.g., "logo"), `.png` will be
-    *        appended.
+     * @param icon the icon identifier or filename. Include an extension for formats other than PNG
+     *        (e.g., "logo.jpg"). If the extension is missing (e.g., "logo"), `.png` will be
+     *        appended.
      * @return the relative path to the icon resource (e.g., "icons/logo.png" for icon "logo.png" or
      *         "logo")
-    * @throws ResourceLoaderException if the icon identifier is null or blank
+     * @throws ResourceLoaderException if the icon identifier is null or blank
      */
     private static String format(String icon) {
         String validatedIcon = requireIcon(icon);
@@ -74,16 +74,16 @@ public class IconLoader {
                 lower.endsWith(".png") || lower.endsWith(".jpg") || lower.endsWith(".jpeg");
 
         String filename = hasExtension ? validatedIcon : validatedIcon + ".png";
-        return AppConstants.ICONS_PATH + "/" + filename;
+        return ResourceConstants.ICONS_PATH + "/" + filename;
     }
 
     /**
      * Builds a relative icon path for the given icon identifier.
      *
-    * @param icon the icon identifier or filename (e.g., "logo.png" or "logo"). If no extension is
-    *        provided, `.png` will be appended.
+     * @param icon the icon identifier or filename (e.g., "logo.png" or "logo"). If no extension is
+     *        provided, `.png` will be appended.
      * @return the relative path to the icon resource (e.g., "icons/logo.png" for icon "logo.png")
-    * @throws ResourceLoaderException if the icon identifier is null or blank
+     * @throws ResourceLoaderException if the icon identifier is null or blank
      */
     public static String resolveIconPath(String icon) {
         return format(icon);
@@ -96,20 +96,20 @@ public class IconLoader {
      *        extension.
      * @return the absolute path to the icon resource (e.g., "/com/crop/app/icons/logo.png" for icon
      *         "logo.png")
-    * @throws ResourceLoaderException if the icon identifier is null or blank
+     * @throws ResourceLoaderException if the icon identifier is null or blank
      */
     public static String getIconPathAbsolute(String icon) {
         return ResourceLoader.getAbsolutePath(format(icon));
     }
 
     /**
-    * Resolves an icon resource path to a URL.
+     * Resolves an icon resource path to a URL.
      *
      * @param icon the name of the icon resource (e.g., "logo.png"). Remember to include the file
      *        extension.
-    * @return the URL of the icon resource
-    * @throws ResourceLoaderException if the icon identifier is null or blank, or if the resource
-    *         cannot be found
+     * @return the URL of the icon resource
+     * @throws ResourceLoaderException if the icon identifier is null or blank, or if the resource
+     *         cannot be found
      */
     public static URL getIcon(String icon) {
         return ResourceLoader.getResource(format(icon));
@@ -121,8 +121,8 @@ public class IconLoader {
      * @param icon the name of the icon resource (e.g., "logo.png"). Remember to include the file
      *        extension.
      * @return an input stream for the specified icon resource path
-    * @throws ResourceLoaderException if the icon identifier is null or blank, or if the resource
-    *         stream cannot be opened
+     * @throws ResourceLoaderException if the icon identifier is null or blank, or if the resource
+     *         stream cannot be opened
      */
     public static InputStream getIconStream(String icon) {
         return ResourceLoader.getResourceStream(format(icon));
@@ -134,8 +134,8 @@ public class IconLoader {
      * @param icon the name of the icon resource (e.g., "logo.png"). Remember to include the file
      *        extension.
      * @return a JavaFX Image object for the specified icon resource path
-    * @throws ResourceLoaderException if the icon identifier is null or blank, or if the resource
-    *         cannot be found
+     * @throws ResourceLoaderException if the icon identifier is null or blank, or if the resource
+     *         cannot be found
      */
     public static Image getIconAsImage(String icon) {
         return new Image(getIcon(icon).toExternalForm());

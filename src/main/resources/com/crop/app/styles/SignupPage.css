@@ -2,28 +2,33 @@
     -fx-background-color: linear-gradient(to bottom right, #e8f5e9, #f7fbf7);
 }
 
-.hero-card,
-.form-card {
-    -fx-background-color: rgba(255, 255, 255, 0.9);
-    -fx-background-radius: 24;
-    -fx-border-color: rgba(46, 125, 50, 0.14);
-    -fx-border-radius: 24;
-    -fx-border-width: 1;
+.auth-card {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-background-radius: 12;
+    -fx-border-color: rgba(255, 255, 255, 0.6);
+    -fx-border-radius: 12;
+    -fx-border-width: 1.5;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.16), 24, 0.18, 0, 8);
+    -fx-padding: 40;
+    -fx-spacing: 14;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 15, 0, 0, 5);
 }
 
 .page-title {
     -fx-text-fill: #1f4d27;
     -fx-font-family: "Segoe UI";
+    -fx-font-weight: bold;
+    -fx-font-size: 26px;
 }
 
-.page-copy {
+
+.page-subtitle {
     -fx-text-fill: #546e57;
     -fx-font-size: 14px;
     -fx-font-family: "Segoe UI";
 }
 
-.form-field {
+.auth-field {
     -fx-background-color: #ffffff;
     -fx-background-radius: 10;
     -fx-border-color: #c9d8cb;
@@ -31,6 +36,12 @@
     -fx-padding: 12 14;
     -fx-font-size: 14px;
     -fx-font-family: "Segoe UI";
+}
+
+.action-stack {
+    -fx-alignment: center;
+    -fx-spacing: 12;
+    -fx-padding: 8 0 0 0;
 }
 
 .signin-button,
@@ -43,16 +54,16 @@
     -fx-cursor: hand;
 }
 
-.signin-button {
+.signup-button {
     -fx-background-color: #2e7d32;
     -fx-text-fill: white;
 }
 
-.signin-button:hover {
+.signup-button:hover {
     -fx-background-color: #256628;
 }
 
-.signup-button {
+.signin-button {
     -fx-background-color: #eef4ef;
     -fx-text-fill: #1f4d27;
     -fx-border-color: #c9d8cb;
@@ -60,7 +71,7 @@
     -fx-border-width: 1;
 }
 
-.signup-button:hover {
+.signin-button:hover {
     -fx-background-color: #e4ece6;
 }
 

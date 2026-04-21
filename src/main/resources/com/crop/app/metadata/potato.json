@@ -1,0 +1,325 @@
+{
+    "id": "potato",
+    "name": "Potato",
+    "scientificName": "Solanum tuberosum",
+    "description": "Potato (Solanum tuberosum) is a major starchy tuber crop and a key food-security crop in Bangladesh and South Asia.",
+    "diseases": [
+        {
+            "id": "late-blight",
+            "name": "Late Blight",
+            "pathogen": "Phytophthora infestans",
+            "category": "fungal",
+            "description": "A destructive blight causing fast foliar and tuber rot under cool, humid conditions.",
+            "image": "",
+            "symptoms": [
+                "Water-soaked dark green spots on leaf tips and margins",
+                "White cottony growth on leaf undersides in humid weather",
+                "Reddish-brown dry rot develops inside tubers"
+            ],
+            "treatments": [
+                "Spray Mancozeb (0.2%) or Ridomil Gold",
+                "Use resistant varieties",
+                "Avoid overhead irrigation",
+                "Destroy infected haulms quickly"
+            ]
+        },
+        {
+            "id": "early-blight",
+            "name": "Early Blight",
+            "pathogen": "Alternaria solani",
+            "category": "fungal",
+            "description": "A common leaf blight with concentric ring lesions that starts on older foliage.",
+            "image": "",
+            "symptoms": [
+                "Small dark brown target-like spots on older lower leaves",
+                "Yellowing around lesions",
+                "Disease progresses upward in warm, dry conditions"
+            ],
+            "treatments": [
+                "Spray Mancozeb (0.2%) or Chlorothalonil",
+                "Rotate crops",
+                "Maintain balanced potassium fertilization"
+            ]
+        },
+        {
+            "id": "black-scurf",
+            "name": "Black Scurf",
+            "pathogen": "Rhizoctonia solani",
+            "category": "fungal",
+            "description": "A soil-borne disease causing stem lesions, poor emergence, and black sclerotia on tubers.",
+            "image": "",
+            "symptoms": [
+                "Reddish-brown lesions on sprouts and stolons",
+                "Black sclerotia on tuber skin",
+                "Stunted plants and poor stand establishment"
+            ],
+            "treatments": [
+                "Treat seed with Carbendazim (0.1%) or Boric Acid (3%)",
+                "Avoid deep planting",
+                "Use 3-year crop rotation with non-solanaceous crops"
+            ]
+        },
+        {
+            "id": "fusarium-wilt-dry-rot",
+            "name": "Fusarium Wilt / Dry Rot",
+            "pathogen": "Fusarium spp.",
+            "category": "fungal",
+            "description": "A wilt and tuber dry rot complex causing vascular discoloration and post-harvest losses.",
+            "image": "",
+            "symptoms": [
+                "Bottom-up yellowing and wilting",
+                "Internal browning of vascular ring",
+                "Sunken wrinkled tubers with dry internal rot"
+            ],
+            "treatments": [
+                "Use certified disease-free seed",
+                "Avoid wounding tubers during harvest",
+                "Store in cool, ventilated facilities",
+                "Treat seed pieces with Thiram"
+            ]
+        },
+        {
+            "id": "powdery-scab",
+            "name": "Powdery Scab",
+            "pathogen": "Spongospora subterranea",
+            "category": "fungal",
+            "description": "A tuber and root disease causing warty lesions that release powdery spore masses.",
+            "image": "",
+            "symptoms": [
+                "Warty galls on tuber skin that rupture",
+                "Powdery brown spore mass in lesions",
+                "Root galling in seedlings"
+            ],
+            "treatments": [
+                "Plant certified disease-free seed",
+                "Avoid waterlogging and heavy soils",
+                "Use long crop rotation (4+ years)",
+                "Rely on prevention because chemical control is limited"
+            ]
+        },
+        {
+            "id": "silver-scurf",
+            "name": "Silver Scurf",
+            "pathogen": "Helminthosporium solani",
+            "category": "fungal",
+            "description": "A storage-associated tuber skin disease causing silver discoloration and moisture loss.",
+            "image": "",
+            "symptoms": [
+                "Silvery-brown tuber skin discoloration from stolon end",
+                "Lesions expand in storage",
+                "Tubers shrink due to moisture loss"
+            ],
+            "treatments": [
+                "Use disease-free seed",
+                "Sanitize storage facilities",
+                "Treat seed tubers with Thiabendazole",
+                "Store at low humidity"
+            ]
+        },
+        {
+            "id": "charcoal-rot",
+            "name": "Charcoal Rot",
+            "pathogen": "Macrophomina phaseolina",
+            "category": "fungal",
+            "description": "A heat and drought-associated stem and tuber rot caused by sclerotial fungus.",
+            "image": "",
+            "symptoms": [
+                "Premature vine death during hot dry weather",
+                "Gray-black discoloration in lower stem",
+                "Fine black sclerotia in vascular tissue"
+            ],
+            "treatments": [
+                "Maintain adequate soil moisture",
+                "Rotate with non-host crops",
+                "Avoid heavily infested fields"
+            ]
+        },
+        {
+            "id": "verticillium-wilt-early-dying",
+            "name": "Verticillium Wilt (Early Dying)",
+            "pathogen": "Verticillium dahliae / Verticillium albo-atrum",
+            "category": "fungal",
+            "description": "A vascular wilt that causes premature senescence and yield loss.",
+            "image": "",
+            "symptoms": [
+                "Premature yellowing and death of lower leaves",
+                "One-sided wilting",
+                "Brown vascular streaks and stunting"
+            ],
+            "treatments": [
+                "Use certified disease-free seed",
+                "Rotate with cereals and maize",
+                "Use resistant varieties where available"
+            ]
+        },
+        {
+            "id": "bacterial-wilt",
+            "name": "Bacterial Wilt",
+            "pathogen": "Ralstonia solanacearum",
+            "category": "bacterial",
+            "description": "A severe vascular bacterial wilt causing sudden collapse of plants.",
+            "image": "",
+            "symptoms": [
+                "Sudden plant wilting without early yellowing",
+                "Milky bacterial ooze from cut stems in water",
+                "Brown vascular ring in tubers"
+            ],
+            "treatments": [
+                "Use certified true potato seed or clean seed tubers",
+                "Rogue infected plants early",
+                "Avoid waterlogging",
+                "Rotate with maize or wheat"
+            ]
+        },
+        {
+            "id": "common-scab",
+            "name": "Common Scab",
+            "pathogen": "Streptomyces scabiei",
+            "category": "bacterial",
+            "description": "A tuber skin disease causing corky scab lesions and reduced market value.",
+            "image": "",
+            "symptoms": [
+                "Rough corky scabs or pits on tuber surface",
+                "Blemished appearance with mostly unaffected interior",
+                "Market quality reduction"
+            ],
+            "treatments": [
+                "Maintain moisture during tuber initiation",
+                "Keep soil pH around 5.2 to 5.5",
+                "Avoid heavy liming before and during potato season"
+            ]
+        },
+        {
+            "id": "blackleg-soft-rot",
+            "name": "Blackleg / Soft Rot",
+            "pathogen": "Pectobacterium atrosepticum / Pectobacterium carotovorum",
+            "category": "bacterial",
+            "description": "A bacterial stem base and tuber soft rot complex, especially severe in wet conditions.",
+            "image": "",
+            "symptoms": [
+                "Black decay from seed piece upward",
+                "Leaf yellowing and upward rolling",
+                "Wet slimy stem/tuber rot"
+            ],
+            "treatments": [
+                "Plant certified disease-free seed",
+                "Disinfect seed-cutting tools",
+                "Ensure good field drainage",
+                "Store tubers in cool dry ventilated conditions"
+            ]
+        },
+        {
+            "id": "potato-leaf-roll",
+            "name": "Potato Leaf Roll (PLRV)",
+            "pathogen": "Potato leafroll virus; vector: Myzus persicae",
+            "category": "viral",
+            "description": "A virus disease causing upward leaf rolling, brittleness, and yield loss.",
+            "image": "",
+            "symptoms": [
+                "Leaves roll upward and become stiff",
+                "Tuber vascular net necrosis",
+                "Stunted plants with yellowing"
+            ],
+            "treatments": [
+                "Control aphids with Imidacloprid",
+                "Use certified virus-free seed",
+                "Plant early to avoid peak aphid pressure"
+            ]
+        },
+        {
+            "id": "potato-virus-y",
+            "name": "Potato Virus Y (PVY)",
+            "pathogen": "Potato virus Y; vector: aphids",
+            "category": "viral",
+            "description": "A major potato virus causing mosaic, distortion, and severe yield impact.",
+            "image": "",
+            "symptoms": [
+                "Leaf mottling and mosaic",
+                "Vein banding and wrinkling",
+                "Stronger losses in mixed infections"
+            ],
+            "treatments": [
+                "Strict aphid management",
+                "Use resistant varieties",
+                "Remove nearby weed hosts",
+                "Use certified virus-tested seed"
+            ]
+        },
+        {
+            "id": "potato-virus-x",
+            "name": "Potato Virus X (PVX)",
+            "pathogen": "Potato virus X; spread: contact and mechanical",
+            "category": "viral",
+            "description": "A mechanically transmitted virus that is mild alone but severe in mixed infections.",
+            "image": "",
+            "symptoms": [
+                "Mild mosaic or mottle",
+                "Can be symptomless alone",
+                "Severe symptoms when co-infected with PVY"
+            ],
+            "treatments": [
+                "Use certified virus-free seed",
+                "Disinfect tools and equipment",
+                "Rogue symptomatic plants",
+                "Control aphids to limit mixed infections"
+            ]
+        },
+        {
+            "id": "potato-virus-s",
+            "name": "Potato Virus S (PVS)",
+            "pathogen": "Potato virus S; vector: aphids/contact",
+            "category": "viral",
+            "description": "A usually mild or latent virus that can still reduce yield.",
+            "image": "",
+            "symptoms": [
+                "Mild vein deepening and roughness",
+                "Slight bronzing",
+                "Often no obvious visual symptoms"
+            ],
+            "treatments": [
+                "Use certified virus-free seed tubers",
+                "Control aphid vectors",
+                "Rogue infected plants",
+                "Maintain isolation between seed and ware crops"
+            ]
+        },
+        {
+            "id": "root-knot",
+            "name": "Root Knot",
+            "pathogen": "Meloidogyne spp.",
+            "category": "nematode",
+            "description": "A nematode disease causing root and tuber galling, stunting, and quality loss.",
+            "image": "",
+            "symptoms": [
+                "Stunted growth",
+                "Pimple-like galls on tubers",
+                "Internal necrotic spotting"
+            ],
+            "treatments": [
+                "Apply approved nematicide according to local regulations",
+                "Use neem cake as soil amendment",
+                "Deep summer ploughing",
+                "Rotate with marigold and non-host crops"
+            ]
+        },
+        {
+            "id": "potato-cyst-nematode",
+            "name": "Potato Cyst Nematode (PCN)",
+            "pathogen": "Globodera rostochiensis / Globodera pallida",
+            "category": "nematode",
+            "description": "A quarantine-significant nematode pest causing patchy decline and major tuber yield loss.",
+            "image": "",
+            "symptoms": [
+                "Patchy yellowing and early dying",
+                "Severe stunting in infested spots",
+                "Tiny white to brown cysts on roots"
+            ],
+            "treatments": [
+                "Use certified nematode-free seed",
+                "Follow quarantine and sanitation practices",
+                "Rotate with non-solanaceous crops for 6+ years",
+                "Use approved nematicides where permitted"
+            ]
+        }
+    ]
+}
