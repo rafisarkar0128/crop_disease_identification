@@ -50,30 +50,27 @@ public class LoginPageController {
     private Stage stage;
 
     /**
-     * User authentication service for credential verification.
-     */
-    private UserAuthService authService;
-
-    /**
-     * FXML-injected text field for the username input. Must be defined in the corresponding FXML
-     * file with fx:id="usernameField".
+     * FXML-injected text field for username input.
      */
     @FXML
     private TextField usernameField;
 
     /**
-     * FXML-injected password field for the password input. Must be defined in the corresponding
-     * FXML file with fx:id="passwordField".
+     * FXML-injected password field for password input.
      */
     @FXML
     private PasswordField passwordField;
 
     /**
-     * FXML-injected label for displaying status messages. Must be defined in the corresponding FXML
-     * file with fx:id="statusLabel".
+     * FXML-injected label for showing status and validation messages.
      */
     @FXML
     private Label statusLabel;
+
+    /**
+     * User authentication service for credential verification.
+     */
+    private UserAuthService authService;
 
     /**
      * Default constructor required for FXML loading. The primary stage must be set separately using
@@ -134,6 +131,27 @@ public class LoginPageController {
     }
 
     /**
+     * Ensures that the primary stage is available before scene-dependent actions are executed.
+     *
+     * @throws IllegalStateException if the primary stage has not been initialized
+     */
+    private void ensureStage() {
+        if (stage == null) {
+            throw new IllegalStateException("Primary stage has not been initialized.");
+        }
+    }
+
+    /**
+     * Sanitizes input by trimming whitespace and converting null to empty string.
+     *
+     * @param value the input string to sanitize
+     * @return the sanitized string, or empty string if the input was null
+     */
+    private String sanitize(String value) {
+        return value == null ? "" : value.trim();
+    }
+
+    /**
      * Handles the sign-in button action.
      *
      * <p>
@@ -146,8 +164,8 @@ public class LoginPageController {
     private void handleSignIn(ActionEvent event) {
         ensureStage();
 
-        String username = usernameField.getText() == null ? "" : usernameField.getText().trim();
-        String password = passwordField.getText() == null ? "" : passwordField.getText();
+        String username = sanitize(usernameField.getText());
+        String password = sanitize(passwordField.getText());
 
         if (username.isEmpty() || password.isEmpty()) {
             statusLabel.setText("Enter both your username and password.");
@@ -163,7 +181,7 @@ public class LoginPageController {
     }
 
     /**
-     * Handles the sign-up button action.
+     * Handles the sign-up button action to navigate to the sign-up page.
      *
      * <p>
      * Navigates to the dedicated sign-up page scene.
@@ -171,19 +189,8 @@ public class LoginPageController {
      * @param event the action event fired by the sign-up button
      */
     @FXML
-    private void handleSignUp(ActionEvent event) {
+    private void toSignUpPage(ActionEvent event) {
         ensureStage();
         stage.setScene(new SignupPage(stage).createScene());
-    }
-
-    /**
-     * Ensures that the primary stage is available before scene-dependent actions are executed.
-     *
-     * @throws IllegalStateException if the primary stage has not been initialized
-     */
-    private void ensureStage() {
-        if (stage == null) {
-            throw new IllegalStateException("Primary stage has not been initialized.");
-        }
     }
 }

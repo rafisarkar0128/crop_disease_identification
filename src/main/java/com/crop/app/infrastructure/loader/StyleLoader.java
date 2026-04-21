@@ -17,7 +17,7 @@ package com.crop.app.infrastructure.loader;
 
 import java.io.InputStream;
 import java.net.URL;
-import com.crop.app.common.constants.AppConstants;
+import com.crop.app.common.constants.ResourceConstants;
 import com.crop.app.common.exception.ResourceLoaderException;
 
 /**
@@ -64,7 +64,7 @@ public class StyleLoader {
         String validatedStyleId = requireStyleId(styleId);
         String filename =
                 validatedStyleId.endsWith(".css") ? validatedStyleId : validatedStyleId + ".css";
-        return AppConstants.STYLES_PATH + "/" + filename;
+        return ResourceConstants.STYLES_PATH + "/" + filename;
     }
 
     /**

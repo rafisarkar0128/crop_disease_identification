@@ -16,30 +16,27 @@
 package com.crop.app.common.constants;
 
 /**
- * Centralized application constants.
+ * Centralized resource constants.
  *
  * <p>
- * Contains static application metadata fields (name, version, author, license) and the base package
- * path for resource loading.
+ * Contains classpath-relative resource path constants used by resource loading and UI setup.
  *
  * @author Md. Rafi Sarkar (rafisarkar0128)
  * @version 1.0
- * @since 14-04-2026
+ * @since 21-04-2026
  */
-public final class AppConstants {
+public final class ResourceConstants {
 
-    private AppConstants() {
+    private ResourceConstants() {
         // Private constructor to prevent instantiation
     }
 
-    public static final String APP_NAME = "Crop Disease Identification";
-    public static final String APP_VERSION = "1.0";
-    public static final String APP_AUTHOR = "Md. Rafi Sarkar (rafisarkar0128)";
-    public static final String APP_COPYRIGHT =
-            "Copyright 2026-Present Md. Rafi Sarkar (rafisarkar0128), and contributors.";
-    public static final String APP_LICENSE = "Licensed under the Apache License, Version 2.0";
-    public static final String APP_LICENSE_URL = "http://www.apache.org/licenses/LICENSE-2.0";
-    public static final String APP_DESCRIPTION =
-            "A Java application for identifying crop diseases based on metadata.";
     public static final String BASE_PACKAGE_PATH = "com/crop/app";
+    public static final String METADATA_PATH = "metadata";
+    public static final String METADATA_INDEX = "metadata-index.json";
+    public static final String IMAGES_PATH = "images";
+    public static final String ICONS_PATH = "icons";
+    public static final String FXML_PATH = "pages";
+    public static final String STYLES_PATH = "styles";
+    public static final String DB_PATH = "db";
 }

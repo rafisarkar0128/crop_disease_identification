@@ -1,0 +1,217 @@
+{
+    "id": "sugarcane",
+    "name": "Sugarcane",
+    "scientificName": "Saccharum officinarum",
+    "description": "Sugarcane (Saccharum spp.) is a major tropical industrial crop grown for sugar, molasses, and bioethanol.",
+    "diseases": [
+        {
+            "id": "red-rot",
+            "name": "Red Rot",
+            "pathogen": "Colletotrichum falcatum",
+            "category": "fungal",
+            "description": "A highly destructive stalk rot disease that causes internal reddening and major yield loss.",
+            "image": "",
+            "symptoms": [
+                "Internal stalk tissue turns red with white patches",
+                "Leaves yellow and dry from tip downward",
+                "Infected stalks may emit sour alcoholic smell"
+            ],
+            "treatments": [
+                "Treat setts with Carbendazim (0.1%) or hot water",
+                "Use certified disease-free seed cane",
+                "Grow resistant varieties",
+                "Rogue and destroy infected clumps"
+            ]
+        },
+        {
+            "id": "smut",
+            "name": "Smut",
+            "pathogen": "Sporisorium scitamineum",
+            "category": "fungal",
+            "description": "A systemic disease producing black whip-like structures and severe stunting.",
+            "image": "",
+            "symptoms": [
+                "Black whip emerges from shoot tip",
+                "Whip surface is covered with black powdery spores",
+                "Plants become stunted and unproductive"
+            ],
+            "treatments": [
+                "Use smut-free planting material",
+                "Treat setts with hot water or Carbendazim",
+                "Burn smutted whips before spore release",
+                "Plant resistant varieties"
+            ]
+        },
+        {
+            "id": "wilt",
+            "name": "Wilt",
+            "pathogen": "Fusarium sacchari",
+            "category": "fungal",
+            "description": "A vascular and stalk disease causing tissue shredding, wilting, and reduced cane weight.",
+            "image": "",
+            "symptoms": [
+                "Internal tissues show shredding and pink-red discoloration",
+                "Leaves yellow and wilt progressively",
+                "Stalks become hollow and lightweight"
+            ],
+            "treatments": [
+                "Use disease-free seed cane",
+                "Treat setts with Carbendazim (0.1%)",
+                "Improve field drainage",
+                "Remove and burn infected plants"
+            ]
+        },
+        {
+            "id": "pokkah-boeng",
+            "name": "Pokkah Boeng",
+            "pathogen": "Fusarium moniliforme",
+            "category": "fungal",
+            "description": "A leaf and top rot disease causing distortion, chlorosis, and collapse of growing points.",
+            "image": "",
+            "symptoms": [
+                "Young leaves are twisted and crumpled",
+                "Irregular chlorotic patches on leaves",
+                "Top rot and stalk tip collapse in severe cases"
+            ],
+            "treatments": [
+                "Spray Carbendazim (0.1%) or Mancozeb (0.25%) early",
+                "Avoid excess nitrogen",
+                "Remove severely infected tops",
+                "Maintain balanced potassium and zinc nutrition"
+            ]
+        },
+        {
+            "id": "leaf-scald",
+            "name": "Leaf Scald",
+            "pathogen": "Xanthomonas albilineans",
+            "category": "bacterial",
+            "description": "A systemic vascular disease causing white leaf streaks, stunting, and sudden wilting in severe infections.",
+            "image": "",
+            "symptoms": [
+                "Pencil-thin white or pale yellow leaf stripes",
+                "Chronic chlorosis with severe stunting",
+                "Acute shoot wilting and dieback"
+            ],
+            "treatments": [
+                "Use certified disease-free seed cane",
+                "Hot-water treat setts before planting",
+                "Rogue and destroy infected plants",
+                "Disinfect cutting tools"
+            ]
+        },
+        {
+            "id": "brown-spot",
+            "name": "Brown Spot",
+            "pathogen": "Cercospora longipes",
+            "category": "fungal",
+            "description": "A foliar spot disease reducing photosynthetic area and cane vigor under humid conditions.",
+            "image": "",
+            "symptoms": [
+                "Small yellowish spots enlarge into brown oval lesions",
+                "Lesions may have yellow halos",
+                "Coalescing lesions reduce effective leaf area"
+            ],
+            "treatments": [
+                "Spray Mancozeb 75 WP (2.5 g/L) or Zineb (0.2%)",
+                "Remove heavily infected leaves",
+                "Improve drainage and reduce excess nitrogen",
+                "Repeat sprays at about 14-day intervals if needed"
+            ]
+        },
+        {
+            "id": "pineapple-disease",
+            "name": "Pineapple Disease",
+            "pathogen": "Ceratocystis paradoxa",
+            "category": "fungal",
+            "description": "A sett rot disease causing fruity odor, tissue blackening, and poor germination.",
+            "image": "",
+            "symptoms": [
+                "Cut setts develop pineapple-like smell",
+                "Internal tissue turns red then black",
+                "Low germination and pre-emergence rot"
+            ],
+            "treatments": [
+                "Treat cut setts with Carbendazim or Thiram",
+                "Plant fresh setts promptly",
+                "Avoid poorly drained soils",
+                "Use healthy nursery material"
+            ]
+        },
+        {
+            "id": "ring-spot",
+            "name": "Ring Spot",
+            "pathogen": "Leptosphaeria sacchari",
+            "category": "fungal",
+            "description": "A leaf spot disease with ring-like lesions that can dry foliage and reduce sucrose yield.",
+            "image": "",
+            "symptoms": [
+                "Circular to oval dark brown spots",
+                "Reddish-purple border with straw-colored center",
+                "Premature leaf drying under heavy infection"
+            ],
+            "treatments": [
+                "Spray Mancozeb (0.25%) or Copper oxychloride (3 g/L)",
+                "Remove infected leaf trash",
+                "Maintain spacing for airflow",
+                "Avoid prolonged leaf wetness"
+            ]
+        },
+        {
+            "id": "sugarcane-mosaic",
+            "name": "Sugarcane Mosaic",
+            "pathogen": "Sugarcane mosaic virus; vectors: aphids (Melanaphis sacchari, Rhopalosiphum maidis)",
+            "category": "viral",
+            "description": "A viral disease causing leaf mosaic, stunting, and reduced sugar recovery.",
+            "image": "",
+            "symptoms": [
+                "Pale green and yellow mosaic streaks on young leaves",
+                "Leaves may become shorter and narrower",
+                "Stunted growth and lower sucrose yield"
+            ],
+            "treatments": [
+                "Control aphids with recommended insecticides",
+                "Use virus-free certified seed cane",
+                "Rogue infected plants early",
+                "Plant resistant or tolerant varieties"
+            ]
+        },
+        {
+            "id": "grassy-shoot-disease",
+            "name": "Grassy Shoot Disease",
+            "pathogen": "Sugarcane grassy shoot phytoplasma; vector: Pyrilla perpusilla",
+            "category": "viral",
+            "description": "A phytoplasma disease with excessive grassy tillers and complete loss of usable cane.",
+            "image": "",
+            "symptoms": [
+                "Many thin pale yellow shoots giving grassy appearance",
+                "Leaves become narrow and chlorotic",
+                "No normal millable stalk production"
+            ],
+            "treatments": [
+                "Use disease-free planting material",
+                "Hot-water treat setts",
+                "Control vector insects",
+                "Rogue and burn infected clumps"
+            ]
+        },
+        {
+            "id": "root-knot",
+            "name": "Root Knot",
+            "pathogen": "Meloidogyne incognita, Meloidogyne javanica",
+            "category": "nematode",
+            "description": "A nematode disease that causes root galling, stunting, and decline in cane growth and sugar content.",
+            "image": "",
+            "symptoms": [
+                "Stunted and yellowing plants",
+                "Root gall or knot formation",
+                "Reduced tillering and weak root system"
+            ],
+            "treatments": [
+                "Apply approved nematicides at planting as per label and regulations",
+                "Incorporate neem cake",
+                "Rotate with non-host crops",
+                "Deep plough before planting"
+            ]
+        }
+    ]
+}

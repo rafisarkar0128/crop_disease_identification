@@ -3,10 +3,31 @@
     "basePath": "metadata",
     "items": [
         {
+            "id": "jute",
+            "name": "Jute",
+            "scientificName": "Corchorus capsularis",
+            "file": "jute.json",
+            "status": "active"
+        },
+        {
+            "id": "potato",
+            "name": "Potato",
+            "scientificName": "Solanum tuberosum",
+            "file": "potato.json",
+            "status": "active"
+        },
+        {
             "id": "rice",
             "name": "Rice",
             "scientificName": "Oryza sativa",
             "file": "rice.json",
+            "status": "active"
+        },
+        {
+            "id": "sugarcane",
+            "name": "Sugarcane",
+            "scientificName": "Saccharum officinarum",
+            "file": "sugarcane.json",
             "status": "active"
         }
     ]

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="640.0" prefWidth="960.0" styleClass="app-root"
+    stylesheets="@../styles/HomePage.css"
+    xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.crop.app.gui.controller.HomePageController">
+    <ImageView fx:id="backgroundImage" pickOnBounds="true" preserveRatio="true"
+        StackPane.alignment="CENTER">
+        <image>
+            <Image url="@../images/background.png" />
+        </image>
+    </ImageView>
+    <BorderPane prefHeight="640.0" prefWidth="960.0" styleClass="home-layout">
+        <top>
+            <HBox fx:id="header" styleClass="page-header">
+                <TextField fx:id="cropSearchField" promptText="Search crop..."
+                    onAction="#handleCropSelect" prefWidth="300.0" styleClass="search-field" />
+                <Button text="Search" onAction="#handleCropSelect" mnemonicParsing="false"
+                    styleClass="search-button" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button text="News" onAction="#showNews" mnemonicParsing="false"
+                    styleClass="header-button" />
+                <Button text="Feeds" onAction="#showFeeds" mnemonicParsing="false"
+                    styleClass="header-button" />
+                <Button text="Settings" onAction="#showSettings" mnemonicParsing="false"
+                    styleClass="header-button" />
+            </HBox>
+        </top>
+        <center>
+            <HBox styleClass="content-area">
+                <VBox styleClass="trending-panel" HBox.hgrow="NEVER">
+                    <Label text="Trending Crops" styleClass="trending-title" />
+                    <Button mnemonicParsing="false" text="Rice" styleClass="crop-row"
+                        maxWidth="1.7976931348623157E308"
+                        onAction="#handleCropSelection" />
+                    <Button mnemonicParsing="false" text="Jute" styleClass="crop-row"
+                        maxWidth="1.7976931348623157E308"
+                        onAction="#handleCropSelection" />
+                    <Button mnemonicParsing="false" text="Sugarcane"
+                        styleClass="crop-row"
+                        maxWidth="1.7976931348623157E308"
+                        onAction="#handleCropSelection" />
+                    <Button mnemonicParsing="false" text="Potato" styleClass="crop-row"
+                        maxWidth="1.7976931348623157E308"
+                        onAction="#handleCropSelection" />
+                    <Button mnemonicParsing="false" text="Onion" styleClass="crop-row"
+                        maxWidth="1.7976931348623157E308"
+                        onAction="#handleCropSelection" />
+                    <Label text="more coming soon" styleClass="crop-row-coming-soon"
+                        maxWidth="1.7976931348623157E308" />
+                    <Label fx:id="statusLabel" text="" wrapText="true"
+                        styleClass="status-label" />
+                </VBox>
+                <StackPane fx:id="infoPanel" visible="true" managed="true" styleClass="info-panel"
+                    HBox.hgrow="ALWAYS">
+                    <Label text="ADVERTISEMENT" styleClass="ad-label" />
+                </StackPane>
+                <VBox fx:id="settingsPanel" visible="false" managed="false"
+                    styleClass="settings-panel" HBox.hgrow="NEVER">
+                    <Label text="Settings" styleClass="settings-title" />
+                    <Button text="Account Info" onAction="#showAccountInfo" mnemonicParsing="false"
+                        styleClass="settings-row" maxWidth="1.7976931348623157E308" />
+                    <Button text="Notifications" onAction="#showNotifications"
+                        mnemonicParsing="false" styleClass="settings-row"
+                        maxWidth="1.7976931348623157E308" />
+                    <Button text="Theme" onAction="#showThemeSettings" mnemonicParsing="false"
+                        styleClass="settings-row" maxWidth="1.7976931348623157E308" />
+                    <Button text="Logout" onAction="#handleLogout" mnemonicParsing="false"
+                        styleClass="settings-row" maxWidth="1.7976931348623157E308" />
+                </VBox>
+            </HBox>
+        </center>
+    </BorderPane>
+</StackPane>

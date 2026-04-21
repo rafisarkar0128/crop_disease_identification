@@ -17,7 +17,7 @@ package com.crop.app.infrastructure.loader;
 
 import java.io.InputStream;
 import java.net.URL;
-import com.crop.app.common.constants.AppConstants;
+import com.crop.app.common.constants.ResourceConstants;
 import com.crop.app.common.exception.FxmlLoaderException;
 
 /**
@@ -64,7 +64,7 @@ public class FxmlLoader {
         String validatedFxmlId = requireFxmlId(fxmlId);
         String filename =
                 validatedFxmlId.endsWith(".fxml") ? validatedFxmlId : validatedFxmlId + ".fxml";
-        return AppConstants.FXML_PATH + "/" + filename;
+        return ResourceConstants.FXML_PATH + "/" + filename;
     }
 
     /**

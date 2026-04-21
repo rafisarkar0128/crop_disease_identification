@@ -22,7 +22,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
-import com.crop.app.common.constants.AppConstants;
+import com.crop.app.common.constants.ResourceConstants;
 import com.crop.app.common.exception.ResourceLoaderException;
 import com.crop.app.common.exception.UserDatabaseReadException;
 import com.crop.app.domain.model.User;
@@ -77,7 +77,7 @@ public final class UserDatabaseLoader {
     public static String format(String dbId) {
         String validatedDbId = requireDbId(dbId);
         String filename = validatedDbId.endsWith(".json") ? validatedDbId : validatedDbId + ".json";
-        return AppConstants.DB_PATH + "/" + filename;
+        return ResourceConstants.DB_PATH + "/" + filename;
     }
 
     /**
