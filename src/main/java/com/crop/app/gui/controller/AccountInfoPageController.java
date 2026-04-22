@@ -21,7 +21,6 @@ import com.crop.app.infrastructure.loader.IconLoader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Circle;
 
 /**
  * Controller for the account page UI.
@@ -109,9 +108,7 @@ public class AccountInfoPageController {
 
 
         // Set the account avatar image and apply a circular clip to make it round
-        Circle clip = new Circle(50);
         accountAvatar.setImage(IconLoader.getIconAsImage(currentUser.getAvatar()));
-        // accountAvatar.setClip(clip);
         accountAvatar.setPreserveRatio(true);
         accountAvatar.setSmooth(true);
         accountAvatar.setCache(true);

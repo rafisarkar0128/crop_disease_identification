@@ -1,70 +1,151 @@
-# Crop Disease Identification
+# Crop Disease Identification 🌾🩺
 
-Crop Disease Identification is a JavaFX desktop application that is being built as a metadata-driven crop and disease information system. It combines a Java UI with JSON-based crop metadata to support scalable disease knowledge management.
+Crop Disease Identification is a JavaFX desktop application for metadata-driven crop disease exploration and guided symptom-based identification.
 
-## Current Status
+It combines:
 
-The project currently provides:
+- A layered Java architecture (GUI, domain, infrastructure)
+- JSON-based crop metadata
+- An interactive UI flow from login to crop search and disease identification
 
-- A working JavaFX application entry point
-- Modular Java setup with Java 25 and JavaFX 26
-- Resource folders for icons, images, and crop metadata
-- Metadata files for rice, including bacterial and fungal disease details
+The goal is to keep disease knowledge easy to expand by editing metadata, not core application logic.
 
-## Tech Stack
+## ✨ Highlights
+
+- JavaFX desktop app with FXML-based pages and controllers
+- Login and signup flow backed by JSON user persistence
+- Metadata-driven crop catalog (index + per-crop files)
+- Crop search mode with dynamic result cards
+- Disease identification mode with symptom autocomplete suggestions
+- Refactored separation of concerns:
+    - Metadata index parsing in loader layer
+    - Crop catalog search/symptom logic in domain service layer
+
+## 🚀 Current Feature Set
+
+### 🔐 Authentication and Session
+
+- Login and signup screens
+- User data persisted in JSON
+- Home scene initialized with current user context
+
+### 🏠 Home and Navigation
+
+- Header actions: Home, News, Feeds, Settings
+- Collapsible settings panel with account and session actions
+- Trending crop shortcuts
+
+### 🔎 Crop Search
+
+- Search text field with validation
+- Focused result layout (non-essential side panels hidden)
+- Uniform, clickable crop result cards
+- Empty state messaging when no match is found
+
+### 🧪 Disease Identification (Current UX Stage)
+
+- Opened from either:
+    - Search result card click
+    - Trending crop button click
+- Focused layout similar to search mode
+- Selected crop summary shown at top
+- Editable symptom selector with autocomplete suggestions sourced from crop metadata
+
+## 🛠️ Tech Stack
 
 - Java 25
 - Maven
-- JavaFX 26
-- JSON metadata resources
+- JavaFX 26 (Controls + FXML)
+- Gson 2.13.2
 
-## Project Structure
+## 🧱 Architecture Overview
+
+The project follows a layered structure:
+
+- GUI layer
+    - Views and JavaFX controllers
+    - Scene/page orchestration and interaction handling
+- Domain layer
+    - Models (Crop, Disease, User)
+    - Services for business logic
+- Infrastructure layer
+    - Resource loading utilities
+    - JSON mapping and persistence adapters
+
+### ♻️ Notable Refactor Components
+
+- Metadata index loader:
+    - [src/main/java/com/crop/app/infrastructure/loader/MetadataIndexLoader.java](src/main/java/com/crop/app/infrastructure/loader/MetadataIndexLoader.java)
+- Crop catalog service:
+    - [src/main/java/com/crop/app/domain/service/CropCatalogService.java](src/main/java/com/crop/app/domain/service/CropCatalogService.java)
+
+## 🗂️ Project Structure
 
 ```text
-src/
-	main/
-		java/
-			module-info.java
-			com/
-				crop/
-					main/
-						Main.java
-		resources/
-			icons/
-				app_logo.png
-			images/
-				bacterial-blight.jpeg
-			metadata/
-				metadata-index.json
-				rice.json
-	test/
+crop_disease_identification/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   ├── module-info.java                  # Java module config, exports, opens for JavaFX/Gson
+│   │   │   └── com/crop/app/
+│   │   │       ├── Main.java                     # Application entry point and primary stage bootstrap
+│   │   │       ├── common/                       # Shared constants and custom exception types
+│   │   │       ├── domain/
+│   │   │       │   ├── model/                    # Core entities (Crop, Disease, User)
+│   │   │       │   ├── repository/               # Repository interfaces (domain contracts)
+│   │   │       │   └── service/                  # Business logic (auth, crop catalog, search)
+│   │   │       ├── gui/
+│   │   │       │   ├── controller/               # JavaFX controllers (event handling, UI flow)
+│   │   │       │   └── view/                     # Scene/page wrapper classes
+│   │   │       └── infrastructure/
+│   │   │           ├── loader/                   # Classpath/resource loaders (FXML, metadata index, assets)
+│   │   │           ├── mapper/                   # JSON-to-domain mappers
+│   │   │           └── persistence/              # JSON-backed repository implementations
+│   │   └── resources/
+│   │       └── com/crop/app/
+│   │           ├── db/                           # Stored application/user data files
+│   │           ├── metadata/                     # Crop catalog + per-crop disease metadata
+│   │           ├── pages/                        # FXML page layouts used by JavaFX
+│   │           ├── styles/                       # CSS theme and page styling
+│   │           ├── images/                       # Crop and UI image assets
+│   │           └── icons/                        # App and UI icon assets
+│   └── test/                                     # Tests (unit/integration as project evolves)
+├── docs/                                         # Project docs and metadata notes
+├── templates/                                    # Header/template support files
+├── pom.xml                                       # Maven build configuration
+├── README.md                                     # Project documentation
+├── CONTRIBUTORS.md                               # Contributor list and roles
+├── LICENSE                                       # Apache-2.0 license text
+└── NOTICE                                        # Attribution and notice information
 ```
 
-## Metadata Design
+## 📚 Metadata Strategy
 
-This project uses a lightweight index + per-crop metadata strategy:
+The app uses an index-plus-files pattern:
 
-- metadata-index.json: catalog of available crop metadata files
-- One JSON file per crop, for example rice.json
-- Each crop JSON contains core crop information and a diseases array
+- [src/main/resources/com/crop/app/metadata/metadata-index.json](src/main/resources/com/crop/app/metadata/metadata-index.json) lists active crops
+- Each active crop points to a dedicated metadata file
+- Each crop file contains crop details and a diseases array
 
-This approach allows adding new crops without changing Java code each time.
+Benefits:
 
-## Prerequisites
+- Add new crops without changing UI/controller logic
+- Keep disease data updates decoupled from code releases
+- Easier maintenance and review of data changes
 
-Install the following:
+## ✅ Prerequisites
 
 - JDK 25
 - Maven 3.9+
 
-Verify installation:
+Verify your environment:
 
 ```bash
 java -version
 mvn -version
 ```
 
-## Run the Application
+## ▶️ Run Locally
 
 From the project root:
 
@@ -72,45 +153,50 @@ From the project root:
 mvn clean javafx:run
 ```
 
-## Build the Project
+## 🧪 Build and Validate
+
+Package the application:
 
 ```bash
 mvn clean package
 ```
 
-Build output is generated under target.
+Run test phase:
 
-## Resource Handling Guidelines
+```bash
+mvn test
+```
 
-For reliable execution in both IDE and packaged builds:
+Build artifacts are generated under target.
 
-- Keep static assets under src/main/resources
-- Load resources through classpath APIs
-- Avoid file system absolute or relative runtime paths for packaged assets
+## 🌱 Extend the Catalog (Add a New Crop)
 
-## Next Milestones
+1. Add a new metadata file under [src/main/resources/com/crop/app/metadata](src/main/resources/com/crop/app/metadata).
+2. Add an active entry in [src/main/resources/com/crop/app/metadata/metadata-index.json](src/main/resources/com/crop/app/metadata/metadata-index.json).
+3. Ensure the new crop JSON includes:
+    - Crop identity fields
+    - Description
+    - Diseases with symptoms and treatments
 
-- Add metadata loader service in Java
-- Render crop and disease data dynamically in UI
-- Add search and filter for diseases by category
-- Add unit tests for metadata parsing and validation
-- Expand metadata for more crops
+No controller rewrite is required for search and symptom suggestion support.
 
-## Contributing
+## 🧭 Development Notes
 
-Contributions are welcome.
+- Keep runtime assets in src/main/resources.
+- Load files through classpath loaders, not filesystem absolute paths.
+- Prefer keeping controllers focused on UI orchestration only.
+- Place parsing/loading concerns in infrastructure loaders and domain logic in services.
 
-Suggested workflow:
+## 🤝 Contributors
 
-1. Create a feature branch
-2. Make focused changes
-3. Run mvn clean package locally
-4. Open a pull request with clear notes
+- Md. Rafi Sarkar ([rafisarkar0128](https://github.com/rafisarkar0128)) - Lead Developer and Maintainer
+- Ainul Huque ([ainul10222](https://github.com/ainul10222)) - Lead Developer and Maintainer
 
-## License
+See [CONTRIBUTORS.md](CONTRIBUTORS.md) for contributor details.
 
-This project is licensed under the Apache License 2.0.
+## 📄 License
 
-See [LICENSE](LICENSE) for details.
+Licensed under the Apache License 2.0.
 
-Project attribution details are provided in [NOTICE](NOTICE).
+- License text: [LICENSE](LICENSE)
+- Attribution and notice: [NOTICE](NOTICE)

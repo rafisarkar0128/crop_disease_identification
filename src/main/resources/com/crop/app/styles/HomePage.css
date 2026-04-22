@@ -143,6 +143,157 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 12, 0, 0, 4);
 }
 
+.search-results-shell {
+    -fx-background-color: transparent;
+    -fx-spacing: 12;
+    -fx-alignment: top-center;
+}
+
+.search-results-title {
+    -fx-alignment: top-center;
+    -fx-text-fill: #1f4d27;
+    -fx-font-family: "Segoe UI";
+    -fx-font-weight: bold;
+    -fx-font-size: 24;
+}
+
+.search-results-subtitle {
+    -fx-text-fill: #546e57;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13;
+}
+
+.search-empty-message {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-background-radius: 14;
+    -fx-border-color: rgba(46, 125, 50, 0.14);
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+    -fx-padding: 22 20;
+    -fx-text-fill: #1f4d27;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.search-result-card {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-background-radius: 14;
+    -fx-border-color: rgba(46, 125, 50, 0.14);
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+    -fx-padding: 16 18;
+    -fx-cursor: hand;
+    -fx-text-fill: #1f4d27;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.06), 8, 0, 0, 3);
+}
+
+.search-result-card:hover {
+    -fx-background-color: #eef4ef;
+    -fx-border-color: #2e7d32;
+}
+
+.search-result-card-body {
+    -fx-alignment: center-left;
+}
+
+.search-result-card .label {
+    -fx-wrap-text: true;
+}
+
+.search-result-title {
+    -fx-text-fill: #1f4d27;
+    /* -fx-border-color: rgba(46, 125, 50, 0.14); */
+    /* -fx-border-width: 0 0 1 0; */
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+.search-result-subtitle {
+    -fx-text-fill: #546e57;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 12;
+}
+
+.identification-shell {
+    -fx-background-color: transparent;
+    -fx-spacing: 12;
+    -fx-alignment: top-center;
+}
+
+.identification-title {
+    -fx-text-fill: #1f4d27;
+    -fx-font-family: "Segoe UI";
+    -fx-font-weight: bold;
+    -fx-font-size: 24;
+}
+
+.identification-subtitle {
+    -fx-text-fill: #546e57;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13;
+}
+
+.identification-crop-card,
+.identification-symptom-card {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-background-radius: 14;
+    -fx-border-color: rgba(46, 125, 50, 0.14);
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+    -fx-padding: 14 16;
+    -fx-spacing: 8;
+    -fx-max-width: 620;
+    -fx-pref-width: 620;
+}
+
+.identification-crop-name {
+    -fx-text-fill: #1f4d27;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+}
+
+.identification-crop-scientific {
+    -fx-text-fill: #546e57;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13;
+}
+
+.identification-crop-description {
+    -fx-text-fill: #1f4d27;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13;
+}
+
+.identification-symptom-title {
+    -fx-text-fill: #1f4d27;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+.identification-symptom-hint,
+.identification-selected-symptom {
+    -fx-text-fill: #546e57;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 12;
+}
+
+.symptom-combo-box {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8;
+    /* -fx-border-color: #c9d8cb; */
+    /* -fx-border-radius: 8; */
+    -fx-font-family: "Segoe UI";
+}
+
+.symptom-combo-box:focused {
+    -fx-border-color: #2e7d32;
+}
+
 .ad-label {
     -fx-alignment: center;
     -fx-text-fill: #1f4d27;

@@ -31,13 +31,13 @@
                 <Button text="Search" onAction="#handleCropSearch" mnemonicParsing="false"
                     styleClass="search-button" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Button text="Home" onAction="#showHome" mnemonicParsing="false"
+                <Button fx:id="homeButton" text="Home" onAction="#showHome" mnemonicParsing="false"
                     styleClass="header-button" />
-                <Button text="News" onAction="#showNews" mnemonicParsing="false"
+                <Button fx:id="newsButton" text="News" onAction="#showNews" mnemonicParsing="false"
                     styleClass="header-button" />
-                <Button text="Feeds" onAction="#showFeeds" mnemonicParsing="false"
+                <Button fx:id="feedsButton" text="Feeds" onAction="#showFeeds" mnemonicParsing="false"
                     styleClass="header-button" />
-                <Button text="Settings" onAction="#showSettings" mnemonicParsing="false"
+                <Button fx:id="settingsButton" text="Settings" onAction="#showSettings" mnemonicParsing="false"
                     styleClass="header-button" />
             </HBox>
         </top>
