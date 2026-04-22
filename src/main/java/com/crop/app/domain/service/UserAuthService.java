@@ -63,4 +63,24 @@ public class UserAuthService {
     public User getUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
+    /**
+     * Retrieves a user by email.
+     *
+     * @param email the user email
+     * @return the user if found, null otherwise
+     */
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    /**
+     * Registers and persists a new user.
+     *
+     * @param user the user to register
+     * @return the registered user
+     */
+    public User register(User user) {
+        return userRepository.register(user);
+    }
 }

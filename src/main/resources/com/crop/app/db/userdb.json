@@ -1,26 +1,34 @@
 [
-    {
-        "id": "1",
-        "username": "admin",
-        "email": "admin@cropidentify.com",
-        "password": "pass",
-        "bio": "This is an admin account. It has elevated privileges that allow the user to manage other accounts, oversee content, and perform administrative tasks within the application. The admin can access advanced features and settings to ensure the smooth operation of the platform.",
-        "avatar": "avatar-default.png"
-    },
-    {
-        "id": "2",
-        "username": "user",
-        "email": "user@cropidentify.com",
-        "password": "pass",
-        "bio": "This is a regular user account. It has access to all standard features of the application, allowing the user to identify crop diseases, manage their profile, and interact with the community. The user can customize their profile and upload a personalized avatar.",
-        "avatar": "avatar-default.png"
-    },
-    {
-        "id": "3",
-        "username": "demo",
-        "email": "demo@cropidentify.com",
-        "password": "pass",
-        "bio": "Default demo account. This account is used for demonstration purposes and has limited access to features. It is intended to provide users with a preview of the application's capabilities without requiring them to create an account.",
-        "avatar": "avatar-default.png"
-    }
+  {
+    "id": "1",
+    "username": "admin",
+    "email": "admin@cropidentify.com",
+    "password": "pass",
+    "bio": "This is an admin account. It has elevated privileges that allow the user to manage other accounts, oversee content, and perform administrative tasks within the application. The admin can access advanced features and settings to ensure the smooth operation of the platform.",
+    "avatar": "avatar-default.png"
+  },
+  {
+    "id": "2",
+    "username": "user",
+    "email": "user@cropidentify.com",
+    "password": "pass",
+    "bio": "This is a regular user account. It has access to all standard features of the application, allowing the user to identify crop diseases, manage their profile, and interact with the community. The user can customize their profile and upload a personalized avatar.",
+    "avatar": "avatar-default.png"
+  },
+  {
+    "id": "3",
+    "username": "demo",
+    "email": "demo@cropidentify.com",
+    "password": "pass",
+    "bio": "Default demo account. This account is used for demonstration purposes and has limited access to features. It is intended to provide users with a preview of the application\u0027s capabilities without requiring them to create an account.",
+    "avatar": "avatar-default.png"
+  },
+  {
+    "id": "4",
+    "username": "test",
+    "email": "test@cropidentify.com",
+    "password": "pass",
+    "bio": "New user account. Welcome to Crop Disease Identification.",
+    "avatar": "avatar-default.png"
+  }
 ]

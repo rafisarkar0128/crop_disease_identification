@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.crop.app.domain.model.User;
 import com.crop.app.domain.repository.UserRepository;
+import com.crop.app.infrastructure.loader.UserDatabaseLoader;
 
 /**
  * JSON-based user repository implementation.
@@ -42,7 +43,7 @@ public class JsonUserRepository implements UserRepository {
      * @param users the list of users to manage
      */
     public JsonUserRepository(List<User> users) {
-        this.users = users != null ? users : new ArrayList<>();
+        this.users = users != null ? new ArrayList<>(users) : new ArrayList<>();
     }
 
     /**
@@ -61,6 +62,21 @@ public class JsonUserRepository implements UserRepository {
     }
 
     /**
+     * Finds a user by email.
+     *
+     * @param email the email to search for
+     * @return the user if found, null otherwise
+     */
+    @Override
+    public User findByEmail(String email) {
+        if (email == null || email.isBlank()) {
+            return null;
+        }
+        return users.stream().filter(u -> u.getEmail().equalsIgnoreCase(email.trim())).findFirst()
+                .orElse(null);
+    }
+
+    /**
      * Authenticates a user with the provided credentials.
      *
      * @param username the username
@@ -74,5 +90,31 @@ public class JsonUserRepository implements UserRepository {
             return false;
         }
         return user.getPassword().equals(password);
+    }
+
+    /**
+     * Registers a new user and persists user data to the backing JSON file.
+     *
+     * @param user the user to register
+     * @return the persisted user
+     * @throws IllegalArgumentException if username or email already exists
+     */
+    @Override
+    public User register(User user) {
+        if (user == null) {
+            throw new IllegalArgumentException("User cannot be null.");
+        }
+
+        if (findByUsername(user.getUsername()) != null) {
+            throw new IllegalArgumentException("Username already exists.");
+        }
+
+        if (findByEmail(user.getEmail()) != null) {
+            throw new IllegalArgumentException("Email is already registered.");
+        }
+
+        users.add(user);
+        UserDatabaseLoader.saveUsersToDatabase(users);
+        return user;
     }
 }

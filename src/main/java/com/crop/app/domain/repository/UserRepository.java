@@ -38,6 +38,14 @@ public interface UserRepository {
     User findByUsername(String username);
 
     /**
+     * Finds a user by email.
+     *
+     * @param email the email to search for
+     * @return the user if found, null otherwise
+     */
+    User findByEmail(String email);
+
+    /**
      * Authenticates a user with the provided credentials.
      *
      * @param username the username
@@ -45,4 +53,12 @@ public interface UserRepository {
      * @return true if credentials match an existing user, false otherwise
      */
     boolean authenticate(String username, String password);
+
+    /**
+     * Registers a new user and persists it.
+     *
+     * @param user the user to register
+     * @return the persisted user
+     */
+    User register(User user);
 }

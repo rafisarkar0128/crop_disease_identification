@@ -15,18 +15,25 @@
 
 package com.crop.app.infrastructure.loader;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import com.crop.app.common.constants.ResourceConstants;
 import com.crop.app.common.exception.ResourceLoaderException;
 import com.crop.app.common.exception.UserDatabaseReadException;
+import com.crop.app.common.exception.UserDatabaseWriteException;
 import com.crop.app.domain.model.User;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 
 /**
@@ -46,6 +53,11 @@ public final class UserDatabaseLoader {
      * instance that can be shared across the application for all user database loading operations.
      */
     private static final Gson GSON = new Gson();
+
+    /**
+     * Gson instance with pretty-printing enabled for persisting user data.
+     */
+    private static final Gson PRETTY_GSON = new GsonBuilder().setPrettyPrinting().create();
 
     /**
      * Prevents instantiation of this utility class.
@@ -120,11 +132,22 @@ public final class UserDatabaseLoader {
      * @throws UserDatabaseReadException if an error occurs while loading the user data
      */
     public static List<User> loadUsersFromDatabase() {
-        try (InputStreamReader reader = new InputStreamReader(
-                UserDatabaseLoader.getDatabaseStream("userdb"), StandardCharsets.UTF_8)) {
+        try {
+            Path preferredPath = Paths.get("src", "main", "resources",
+                    ResourceConstants.BASE_PACKAGE_PATH, format("userdb"));
 
-            User[] userArray = GSON.fromJson(reader, User[].class);
-            return Arrays.asList(userArray != null ? userArray : new User[0]);
+            if (Files.exists(preferredPath)) {
+                try (var reader = Files.newBufferedReader(preferredPath, StandardCharsets.UTF_8)) {
+                    User[] userArray = GSON.fromJson(reader, User[].class);
+                    return Arrays.asList(userArray != null ? userArray : new User[0]);
+                }
+            }
+
+            try (InputStreamReader reader = new InputStreamReader(
+                    UserDatabaseLoader.getDatabaseStream("userdb"), StandardCharsets.UTF_8)) {
+                User[] userArray = GSON.fromJson(reader, User[].class);
+                return Arrays.asList(userArray != null ? userArray : new User[0]);
+            }
         }
 
         // Catching both IOException and JsonSyntaxException to handle file read errors and JSON
@@ -133,6 +156,65 @@ public final class UserDatabaseLoader {
         catch (IOException | JsonSyntaxException e) {
             throw new UserDatabaseReadException("Failed to load users from database at path: "
                     + UserDatabaseLoader.getDatabasePathAbsolute("userdb"), e);
+        }
+    }
+
+    /**
+     * Resolves a writable path for the user database file.
+     *
+     * <p>
+     * During local development this prefers the source resource file under
+     * {@code src/main/resources}. If unavailable, it falls back to classpath-resolved file paths
+     * when possible.
+     *
+     * @return writable filesystem path to the user database
+     */
+    private static Path resolveWritableUserDatabasePath() {
+        Path sourceResourcePath = Paths.get("src", "main", "resources",
+                ResourceConstants.BASE_PACKAGE_PATH, format("userdb"));
+        if (Files.exists(sourceResourcePath)) {
+            return sourceResourcePath;
+        }
+
+        URL url = getDatabase("userdb");
+        if ("file".equalsIgnoreCase(url.getProtocol())) {
+            try {
+                return Paths.get(url.toURI());
+            } catch (URISyntaxException e) {
+                throw new UserDatabaseWriteException(
+                        "Failed to resolve writable user database path from URL: " + url, e);
+            }
+        }
+
+        throw new UserDatabaseWriteException("User database is not writable for protocol: "
+                + url.getProtocol() + ". Run the app from the project workspace to enable writes.");
+    }
+
+    /**
+     * Persists users to the user database JSON file with pretty formatting.
+     *
+     * @param users list of users to save
+     * @throws UserDatabaseWriteException if users cannot be saved
+     */
+    public static void saveUsersToDatabase(List<User> users) {
+        if (users == null) {
+            throw new UserDatabaseWriteException("Users list cannot be null.");
+        }
+
+        Path writablePath = resolveWritableUserDatabasePath();
+        try {
+            Path parent = writablePath.getParent();
+            if (parent != null && !Files.exists(parent)) {
+                Files.createDirectories(parent);
+            }
+
+            try (BufferedWriter writer = Files.newBufferedWriter(writablePath,
+                    StandardCharsets.UTF_8)) {
+                PRETTY_GSON.toJson(users, writer);
+            }
+        } catch (IOException e) {
+            throw new UserDatabaseWriteException(
+                    "Failed to save users to database at path: " + writablePath, e);
         }
     }
 }

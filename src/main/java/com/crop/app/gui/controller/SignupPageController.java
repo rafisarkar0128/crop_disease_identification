@@ -15,8 +15,13 @@
 
 package com.crop.app.gui.controller;
 
+import java.util.List;
 import java.util.Objects;
+import com.crop.app.domain.model.User;
+import com.crop.app.domain.service.UserAuthService;
 import com.crop.app.gui.view.LoginPage;
+import com.crop.app.infrastructure.loader.UserDatabaseLoader;
+import com.crop.app.infrastructure.persistence.JsonUserRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -41,6 +46,11 @@ public class SignupPageController {
 	 * Primary stage used for scene navigation.
 	 */
 	private Stage stage;
+
+	/**
+	 * Service that handles user authentication and registration operations.
+	 */
+	private UserAuthService authService;
 
 	/**
 	 * FXML-injected text field for username input.
@@ -75,7 +85,9 @@ public class SignupPageController {
 	/**
 	 * Creates a sign-up page controller.
 	 */
-	public SignupPageController() {}
+	public SignupPageController() {
+		this.authService = initializeAuthService();
+	}
 
 	/**
 	 * Creates a sign-up page controller with an initialized primary stage.
@@ -85,6 +97,17 @@ public class SignupPageController {
 	 */
 	public SignupPageController(Stage stage) {
 		this.stage = Objects.requireNonNull(stage, "stage");
+		this.authService = initializeAuthService();
+	}
+
+	/**
+	 * Initializes the authentication service with user data loaded from the database.
+	 *
+	 * @return initialized authentication service
+	 */
+	private UserAuthService initializeAuthService() {
+		List<User> users = UserDatabaseLoader.loadUsersFromDatabase();
+		return new UserAuthService(new JsonUserRepository(users));
 	}
 
 	/**
@@ -131,7 +154,25 @@ public class SignupPageController {
 			return;
 		}
 
-		statusLabel.setText("Sign-up is ready, but backend registration is not connected yet.");
+		if (authService.getUserByUsername(username) != null) {
+			statusLabel.setText("Username already exists. Please choose another one.");
+			return;
+		}
+
+		if (authService.getUserByEmail(email) != null) {
+			statusLabel.setText("Email is already registered.");
+			return;
+		}
+
+		try {
+			User user = new User(generateNextUserId(), username, email, password);
+			user.setBio("New user account. Welcome to Crop Disease Identification.");
+			user.setAvatar("avatar-default.png");
+			authService.register(user);
+			stage.setScene(new LoginPage(stage).createScene());
+		} catch (RuntimeException ex) {
+			statusLabel.setText("Failed to create account: " + ex.getMessage());
+		}
 	}
 
 	/**
@@ -159,4 +200,31 @@ public class SignupPageController {
 	private String sanitize(String value) {
 		return value == null ? "" : value.trim();
 	}
+
+	/**
+	 * Generates the next user id from existing users in the database.
+	 *
+	 * @return next user id as string
+	 */
+	private String generateNextUserId() {
+		List<User> users = UserDatabaseLoader.loadUsersFromDatabase();
+		int maxId = users.stream().map(User::getId).map(this::toIntOrZero).max(Integer::compareTo)
+				.orElse(0);
+		return String.valueOf(maxId + 1);
+	}
+
+	/**
+	 * Safely parses a numeric id and returns 0 when invalid.
+	 *
+	 * @param value the raw id value
+	 * @return parsed integer id or 0
+	 */
+	private int toIntOrZero(String value) {
+		try {
+			return Integer.parseInt(sanitize(value));
+		} catch (NumberFormatException ex) {
+			return 0;
+		}
+	}
+
 }
