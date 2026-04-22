@@ -69,7 +69,6 @@ public class SignupPage {
 
             Scene scene =
                     new Scene(root, SceneConstants.DEFAULT_WIDTH, SceneConstants.DEFAULT_HEIGHT);
-            // scene.getStylesheets().add(StyleLoader.getStyle("SignupPage").toExternalForm());
             return scene;
         } catch (IOException exception) {
             throw new FxmlLoaderException("Unable to load the sign-up page UI.", exception);

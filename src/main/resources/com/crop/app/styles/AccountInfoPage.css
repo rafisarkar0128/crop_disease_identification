@@ -1,0 +1,73 @@
+/* --- Root and Main Layout --- */
+.root-container {
+    -fx-alignment: center;
+    -fx-background-radius: 12;
+}
+
+/* --- Header Section --- */
+.account-page-header {
+    -fx-alignment: top-center;
+    /* -fx-background-color: #a5d6a7; */
+    /* -fx-background-radius: 12 12 0 0; */
+    -fx-border-color: #c9d8cb;
+    -fx-border-width: 0 0 1 0;
+    -fx-text-fill: #1f4d27;
+    -fx-font-family: "Segoe UI";
+    -fx-font-weight: bold;
+    -fx-font-size: 18;
+    -fx-padding: 10;
+}
+
+
+/* --- Content Areas --- */
+.content-area {
+    -fx-alignment: top-center;
+    -fx-padding: 10;
+    -fx-spacing: 10;
+}
+
+/* --- Main Display Panel --- */
+
+.account-info-placeholder {
+    -fx-alignment: center;
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 6;
+    -fx-padding: 10 12;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 16px;
+    -fx-text-fill: #2e7d32;
+    -fx-font-style: italic;
+}
+
+
+.account-info-container {
+    -fx-alignment: top-center;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 16px;
+    -fx-text-fill: #2e7d32;
+    -fx-font-style: italic;
+    -fx-padding: 10;
+    -fx-spacing: 10;
+}
+
+.account-username {
+    -fx-alignment: baseline-left;
+    -fx-font-family: "Segoe UI";
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-text-fill: #1f4d27;
+}
+
+.account-bio {
+    -fx-alignment: baseline-left;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 16px;
+    -fx-text-fill: #2e7d32;
+    -fx-wrap-text: true;
+}
+
+.account-avatar {
+    -fx-fit-width: 200;
+    -fx-fit-height: 200;
+}

@@ -45,7 +45,6 @@ public class HomePage {
 
             Scene scene =
                     new Scene(root, SceneConstants.DEFAULT_WIDTH, SceneConstants.DEFAULT_HEIGHT);
-            // scene.getStylesheets().add(StyleLoader.getStyle("HomePage").toExternalForm());
             return scene;
         } catch (IOException exception) {
             throw new IllegalStateException("Unable to load the home page UI.", exception);

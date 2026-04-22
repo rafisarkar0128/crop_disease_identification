@@ -1,0 +1,61 @@
+/* --- Root and Main Layout --- */
+.root-container {
+    -fx-alignment: center;
+    -fx-background-radius: 12;
+}
+
+.news-page-header {
+    -fx-alignment: top-center;
+    /* -fx-background-color: rgba(46, 125, 50, 0.14); */
+    /* -fx-background-radius: 12 12 0 0; */
+    -fx-border-color: #c9d8cb;
+    -fx-border-width: 0 0 1 0;
+    -fx-text-fill: #1f4d27;
+    -fx-font-family: "Segoe UI";
+    -fx-font-weight: bold;
+    -fx-font-size: 18;
+    -fx-padding: 10;
+}
+
+
+/* --- Content Areas --- */
+.content-area {
+    -fx-alignment: top-center;
+    -fx-padding: 10;
+    -fx-spacing: 10;
+}
+
+.news-container {
+    -fx-alignment: top-center;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 16px;
+    -fx-text-fill: #2e7d32;
+    -fx-font-style: italic;
+    -fx-padding: 10;
+    -fx-spacing: 10;
+}
+
+.news-author {
+    -fx-alignment: baseline-left;
+    -fx-font-family: "Segoe UI";
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-text-fill: #1f4d27;
+}
+
+.news-content {
+    -fx-alignment: baseline-left;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 16px;
+    -fx-text-fill: #2e7d32;
+    -fx-wrap-text: true;
+}
+
+.news-image {
+    /* -fx-fit-width: 400; */
+    /* -fx-fit-height: 200; */
+    -fx-preserve-ratio: true;
+    -fx-border-radius: 6;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+}

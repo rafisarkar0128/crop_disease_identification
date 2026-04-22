@@ -42,7 +42,8 @@
         <center>
             <HBox styleClass="content-area">
                 <VBox styleClass="trending-panel" HBox.hgrow="NEVER">
-                    <Label text="Trending Crops" styleClass="trending-title" />
+                    <Label text="Trending Crops" maxWidth="1.7976931348623157E308"
+                        styleClass="trending-title" />
                     <Button mnemonicParsing="false" text="Rice" styleClass="crop-row"
                         maxWidth="1.7976931348623157E308"
                         onAction="#handleCropSelection" />
@@ -70,7 +71,8 @@
                 </StackPane>
                 <VBox fx:id="settingsPanel" visible="false" managed="false"
                     styleClass="settings-panel" HBox.hgrow="NEVER">
-                    <Label text="Settings" styleClass="settings-title" />
+                    <Label text="Settings" maxWidth="1.7976931348623157E308"
+                        styleClass="settings-title" />
                     <Button text="Account Info" onAction="#showAccountInfo" mnemonicParsing="false"
                         styleClass="settings-row" maxWidth="1.7976931348623157E308" />
                     <Button text="Notifications" onAction="#showNotifications"

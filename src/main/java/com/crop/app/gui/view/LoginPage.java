@@ -69,7 +69,6 @@ public class LoginPage {
 
             Scene scene =
                     new Scene(root, SceneConstants.DEFAULT_WIDTH, SceneConstants.DEFAULT_HEIGHT);
-            // scene.getStylesheets().add(StyleLoader.getStyle("LoginPage").toExternalForm());
             return scene;
         } catch (IOException exception) {
             throw new FxmlLoaderException("Unable to load the login page UI.", exception);

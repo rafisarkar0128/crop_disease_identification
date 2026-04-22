@@ -15,10 +15,16 @@
 
 package com.crop.app.gui.controller;
 
+import java.io.IOException;
 import java.util.Objects;
+import com.crop.app.common.exception.FxmlLoaderException;
 import com.crop.app.gui.view.LoginPage;
+import com.crop.app.infrastructure.loader.FxmlLoader;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -136,10 +142,15 @@ public class HomePageController {
      */
     @FXML
     private void showNews(ActionEvent event) {
-        infoPanel.getChildren().clear();
-        Label newsLabel = new Label("Latest News - Coming Soon!");
-        newsLabel.getStyleClass().add("coming-soon");
-        infoPanel.getChildren().add(newsLabel);
+        try {
+            FXMLLoader loader = new FXMLLoader(FxmlLoader.getFxml("NewsPage"));
+            Parent newsRoot = loader.load();
+
+            infoPanel.getChildren().clear();
+            infoPanel.getChildren().add(newsRoot);
+        } catch (IOException e) {
+            throw new FxmlLoaderException("Failed to load NewsPage.fxml", e);
+        }
     }
 
     /**
@@ -215,7 +226,7 @@ public class HomePageController {
     @FXML
     private void handleCropSelection(ActionEvent event) {
         ensureStage();
-        selectCrop(event.getTarget().toString());
+        selectCrop(event.getSource() instanceof Label label ? label.getText() : "Unknown Crop");
     }
 
     @FXML
@@ -231,10 +242,15 @@ public class HomePageController {
      */
     @FXML
     private void showAccountInfo(ActionEvent event) {
-        infoPanel.getChildren().clear();
-        Label accountInfoLabel = new Label("Account Info - Coming Soon!");
-        accountInfoLabel.getStyleClass().add("coming-soon");
-        infoPanel.getChildren().add(accountInfoLabel);
+        try {
+            FXMLLoader loader = new FXMLLoader(FxmlLoader.getFxml("AccountInfoPage"));
+            Parent accountInfoRoot = loader.load();
+
+            infoPanel.getChildren().clear();
+            infoPanel.getChildren().add(accountInfoRoot);
+        } catch (IOException e) {
+            throw new FxmlLoaderException("Failed to load AccountInfoPage.fxml", e);
+        }
     }
 
     /**
@@ -263,9 +279,25 @@ public class HomePageController {
         infoPanel.getChildren().add(themesLabel);
     }
 
+    /**
+     * Handles the logout button action to navigate to the login page.
+     *
+     * @param event the action event fired by the logout button
+     */
     @FXML
     private void handleLogout(ActionEvent event) {
         ensureStage();
         stage.setScene(new LoginPage(stage).createScene());
     }
+
+    /**
+     * Handles the exit button action to exit the application.
+     *
+     * @param event the action event fired by the exit button
+     */
+    @FXML
+    private void handleExit(ActionEvent event) {
+        Platform.exit();
+    }
+
 }
