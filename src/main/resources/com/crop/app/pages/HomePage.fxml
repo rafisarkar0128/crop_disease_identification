@@ -26,11 +26,13 @@
     <BorderPane prefHeight="640.0" prefWidth="960.0" styleClass="home-layout">
         <top>
             <HBox fx:id="header" styleClass="page-header">
-                <TextField fx:id="cropSearchField" promptText="Search crop..."
-                    onAction="#handleCropSelect" prefWidth="300.0" styleClass="search-field" />
-                <Button text="Search" onAction="#handleCropSelect" mnemonicParsing="false"
+                <TextField fx:id="cropSearchField" promptText="Search crop..." prefWidth="300.0"
+                    styleClass="search-field" />
+                <Button text="Search" onAction="#handleCropSearch" mnemonicParsing="false"
                     styleClass="search-button" />
                 <Region HBox.hgrow="ALWAYS" />
+                <Button text="Home" onAction="#showHome" mnemonicParsing="false"
+                    styleClass="header-button" />
                 <Button text="News" onAction="#showNews" mnemonicParsing="false"
                     styleClass="header-button" />
                 <Button text="Feeds" onAction="#showFeeds" mnemonicParsing="false"
@@ -41,7 +43,8 @@
         </top>
         <center>
             <HBox styleClass="content-area">
-                <VBox styleClass="trending-panel" HBox.hgrow="NEVER">
+                <VBox fx:id="trendingPanel" visible="true" managed="true"
+                    styleClass="trending-panel" HBox.hgrow="NEVER">
                     <Label text="Trending Crops" maxWidth="1.7976931348623157E308"
                         styleClass="trending-title" />
                     <Button mnemonicParsing="false" text="Rice" styleClass="crop-row"
@@ -62,8 +65,6 @@
                         onAction="#handleCropSelection" />
                     <Label text="more coming soon" styleClass="crop-row-coming-soon"
                         maxWidth="1.7976931348623157E308" />
-                    <Label fx:id="statusLabel" text="" wrapText="true"
-                        styleClass="status-label" />
                 </VBox>
                 <StackPane fx:id="infoPanel" visible="true" managed="true" styleClass="info-panel"
                     HBox.hgrow="ALWAYS">

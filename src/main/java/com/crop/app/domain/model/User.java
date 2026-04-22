@@ -31,6 +31,8 @@ public class User {
     private String username;
     private String email;
     private String password;
+    private String bio;
+    private String avatar;
 
     /**
      * Creates an empty user model.
@@ -40,6 +42,8 @@ public class User {
         this.username = "";
         this.email = "";
         this.password = "";
+        this.bio = "";
+        this.avatar = "";
     }
 
     /**
@@ -49,12 +53,36 @@ public class User {
      * @param username the unique username
      * @param email the user email address
      * @param password the user password
+     * @throws NullPointerException if any of the parameters are null
+     * @throws IllegalArgumentException if any of the parameters are empty
      */
     public User(String id, String username, String email, String password) {
+
+        if (id == null || id.isBlank() || id.isEmpty()) {
+            throw new IllegalArgumentException("Parameters ID cannot be null or blank or empty.");
+        }
+
+        if (username == null || username.isBlank() || username.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Parameters Username cannot be null or blank or empty.");
+        }
+
+        if (email == null || email.isBlank() || email.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Parameters Email cannot be null or blank or empty.");
+        }
+
+        if (password == null || password.isBlank() || password.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Parameters Password cannot be null or blank or empty.");
+        }
+
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.bio = "";
+        this.avatar = "";
     }
 
     /**
@@ -127,5 +155,41 @@ public class User {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * Gets the user bio.
+     *
+     * @return the user bio
+     */
+    public String getBio() {
+        return bio;
+    }
+
+    /**
+     * Sets the user bio.
+     *
+     * @param bio the user bio
+     */
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    /**
+     * Gets the user avatar.
+     *
+     * @return the user avatar
+     */
+    public String getAvatar() {
+        return avatar;
+    }
+
+    /**
+     * Sets the user avatar.
+     *
+     * @param avatar the user avatar
+     */
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

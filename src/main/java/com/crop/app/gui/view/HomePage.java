@@ -3,6 +3,7 @@ package com.crop.app.gui.view;
 import java.io.IOException;
 import java.util.Objects;
 import com.crop.app.common.constants.SceneConstants;
+import com.crop.app.domain.model.User;
 import com.crop.app.gui.controller.HomePageController;
 import com.crop.app.infrastructure.loader.FxmlLoader;
 import javafx.fxml.FXMLLoader;
@@ -20,13 +21,20 @@ public class HomePage {
     private final Stage primaryStage;
 
     /**
+     * Primary stage where the scene will be displayed.
+     */
+    private final User currentUser;
+
+    /**
      * Creates a home page view bound to the given stage.
      *
      * @param primaryStage the main application stage
+     * @param currentUser the currently authenticated user
      * @throws NullPointerException if {@code primaryStage} is null
      */
-    public HomePage(Stage primaryStage) {
+    public HomePage(Stage primaryStage, User currentUser) {
         this.primaryStage = Objects.requireNonNull(primaryStage, "primaryStage");
+        this.currentUser = Objects.requireNonNull(currentUser, "currentUser");
     }
 
     /**
@@ -42,6 +50,7 @@ public class HomePage {
 
             HomePageController controller = loader.getController();
             controller.setStage(primaryStage);
+            controller.setCurrentUser(currentUser);
 
             Scene scene =
                     new Scene(root, SceneConstants.DEFAULT_WIDTH, SceneConstants.DEFAULT_HEIGHT);

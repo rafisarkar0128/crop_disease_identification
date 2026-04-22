@@ -18,6 +18,7 @@ package com.crop.app.gui.controller;
 import java.io.IOException;
 import java.util.Objects;
 import com.crop.app.common.exception.FxmlLoaderException;
+import com.crop.app.domain.model.User;
 import com.crop.app.gui.view.LoginPage;
 import com.crop.app.infrastructure.loader.FxmlLoader;
 import javafx.application.Platform;
@@ -51,6 +52,11 @@ public class HomePageController {
     private Stage stage;
 
     /**
+     * The currently logged-in user.
+     */
+    private User currentUser;
+
+    /**
      * The name of the selected crop.
      */
     private String selectedCrop;
@@ -74,10 +80,10 @@ public class HomePageController {
     private TextField cropSearchField;
 
     /**
-     * The label for displaying status messages to the user.
+     * The panel for displaying trending crops, which can be toggled visible or hidden.
      */
     @FXML
-    private Label statusLabel;
+    private VBox trendingPanel;
 
     /**
      * The panel for displaying informational messages, which can be toggled visible or hidden.
@@ -101,9 +107,12 @@ public class HomePageController {
      * Creates a home page controller with an initialized primary stage.
      *
      * @param stage the primary stage
+     * @param currentUser the currently logged-in user
+     * @throws NullPointerException if either {@code stage} or {@code currentUser} is null
      */
-    public HomePageController(Stage stage) {
+    public HomePageController(Stage stage, User currentUser) {
         this.stage = Objects.requireNonNull(stage, "stage");
+        this.currentUser = Objects.requireNonNull(currentUser, "currentUser");
     }
 
     /**
@@ -125,6 +134,24 @@ public class HomePageController {
     }
 
     /**
+     * Sets the currently logged-in user for this controller.
+     *
+     * @param currentUser the user to set as currently logged in
+     */
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = Objects.requireNonNull(currentUser, "currentUser");
+    }
+
+    /**
+     * Gets the currently logged-in user for this controller.
+     *
+     * @return the currently logged-in user
+     */
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    /**
      * Ensures that the primary stage has been initialized before handling any user interactions.
      *
      * @throws IllegalStateException if the primary stage has not been initialized
@@ -132,6 +159,31 @@ public class HomePageController {
     private void ensureStage() {
         if (stage == null) {
             throw new IllegalStateException("Primary stage has not been initialized.");
+        }
+    }
+
+    /**
+     * Handles the home button action to navigate back to the home page.
+     *
+     * @param event the action event fired by the home button
+     */
+    @FXML
+    private void showHome(ActionEvent event) {
+        try {
+            cropSearchField.setPromptText("Search for crop...");
+            cropSearchField.getStyleClass().add("search-field");
+
+            if (cropSearchField.getStyleClass().contains("search-field-error")) {
+                cropSearchField.getStyleClass().remove("search-field-error");
+            }
+
+            Label defaultLabel = new Label("ADVERTISEMENT");
+            defaultLabel.getStyleClass().add("ad-label");
+
+            infoPanel.getChildren().clear();
+            infoPanel.getChildren().add(defaultLabel);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to go back to Home page.", e);
         }
     }
 
@@ -181,40 +233,12 @@ public class HomePageController {
     /**
      * Handles crop quick selection from trending list.
      *
-     * @param event the action event
+     * @param cropName the name of the crop to select
+     * @throws NullPointerException if {@code cropName} is null
      */
     private void selectCrop(String cropName) {
-        ensureStage();
-        this.selectedCrop = cropName;
-        // stage.setScene(new DiseaseSelectionPage(stage, selectedCrop).createScene());
-    }
-
-    /**
-     * Handles crop selection via button click.
-     *
-     * @param event the action event
-     */
-    @FXML
-    private void handleCropSelect(ActionEvent event) {
-        ensureStage();
-        String cropName = cropSearchField.getText();
-
-        if (cropName == null || cropName.trim().isEmpty()) {
-            cropSearchField.setPromptText("PLEASE ENTER A CROP NAME!");
-
-            if (!cropSearchField.getStyleClass().contains("search-field-error")) {
-                cropSearchField.getStyleClass().add("search-field-error");
-            }
-
-            statusLabel.setText("");
-            return;
-        }
-
-        cropSearchField.getStyleClass().remove("search-field-error");
-        cropSearchField.setPromptText("Search crop...");
-
-        this.selectedCrop = cropName.trim();
-        statusLabel.setText("Selected: " + selectedCrop);
+        // ensureStage();
+        this.selectedCrop = Objects.requireNonNull(cropName, "cropName").trim();
         // stage.setScene(new DiseaseSelectionPage(stage, selectedCrop).createScene());
     }
 
@@ -225,8 +249,36 @@ public class HomePageController {
      */
     @FXML
     private void handleCropSelection(ActionEvent event) {
-        ensureStage();
+        // ensureStage();
         selectCrop(event.getSource() instanceof Label label ? label.getText() : "Unknown Crop");
+    }
+
+    /**
+     * Handles crop selection via button click.
+     *
+     * @param event the action event
+     */
+    @FXML
+    private void handleCropSearch(ActionEvent event) {
+        // ensureStage();
+        String cropName = cropSearchField.getText();
+
+        if (cropName == null || cropName.trim().isEmpty()) {
+            cropSearchField.setPromptText("PLEASE ENTER A CROP NAME!");
+
+            if (!cropSearchField.getStyleClass().contains("search-field-error")) {
+                cropSearchField.getStyleClass().add("search-field-error");
+            }
+
+            return;
+        }
+
+        cropSearchField.getStyleClass().remove("search-field-error");
+        cropSearchField.setPromptText("Search crop...");
+
+        selectCrop(cropName.trim());
+
+        // stage.setScene(new DiseaseSelectionPage(stage, selectedCrop).createScene());
     }
 
     @FXML
@@ -245,6 +297,10 @@ public class HomePageController {
         try {
             FXMLLoader loader = new FXMLLoader(FxmlLoader.getFxml("AccountInfoPage"));
             Parent accountInfoRoot = loader.load();
+
+            AccountInfoPageController accountInfoController = loader.getController();
+            accountInfoController.setCurrentUser(currentUser);
+            accountInfoController.init();
 
             infoPanel.getChildren().clear();
             infoPanel.getChildren().add(accountInfoRoot);

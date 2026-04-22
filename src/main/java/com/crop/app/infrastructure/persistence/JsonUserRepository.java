@@ -31,7 +31,9 @@ import com.crop.app.domain.repository.UserRepository;
  * @since 19-04-2026
  */
 public class JsonUserRepository implements UserRepository {
-
+    /**
+     * List of users to manage.
+     */
     private final List<User> users;
 
     /**

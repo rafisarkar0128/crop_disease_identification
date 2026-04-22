@@ -29,7 +29,9 @@ import com.crop.app.domain.repository.UserRepository;
  * @since 19-04-2026
  */
 public class UserAuthService {
-
+    /**
+     * The user repository implementation.
+     */
     private final UserRepository userRepository;
 
     /**

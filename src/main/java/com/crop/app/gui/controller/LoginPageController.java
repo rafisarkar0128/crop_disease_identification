@@ -174,7 +174,8 @@ public class LoginPageController {
 
         if (authService.authenticate(username, password)) {
             statusLabel.setText("Sign-in successful!");
-            stage.setScene(new HomePage(stage).createScene());
+            stage.setScene(
+                    new HomePage(stage, authService.getUserByUsername(username)).createScene());
         } else {
             statusLabel.setText("Invalid username or password.");
         }

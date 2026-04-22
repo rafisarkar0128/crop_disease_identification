@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<!-- fx:controller="com.crop.app.controllers.AccountInfoPageController" -->
 <BorderPane
     styleClass="root-container"
     stylesheets="@../styles/AccountInfoPage.css"
-    xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+    xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.crop.app.gui.controller.AccountInfoPageController">
     <top>
         <Label text="Account Information" styleClass="account-page-header"
             maxWidth="1.7976931348623157E308" />
@@ -22,14 +22,10 @@
         <VBox fx:id="accountInfoContainer" styleClass="account-info-container">
             <ImageView fx:id="accountAvatar" styleClass="account-avatar"
                 pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                <image>
-                    <Image url="@../icons/avatar-default.png" />
-                </image>
             </ImageView>
-            <Label text="\@demo" styleClass="account-username" />
-            <Label
-                text="This is the account bio. It can contain information about the user, their interests, and other relevant details."
-                styleClass="account-bio" wrapText="true" prefWidth="400.0" />
+            <Label fx:id="accountUsername" text="" styleClass="account-username" />
+            <Label fx:id="accountEmail" text="" styleClass="account-email" />
+            <Label fx:id="accountBio" text="" styleClass="account-bio" wrapText="true" />
         </VBox>
     </center>
 </BorderPane>
