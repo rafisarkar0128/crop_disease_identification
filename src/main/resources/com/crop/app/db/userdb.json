@@ -30,5 +30,13 @@
     "password": "pass",
     "bio": "New user account. Welcome to Crop Disease Identification.",
     "avatar": "avatar-default.png"
+  },
+  {
+    "id": "5",
+    "username": "Ainul",
+    "email": "ainul10222@gmail.com",
+    "password": "12345678",
+    "bio": "New user account. Welcome to Crop Disease Identification.",
+    "avatar": "avatar-default.png"
   }
 ]

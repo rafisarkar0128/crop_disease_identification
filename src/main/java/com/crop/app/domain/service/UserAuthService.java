@@ -79,8 +79,17 @@ public class UserAuthService {
      *
      * @param user the user to register
      * @return the registered user
+     * @throws IllegalArgumentException if the user is invalid or the password is too short
      */
     public User register(User user) {
+        if (user == null) {
+            throw new IllegalArgumentException("User cannot be null.");
+        }
+
+        if (user.getPassword() == null || user.getPassword().length() < 8) {
+            throw new IllegalArgumentException("Password must be at least 8 characters long.");
+        }
+
         return userRepository.register(user);
     }
 }

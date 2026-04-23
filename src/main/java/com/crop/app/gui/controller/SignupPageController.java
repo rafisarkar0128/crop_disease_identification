@@ -154,6 +154,11 @@ public class SignupPageController {
 			return;
 		}
 
+		if (password.length() < 8) {
+			statusLabel.setText("Password must be at least 8 characters long.");
+			return;
+		}
+
 		if (authService.getUserByUsername(username) != null) {
 			statusLabel.setText("Username already exists. Please choose another one.");
 			return;

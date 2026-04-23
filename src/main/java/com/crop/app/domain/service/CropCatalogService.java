@@ -129,6 +129,28 @@ public final class CropCatalogService {
     }
 
     /**
+     * Finds diseases in a crop that contain a specific symptom.
+     *
+     * @param crop the crop to search within
+     * @param symptom the symptom to match
+     * @return a list of diseases that have the specified symptom
+     */
+    public List<com.crop.app.domain.model.Disease> findDiseasesBySymptom(Crop crop, String symptom) {
+        if (crop == null || crop.getDiseases() == null || symptom == null || symptom.isBlank()) {
+            return List.of();
+        }
+
+        String normalizedSymptom = normalize(symptom);
+        return crop.getDiseases().stream().filter(disease -> {
+            if (disease.getSymptoms() == null) {
+                return false;
+            }
+            return disease.getSymptoms().stream()
+                    .anyMatch(s -> s != null && !s.isBlank() && normalize(s).equals(normalizedSymptom));
+        }).toList();
+    }
+
+    /**
      * Checks if a crop matches a search query by looking for the query in crop and disease fields.
      *
      * @param crop the crop to check

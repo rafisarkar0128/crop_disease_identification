@@ -17,6 +17,7 @@ package com.crop.app.gui.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import com.crop.app.common.exception.FxmlLoaderException;
 import com.crop.app.domain.model.Crop;
@@ -79,7 +80,8 @@ public class HomePageController {
     private final CropCatalogService cropCatalogService = new CropCatalogService();
 
     /**
-     * The primary stage of the application, used for scene navigation. Must be set before handling
+     * The primary stage of the application, used for scene navigation. Must be set
+     * before handling
      * any user interactions.
      */
     private Stage stage;
@@ -101,7 +103,8 @@ public class HomePageController {
     private ImageView backgroundImage;
 
     /**
-     * The header section of the home page, containing the search field and navigation buttons.
+     * The header section of the home page, containing the search field and
+     * navigation buttons.
      */
     @FXML
     private HBox header;
@@ -125,19 +128,22 @@ public class HomePageController {
     private TextField cropSearchField;
 
     /**
-     * The panel for displaying trending crops, which can be toggled visible or hidden.
+     * The panel for displaying trending crops, which can be toggled visible or
+     * hidden.
      */
     @FXML
     private VBox trendingPanel;
 
     /**
-     * The panel for displaying informational messages, which can be toggled visible or hidden.
+     * The panel for displaying informational messages, which can be toggled visible
+     * or hidden.
      */
     @FXML
     private StackPane infoPanel;
 
     /**
-     * The panel containing settings options, which can be toggled visible or hidden.
+     * The panel containing settings options, which can be toggled visible or
+     * hidden.
      */
     @FXML
     private VBox settingsPanel;
@@ -153,17 +159,20 @@ public class HomePageController {
     private boolean settingsPanelVisibleBeforeSearch;
 
     /**
-     * Default constructor required for FXML loading. The primary stage must be set via
+     * Default constructor required for FXML loading. The primary stage must be set
+     * via
      * {@link #setStage} before any user interactions.
      */
-    public HomePageController() {}
+    public HomePageController() {
+    }
 
     /**
      * Creates a home page controller with an initialized primary stage.
      *
-     * @param stage the primary stage
+     * @param stage       the primary stage
      * @param currentUser the currently logged-in user
-     * @throws NullPointerException if either {@code stage} or {@code currentUser} is null
+     * @throws NullPointerException if either {@code stage} or {@code currentUser}
+     *                              is null
      */
     public HomePageController(Stage stage, User currentUser) {
         this.stage = Objects.requireNonNull(stage, "stage");
@@ -207,7 +216,8 @@ public class HomePageController {
     }
 
     /**
-     * Ensures that the primary stage has been initialized before handling any user interactions.
+     * Ensures that the primary stage has been initialized before handling any user
+     * interactions.
      *
      * @throws IllegalStateException if the primary stage has not been initialized
      */
@@ -270,7 +280,8 @@ public class HomePageController {
     }
 
     /**
-     * Handles the settings button action to show news related to crops and diseases.
+     * Handles the settings button action to show news related to crops and
+     * diseases.
      *
      * @param event the action event fired by the settings button
      */
@@ -293,8 +304,7 @@ public class HomePageController {
         if (event.getSource() instanceof Labeled labeled) {
             cropName = labeled.getText();
         } else {
-            cropName =
-                    cropSearchField.getText() != null ? cropSearchField.getText() : "Unknown Crop";
+            cropName = cropSearchField.getText() != null ? cropSearchField.getText() : "Unknown Crop";
         }
 
         Crop crop = findCropByNameOrId(cropName);
@@ -332,7 +342,8 @@ public class HomePageController {
     }
 
     /**
-     * Handles the back to home button action to return to the default home page layout from search
+     * Handles the back to home button action to return to the default home page
+     * layout from search
      * results or other sub-pages.
      *
      * @param event the action event fired by the back to home button
@@ -501,7 +512,7 @@ public class HomePageController {
     /**
      * Builds the search-results content shown inside the main info panel.
      *
-     * @param query the search query
+     * @param query   the search query
      * @param matches the matching crop entries
      * @return the root panel for search results
      */
@@ -523,8 +534,7 @@ public class HomePageController {
         root.getChildren().addAll(title, subtitle);
 
         if (matches.isEmpty()) {
-            Label emptyState =
-                    new Label("Nothing found. Try another crop name or a wider search term.");
+            Label emptyState = new Label("Nothing found. Try another crop name or a wider search term.");
             emptyState.getStyleClass().add("search-empty-message");
             root.getChildren().add(emptyState);
         } else {
@@ -581,7 +591,8 @@ public class HomePageController {
     }
 
     /**
-     * Switches the layout into focused mode used by search and disease-identification views.
+     * Switches the layout into focused mode used by search and
+     * disease-identification views.
      */
     private void applyFocusedLayout() {
         if (!searchModeActive) {
@@ -635,10 +646,9 @@ public class HomePageController {
         Label cropName = new Label(crop.getName());
         cropName.getStyleClass().add("identification-crop-name");
 
-        String scientificName =
-                crop.getScientificName() == null || crop.getScientificName().isBlank()
-                        ? "Scientific name unavailable"
-                        : crop.getScientificName();
+        String scientificName = crop.getScientificName() == null || crop.getScientificName().isBlank()
+                ? "Scientific name unavailable"
+                : crop.getScientificName();
         Label cropScientificName = new Label(scientificName);
         cropScientificName.getStyleClass().add("identification-crop-scientific");
 
@@ -688,6 +698,7 @@ public class HomePageController {
             }
 
             selectedSymptomLabel.setText("Selected symptom: " + newValue);
+            showDiseaseResult(selectedCropData, newValue);
         });
 
         symptomPickerCard.getChildren().addAll(symptomTitle, symptomHint, symptomBox,
@@ -695,6 +706,222 @@ public class HomePageController {
 
         root.getChildren().addAll(title, subtitle, cropInfoCard, symptomPickerCard);
         return root;
+    }
+
+    /**
+     * Displays disease results for a selected symptom within the current crop.
+     *
+     * @param crop    the selected crop
+     * @param symptom the selected symptom
+     */
+    private void showDiseaseResult(Crop crop, String symptom) {
+        if (crop == null || symptom == null || symptom.isBlank()) {
+            return;
+        }
+
+        List<com.crop.app.domain.model.Disease> matchingDiseases = cropCatalogService.findDiseasesBySymptom(crop,
+                symptom);
+
+        if (matchingDiseases.isEmpty()) {
+            Label noDiseaseLabel = new Label(
+                    "No diseases found for symptom \"" + symptom + "\" in " + crop.getName());
+            noDiseaseLabel.getStyleClass().add("search-empty-message");
+            noDiseaseLabel.setWrapText(true);
+
+            VBox noResultsPanel = new VBox(10);
+            noResultsPanel.getStyleClass().add("identification-shell");
+            noResultsPanel.setPadding(new Insets(28, 32, 28, 32));
+            noResultsPanel.setAlignment(Pos.TOP_CENTER);
+
+            Label title = new Label("Disease Identification Results");
+            title.getStyleClass().add("identification-title");
+
+            noResultsPanel.getChildren().addAll(title, noDiseaseLabel);
+            infoPanel.getChildren().setAll(noResultsPanel);
+            return;
+        }
+
+        // Display the first matching disease
+        com.crop.app.domain.model.Disease selectedDisease = matchingDiseases.get(0);
+        VBox diseaseDetailsPanel = buildDiseaseDetailsPanel(selectedDisease, crop);
+        infoPanel.getChildren().setAll(diseaseDetailsPanel);
+        StackPane.setAlignment(diseaseDetailsPanel, Pos.TOP_CENTER);
+    }
+
+    /**
+     * Builds a detailed panel displaying information about a specific disease.
+     *
+     * @param disease the disease to display
+     * @param crop    the crop context
+     * @return a panel containing disease details
+     */
+    private VBox buildDiseaseDetailsPanel(com.crop.app.domain.model.Disease disease, Crop crop) {
+        VBox root = new VBox(16);
+        root.getStyleClass().add("identification-shell");
+        root.setPadding(new Insets(28, 32, 28, 32));
+        root.setAlignment(Pos.TOP_CENTER);
+
+        Label title = new Label("Disease Identification Results");
+        title.getStyleClass().add("identification-title");
+
+        Label diseaseTitle = new Label(disease.getName());
+        diseaseTitle.getStyleClass().add("identification-crop-name");
+
+        VBox diseaseCard = new VBox(10);
+        diseaseCard.getStyleClass().add("identification-crop-card");
+        diseaseCard.setAlignment(Pos.CENTER_RIGHT);
+        diseaseCard.setStyle("-fx-alignment: CENTER_RIGHT;");
+
+        // Pathogen
+        Label pathogenLabel = new Label("Pathogen: " + (disease.getPathogen() != null
+                && !disease.getPathogen().isBlank() ? disease.getPathogen() : "Unknown"));
+        pathogenLabel.getStyleClass().add("disease-pathogen");
+        pathogenLabel.setWrapText(true);
+        pathogenLabel.setStyle("-fx-text-alignment: right;");
+
+        // Category
+        Label categoryLabel = new Label("Category: " + (disease.getCategory() != null
+                && !disease.getCategory().isBlank() ? disease.getCategory() : "Unknown"));
+        categoryLabel.getStyleClass().add("disease-category");
+        categoryLabel.setStyle("-fx-text-alignment: right;");
+
+        // Description
+        Label descriptionLabel = new Label(disease.getDescription() != null
+                && !disease.getDescription().isBlank() ? disease.getDescription()
+                        : "Description not available.");
+        descriptionLabel.getStyleClass().add("disease-description");
+        descriptionLabel.setWrapText(true);
+        descriptionLabel.setStyle("-fx-text-alignment: right;");
+
+        diseaseCard.getChildren().addAll(diseaseTitle, pathogenLabel, categoryLabel,
+                descriptionLabel);
+
+        // Try to load and display disease image
+        javafx.scene.image.ImageView diseaseImage = loadDiseaseImage(disease, crop);
+        if (diseaseImage != null) {
+            diseaseImage.setFitWidth(400);
+            diseaseImage.setFitHeight(300);
+            diseaseImage.setPreserveRatio(true);
+            diseaseImage.getStyleClass().add("disease-image");
+
+            VBox imageContainer = new VBox(diseaseImage);
+            imageContainer.getStyleClass().add("disease-image-container");
+            imageContainer.setAlignment(Pos.CENTER);
+            root.getChildren().add(imageContainer);
+        } else {
+            Label noImageLabel = new Label("No disease image available for this crop.");
+            noImageLabel.getStyleClass().add("disease-no-image");
+            VBox noImageContainer = new VBox(noImageLabel);
+            noImageContainer.getStyleClass().add("disease-image-container");
+            noImageContainer.setAlignment(Pos.CENTER);
+            root.getChildren().add(noImageContainer);
+        }
+
+        // Treatments
+        VBox treatmentCard = new VBox(10);
+        treatmentCard.getStyleClass().add("identification-crop-card");
+        treatmentCard.setAlignment(Pos.CENTER_RIGHT);
+        treatmentCard.setStyle("-fx-alignment: CENTER_RIGHT;");
+
+        Label treatmentTitle = new Label("Treatments / Management");
+        treatmentTitle.getStyleClass().add("disease-treatment-title");
+        treatmentTitle.setStyle("-fx-text-alignment: right;");
+
+        VBox treatmentList = new VBox(6);
+        treatmentList.setStyle("-fx-alignment: CENTER_RIGHT;");
+        if (disease.getTreatments() != null && !disease.getTreatments().isEmpty()) {
+            for (String treatment : disease.getTreatments()) {
+                Label treatmentItem = new Label("• " + treatment);
+                treatmentItem.getStyleClass().add("disease-treatment-item");
+                treatmentItem.setWrapText(true);
+                treatmentItem.setStyle("-fx-text-alignment: right;");
+                treatmentList.getChildren().add(treatmentItem);
+            }
+        } else {
+            Label noTreatmentLabel = new Label("No treatments available.");
+            noTreatmentLabel.getStyleClass().add("disease-treatment-item");
+            noTreatmentLabel.setStyle("-fx-text-alignment: right;");
+            treatmentList.getChildren().add(noTreatmentLabel);
+        }
+
+        treatmentCard.getChildren().addAll(treatmentTitle, treatmentList);
+
+        root.getChildren().addAll(title, diseaseCard, treatmentCard);
+        return root;
+    }
+
+    /**
+     * Attempts to load a disease image from local or remote sources.
+     *
+     * @param disease the disease whose image to load
+     * @param crop    the crop context (used to determine local image availability)
+     * @return a JavaFX ImageView if successful, null otherwise
+     */
+    private javafx.scene.image.ImageView loadDiseaseImage(com.crop.app.domain.model.Disease disease, Crop crop) {
+        javafx.scene.image.Image image = null;
+        String cropName = crop.getName().toLowerCase(Locale.ROOT);
+
+        try {
+            // For rice, search for local image by disease name
+            if (cropName.equals("rice")) {
+                String diseaseName = disease.getName().toLowerCase(Locale.ROOT);
+                try {
+                    // Try direct name match first
+                    image = com.crop.app.infrastructure.loader.ImageLoader
+                            .getImageAsImage("rice/" + diseaseName + ".png");
+                } catch (Exception e1) {
+                    // Try alternative formats (with hyphens, etc.)
+                    try {
+                        String dashName = diseaseName.replace(" ", "-");
+                        image = com.crop.app.infrastructure.loader.ImageLoader
+                                .getImageAsImage("rice/" + dashName + ".png");
+                    } catch (Exception e2) {
+                        // Try with suffix like "-2"
+                        try {
+                            String dashNameWithSuffix = diseaseName.replace(" ", "-") + "-2.png";
+                            image = com.crop.app.infrastructure.loader.ImageLoader
+                                    .getImageAsImage("rice/" + dashNameWithSuffix);
+                        } catch (Exception e3) {
+                            // Last attempt: try URL if available
+                            String imageUrl = disease.getImage();
+                            if (imageUrl != null && imageUrl.startsWith("http")) {
+                                image = new javafx.scene.image.Image(imageUrl, true);
+                            }
+                        }
+                    }
+                }
+            } else if (cropName.equals("jute")) {
+                // For jute, try to load from local jute/ folder if available
+                String diseaseName = disease.getName().toLowerCase(Locale.ROOT);
+                try {
+                    image = com.crop.app.infrastructure.loader.ImageLoader
+                            .getImageAsImage("jute/" + diseaseName.replace(" ", "-") + ".png");
+                } catch (Exception e) {
+                    // Jute folder doesn't exist or image not found
+                    String imageUrl = disease.getImage();
+                    if (imageUrl != null && imageUrl.startsWith("http")) {
+                        image = new javafx.scene.image.Image(imageUrl, true);
+                    }
+                }
+            } else {
+                // For other crops, try the URL if available
+                String imageUrl = disease.getImage();
+                if (imageUrl != null && imageUrl.startsWith("http")) {
+                    image = new javafx.scene.image.Image(imageUrl, true);
+                }
+            }
+
+            if (image != null && !image.isError()) {
+                javafx.scene.image.ImageView imageView = new javafx.scene.image.ImageView(image);
+                imageView.setSmooth(true);
+                imageView.setCache(true);
+                return imageView;
+            }
+        } catch (Exception e) {
+            // Silently ignore image loading errors
+        }
+
+        return null;
     }
 
     /**
@@ -748,7 +975,7 @@ public class HomePageController {
      * Filters symptom suggestions based on user input.
      *
      * @param symptomPool all symptom options
-     * @param input user input text
+     * @param input       user input text
      * @return filtered suggestions
      */
     private List<String> filterSymptoms(List<String> symptomPool, String input) {
@@ -758,7 +985,7 @@ public class HomePageController {
     /**
      * Builds an ellipsized summary string.
      *
-     * @param value source text
+     * @param value     source text
      * @param maxLength max output length
      * @return shortened text where needed
      */
@@ -782,10 +1009,9 @@ public class HomePageController {
      * @return the subtitle text
      */
     private String buildSearchResultDetails(Crop crop) {
-        String scientificName =
-                crop.getScientificName() == null || crop.getScientificName().isBlank()
-                        ? "Scientific name unavailable"
-                        : crop.getScientificName();
+        String scientificName = crop.getScientificName() == null || crop.getScientificName().isBlank()
+                ? "Scientific name unavailable"
+                : crop.getScientificName();
         int diseaseCount = crop.getDiseases() == null ? 0 : crop.getDiseases().size();
         return scientificName + " • " + diseaseCount + " diseases";
     }
