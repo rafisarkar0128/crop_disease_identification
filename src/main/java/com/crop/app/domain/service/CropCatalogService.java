@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import com.crop.app.domain.model.Crop;
+import com.crop.app.domain.model.Disease;
 import com.crop.app.infrastructure.loader.MetadataIndexLoader;
 import com.crop.app.infrastructure.mapper.CropMetadataMapper;
 
@@ -135,7 +136,7 @@ public final class CropCatalogService {
      * @param symptom the symptom to match
      * @return a list of diseases that have the specified symptom
      */
-    public List<com.crop.app.domain.model.Disease> findDiseasesBySymptom(Crop crop, String symptom) {
+    public List<Disease> findDiseasesBySymptom(Crop crop, String symptom) {
         if (crop == null || crop.getDiseases() == null || symptom == null || symptom.isBlank()) {
             return List.of();
         }
@@ -145,8 +146,8 @@ public final class CropCatalogService {
             if (disease.getSymptoms() == null) {
                 return false;
             }
-            return disease.getSymptoms().stream()
-                    .anyMatch(s -> s != null && !s.isBlank() && normalize(s).equals(normalizedSymptom));
+            return disease.getSymptoms().stream().anyMatch(
+                    s -> s != null && !s.isBlank() && normalize(s).equals(normalizedSymptom));
         }).toList();
     }
 

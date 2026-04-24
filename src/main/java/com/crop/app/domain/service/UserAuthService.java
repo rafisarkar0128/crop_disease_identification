@@ -86,8 +86,8 @@ public class UserAuthService {
             throw new IllegalArgumentException("User cannot be null.");
         }
 
-        if (user.getPassword() == null || user.getPassword().length() < 8) {
-            throw new IllegalArgumentException("Password must be at least 8 characters long.");
+        if (user.getPassword() == null || user.getPassword().length() < 4) {
+            throw new IllegalArgumentException("Password must be at least 4 characters long.");
         }
 
         return userRepository.register(user);

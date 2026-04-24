@@ -17,15 +17,16 @@ package com.crop.app.gui.controller;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 import com.crop.app.common.exception.FxmlLoaderException;
+import com.crop.app.common.exception.ResourceLoaderException;
 import com.crop.app.domain.model.Crop;
+import com.crop.app.domain.model.Disease;
 import com.crop.app.domain.model.User;
 import com.crop.app.domain.service.CropCatalogService;
 import com.crop.app.gui.view.LoginPage;
 import com.crop.app.infrastructure.loader.FxmlLoader;
-import javafx.application.Platform;
+import com.crop.app.infrastructure.loader.ImageLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,8 +36,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.Labeled;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -80,8 +81,7 @@ public class HomePageController {
     private final CropCatalogService cropCatalogService = new CropCatalogService();
 
     /**
-     * The primary stage of the application, used for scene navigation. Must be set
-     * before handling
+     * The primary stage of the application, used for scene navigation. Must be set before handling
      * any user interactions.
      */
     private Stage stage;
@@ -103,21 +103,32 @@ public class HomePageController {
     private ImageView backgroundImage;
 
     /**
-     * The header section of the home page, containing the search field and
-     * navigation buttons.
+     * The header section of the home page, containing the search field and navigation buttons.
      */
     @FXML
     private HBox header;
 
+    /**
+     * The home button in the header for navigation.
+     */
     @FXML
     private Button homeButton;
 
+    /**
+     * The news button in the header for navigation.
+     */
     @FXML
     private Button newsButton;
 
+    /**
+     * The feeds button in the header for navigation.
+     */
     @FXML
     private Button feedsButton;
 
+    /**
+     * The settings button in the header for navigation.
+     */
     @FXML
     private Button settingsButton;
 
@@ -128,22 +139,19 @@ public class HomePageController {
     private TextField cropSearchField;
 
     /**
-     * The panel for displaying trending crops, which can be toggled visible or
-     * hidden.
+     * The panel for displaying trending crops, which can be toggled visible or hidden.
      */
     @FXML
     private VBox trendingPanel;
 
     /**
-     * The panel for displaying informational messages, which can be toggled visible
-     * or hidden.
+     * The panel for displaying informational messages, which can be toggled visible or hidden.
      */
     @FXML
     private StackPane infoPanel;
 
     /**
-     * The panel containing settings options, which can be toggled visible or
-     * hidden.
+     * The panel containing settings options, which can be toggled visible or hidden.
      */
     @FXML
     private VBox settingsPanel;
@@ -159,20 +167,17 @@ public class HomePageController {
     private boolean settingsPanelVisibleBeforeSearch;
 
     /**
-     * Default constructor required for FXML loading. The primary stage must be set
-     * via
+     * Default constructor required for FXML loading. The primary stage must be set via
      * {@link #setStage} before any user interactions.
      */
-    public HomePageController() {
-    }
+    public HomePageController() {}
 
     /**
      * Creates a home page controller with an initialized primary stage.
      *
-     * @param stage       the primary stage
+     * @param stage the primary stage
      * @param currentUser the currently logged-in user
-     * @throws NullPointerException if either {@code stage} or {@code currentUser}
-     *                              is null
+     * @throws NullPointerException if either {@code stage} or {@code currentUser} is null
      */
     public HomePageController(Stage stage, User currentUser) {
         this.stage = Objects.requireNonNull(stage, "stage");
@@ -216,15 +221,55 @@ public class HomePageController {
     }
 
     /**
-     * Ensures that the primary stage has been initialized before handling any user
-     * interactions.
-     *
-     * @throws IllegalStateException if the primary stage has not been initialized
+     * Restores the default info panel content.
      */
-    private void ensureStage() {
-        if (stage == null) {
-            throw new IllegalStateException("Primary stage has not been initialized.");
+    private void showDefaultInfoPanel() {
+        Label defaultLabel = new Label("ADVERTISEMENT");
+        defaultLabel.getStyleClass().add("ad-label");
+
+        infoPanel.getChildren().clear();
+        infoPanel.getChildren().add(defaultLabel);
+        StackPane.setAlignment(defaultLabel, Pos.CENTER);
+    }
+
+    /**
+     * Restores the header buttons when returning to the home layout.
+     */
+    private void showHomeNavigation() {
+        if (homeButton != null) {
+            homeButton.setVisible(true);
+            homeButton.setManaged(true);
         }
+
+        if (newsButton != null) {
+            newsButton.setVisible(true);
+            newsButton.setManaged(true);
+        }
+
+        if (feedsButton != null) {
+            feedsButton.setVisible(true);
+            feedsButton.setManaged(true);
+        }
+
+        if (settingsButton != null) {
+            settingsButton.setVisible(true);
+            settingsButton.setManaged(true);
+        }
+    }
+
+    /**
+     * Restores the home-page layout from search mode.
+     */
+    private void restoreHomeLayout() {
+        searchModeActive = false;
+
+        trendingPanel.setVisible(true);
+        trendingPanel.setManaged(true);
+
+        settingsPanel.setVisible(settingsPanelVisibleBeforeSearch);
+        settingsPanel.setManaged(settingsPanelVisibleBeforeSearch);
+
+        showHomeNavigation();
     }
 
     /**
@@ -280,8 +325,7 @@ public class HomePageController {
     }
 
     /**
-     * Handles the settings button action to show news related to crops and
-     * diseases.
+     * Handles the settings button action to show news related to crops and diseases.
      *
      * @param event the action event fired by the settings button
      */
@@ -290,68 +334,6 @@ public class HomePageController {
         boolean isCurrentlyVisible = settingsPanel.isVisible();
         settingsPanel.setVisible(!isCurrentlyVisible);
         settingsPanel.setManaged(!isCurrentlyVisible);
-    }
-
-    /**
-     * Handles crop selection via button click.
-     *
-     * @param event the action event
-     */
-    @FXML
-    private void handleCropSelection(ActionEvent event) {
-        String cropName;
-
-        if (event.getSource() instanceof Labeled labeled) {
-            cropName = labeled.getText();
-        } else {
-            cropName = cropSearchField.getText() != null ? cropSearchField.getText() : "Unknown Crop";
-        }
-
-        Crop crop = findCropByNameOrId(cropName);
-        if (crop == null) {
-            showUnavailableCropMessage(cropName);
-            return;
-        }
-
-        showDiseaseIdentification(crop);
-    }
-
-    /**
-     * Handles crop selection via button click.
-     *
-     * @param event the action event
-     */
-    @FXML
-    private void handleCropSearch(ActionEvent event) {
-        String cropName = cropSearchField.getText();
-
-        if (cropName == null || cropName.trim().isEmpty()) {
-            cropSearchField.setPromptText("PLEASE ENTER A CROP NAME!");
-
-            if (!cropSearchField.getStyleClass().contains("search-field-error")) {
-                cropSearchField.getStyleClass().add("search-field-error");
-            }
-
-            return;
-        }
-
-        cropSearchField.getStyleClass().remove("search-field-error");
-        cropSearchField.setPromptText("Search crop...");
-
-        showSearchResults(cropName.trim());
-    }
-
-    /**
-     * Handles the back to home button action to return to the default home page
-     * layout from search
-     * results or other sub-pages.
-     *
-     * @param event the action event fired by the back to home button
-     */
-    @FXML
-    private void handleBackToHome(ActionEvent event) {
-        ensureStage();
-        showHome(event);
     }
 
     /**
@@ -406,62 +388,65 @@ public class HomePageController {
      * Handles the logout button action to navigate to the login page.
      *
      * @param event the action event fired by the logout button
+     * @throws IllegalStateException if the primary stage has not been initialized
      */
     @FXML
     private void handleLogout(ActionEvent event) {
-        ensureStage();
+        if (stage == null) {
+            throw new IllegalStateException("Primary stage has not been initialized.");
+        }
+
         stage.setScene(new LoginPage(stage).createScene());
     }
 
     /**
-     * Handles the exit button action to exit the application.
+     * Handles crop selection via button click.
      *
-     * @param event the action event fired by the exit button
+     * @param event the action event
      */
     @FXML
-    private void handleExit(ActionEvent event) {
-        Platform.exit();
+    private void handleCropSelection(ActionEvent event) {
+        String cropName;
+
+        if (event.getSource() instanceof Button button) {
+            cropName = button.getText();
+        } else {
+            cropName =
+                    cropSearchField.getText() != null ? cropSearchField.getText() : "Unknown Crop";
+        }
+
+        Crop crop = cropCatalogService.findCropByNameOrId(cropName);
+        if (crop == null) {
+            showUnavailableCropMessage(cropName);
+            return;
+        }
+
+        showDiseaseIdentification(crop);
     }
 
     /**
-     * Switches the page into search mode and renders crop cards matching the query.
+     * Handles crop selection via text field input and search button click.
      *
-     * @param query the user-entered search text
+     * @param event the action event
      */
-    private void showSearchResults(String query) {
-        applyFocusedLayout();
+    @FXML
+    private void handleCropSearch(ActionEvent event) {
+        String cropName = cropSearchField.getText();
 
-        List<Crop> matches = findMatchingCrops(query);
-        VBox searchRoot = buildSearchResultsPanel(query, matches);
-        infoPanel.getChildren().setAll(searchRoot);
-        StackPane.setAlignment(searchRoot, Pos.TOP_CENTER);
-    }
+        if (cropName == null || cropName.trim().isEmpty()) {
+            cropSearchField.setPromptText("PLEASE ENTER A CROP NAME!");
 
-    /**
-     * Restores the home-page layout from search mode.
-     */
-    private void restoreHomeLayout() {
-        searchModeActive = false;
+            if (!cropSearchField.getStyleClass().contains("search-field-error")) {
+                cropSearchField.getStyleClass().add("search-field-error");
+            }
 
-        trendingPanel.setVisible(true);
-        trendingPanel.setManaged(true);
+            return;
+        }
 
-        settingsPanel.setVisible(settingsPanelVisibleBeforeSearch);
-        settingsPanel.setManaged(settingsPanelVisibleBeforeSearch);
+        cropSearchField.getStyleClass().remove("search-field-error");
+        cropSearchField.setPromptText("Search crop...");
 
-        showHomeNavigation();
-    }
-
-    /**
-     * Restores the default info panel content.
-     */
-    private void showDefaultInfoPanel() {
-        Label defaultLabel = new Label("ADVERTISEMENT");
-        defaultLabel.getStyleClass().add("ad-label");
-
-        infoPanel.getChildren().clear();
-        infoPanel.getChildren().add(defaultLabel);
-        StackPane.setAlignment(defaultLabel, Pos.CENTER);
+        showSearchResults(cropName.trim());
     }
 
     /**
@@ -485,34 +470,40 @@ public class HomePageController {
     }
 
     /**
-     * Restores the header buttons when returning to the home layout.
+     * Switches the layout into focused mode used by search and disease-identification views.
      */
-    private void showHomeNavigation() {
-        if (homeButton != null) {
-            homeButton.setVisible(true);
-            homeButton.setManaged(true);
+    private void applyFocusedLayout() {
+        if (!searchModeActive) {
+            settingsPanelVisibleBeforeSearch = settingsPanel.isVisible();
         }
 
-        if (newsButton != null) {
-            newsButton.setVisible(true);
-            newsButton.setManaged(true);
-        }
+        searchModeActive = true;
+        hideHomeNavigation();
 
-        if (feedsButton != null) {
-            feedsButton.setVisible(true);
-            feedsButton.setManaged(true);
-        }
+        trendingPanel.setVisible(false);
+        trendingPanel.setManaged(false);
+        settingsPanel.setVisible(false);
+        settingsPanel.setManaged(false);
+    }
 
-        if (settingsButton != null) {
-            settingsButton.setVisible(true);
-            settingsButton.setManaged(true);
-        }
+    /**
+     * Switches the page into search mode and renders crop cards matching the query.
+     *
+     * @param query the user-entered search text
+     */
+    private void showSearchResults(String query) {
+        applyFocusedLayout();
+
+        List<Crop> matches = cropCatalogService.findMatchingCrops(query, MAX_SEARCH_RESULTS);
+        VBox searchRoot = buildSearchResultsPanel(query, matches);
+        infoPanel.getChildren().setAll(searchRoot);
+        StackPane.setAlignment(searchRoot, Pos.TOP_CENTER);
     }
 
     /**
      * Builds the search-results content shown inside the main info panel.
      *
-     * @param query   the search query
+     * @param query the search query
      * @param matches the matching crop entries
      * @return the root panel for search results
      */
@@ -534,7 +525,8 @@ public class HomePageController {
         root.getChildren().addAll(title, subtitle);
 
         if (matches.isEmpty()) {
-            Label emptyState = new Label("Nothing found. Try another crop name or a wider search term.");
+            Label emptyState =
+                    new Label("Nothing found. Try another crop name or a wider search term.");
             emptyState.getStyleClass().add("search-empty-message");
             root.getChildren().add(emptyState);
         } else {
@@ -591,27 +583,10 @@ public class HomePageController {
     }
 
     /**
-     * Switches the layout into focused mode used by search and
-     * disease-identification views.
-     */
-    private void applyFocusedLayout() {
-        if (!searchModeActive) {
-            settingsPanelVisibleBeforeSearch = settingsPanel.isVisible();
-        }
-
-        searchModeActive = true;
-        hideHomeNavigation();
-
-        trendingPanel.setVisible(false);
-        trendingPanel.setManaged(false);
-        settingsPanel.setVisible(false);
-        settingsPanel.setManaged(false);
-    }
-
-    /**
      * Opens disease-identification mode for the selected crop.
      *
      * @param crop selected crop metadata
+     * @throws NullPointerException if {@code crop} is null
      */
     private void showDiseaseIdentification(Crop crop) {
         selectedCropData = Objects.requireNonNull(crop, "crop");
@@ -646,9 +621,10 @@ public class HomePageController {
         Label cropName = new Label(crop.getName());
         cropName.getStyleClass().add("identification-crop-name");
 
-        String scientificName = crop.getScientificName() == null || crop.getScientificName().isBlank()
-                ? "Scientific name unavailable"
-                : crop.getScientificName();
+        String scientificName =
+                crop.getScientificName() == null || crop.getScientificName().isBlank()
+                        ? "Scientific name unavailable"
+                        : crop.getScientificName();
         Label cropScientificName = new Label(scientificName);
         cropScientificName.getStyleClass().add("identification-crop-scientific");
 
@@ -675,15 +651,12 @@ public class HomePageController {
         symptomBox.getStyleClass().add("symptom-combo-box");
         symptomBox.setMaxWidth(Double.MAX_VALUE);
 
-        List<String> symptomPool = collectSymptoms(crop);
+        List<String> symptomPool = cropCatalogService.collectSymptoms(crop);
         symptomBox.getItems().setAll(symptomPool);
 
-        Label selectedSymptomLabel = new Label("Pick a symptom suggestion to continue.");
-        selectedSymptomLabel.getStyleClass().add("identification-selected-symptom");
-        selectedSymptomLabel.setWrapText(true);
-
         symptomBox.getEditor().textProperty().addListener((obs, oldText, newText) -> {
-            List<String> filtered = filterSymptoms(symptomPool, newText);
+            List<String> filtered = cropCatalogService.filterSymptoms(symptomPool, newText,
+                    MAX_SYMPTOM_SUGGESTIONS);
             symptomBox.getItems().setAll(filtered);
 
             if (!filtered.isEmpty()) {
@@ -693,16 +666,13 @@ public class HomePageController {
 
         symptomBox.valueProperty().addListener((obs, oldValue, newValue) -> {
             if (newValue == null || newValue.isBlank()) {
-                selectedSymptomLabel.setText("Pick a symptom suggestion to continue.");
                 return;
             }
 
-            selectedSymptomLabel.setText("Selected symptom: " + newValue);
             showDiseaseResult(selectedCropData, newValue);
         });
 
-        symptomPickerCard.getChildren().addAll(symptomTitle, symptomHint, symptomBox,
-                selectedSymptomLabel);
+        symptomPickerCard.getChildren().addAll(symptomTitle, symptomHint, symptomBox);
 
         root.getChildren().addAll(title, subtitle, cropInfoCard, symptomPickerCard);
         return root;
@@ -711,7 +681,7 @@ public class HomePageController {
     /**
      * Displays disease results for a selected symptom within the current crop.
      *
-     * @param crop    the selected crop
+     * @param crop the selected crop
      * @param symptom the selected symptom
      */
     private void showDiseaseResult(Crop crop, String symptom) {
@@ -719,8 +689,7 @@ public class HomePageController {
             return;
         }
 
-        List<com.crop.app.domain.model.Disease> matchingDiseases = cropCatalogService.findDiseasesBySymptom(crop,
-                symptom);
+        List<Disease> matchingDiseases = cropCatalogService.findDiseasesBySymptom(crop, symptom);
 
         if (matchingDiseases.isEmpty()) {
             Label noDiseaseLabel = new Label(
@@ -741,8 +710,7 @@ public class HomePageController {
             return;
         }
 
-        // Display the first matching disease
-        com.crop.app.domain.model.Disease selectedDisease = matchingDiseases.get(0);
+        Disease selectedDisease = matchingDiseases.get(0);
         VBox diseaseDetailsPanel = buildDiseaseDetailsPanel(selectedDisease, crop);
         infoPanel.getChildren().setAll(diseaseDetailsPanel);
         StackPane.setAlignment(diseaseDetailsPanel, Pos.TOP_CENTER);
@@ -752,10 +720,10 @@ public class HomePageController {
      * Builds a detailed panel displaying information about a specific disease.
      *
      * @param disease the disease to display
-     * @param crop    the crop context
+     * @param crop the crop context
      * @return a panel containing disease details
      */
-    private VBox buildDiseaseDetailsPanel(com.crop.app.domain.model.Disease disease, Crop crop) {
+    private VBox buildDiseaseDetailsPanel(Disease disease, Crop crop) {
         VBox root = new VBox(16);
         root.getStyleClass().add("identification-shell");
         root.setPadding(new Insets(28, 32, 28, 32));
@@ -763,41 +731,38 @@ public class HomePageController {
 
         Label title = new Label("Disease Identification Results");
         title.getStyleClass().add("identification-title");
-
-        Label diseaseTitle = new Label(disease.getName());
-        diseaseTitle.getStyleClass().add("identification-crop-name");
+        root.getChildren().add(title);
 
         VBox diseaseCard = new VBox(10);
-        diseaseCard.getStyleClass().add("identification-crop-card");
-        diseaseCard.setAlignment(Pos.CENTER_RIGHT);
-        diseaseCard.setStyle("-fx-alignment: CENTER_RIGHT;");
+        diseaseCard.getStyleClass().add("disease-crop-card");
 
-        // Pathogen
-        Label pathogenLabel = new Label("Pathogen: " + (disease.getPathogen() != null
-                && !disease.getPathogen().isBlank() ? disease.getPathogen() : "Unknown"));
-        pathogenLabel.getStyleClass().add("disease-pathogen");
-        pathogenLabel.setWrapText(true);
-        pathogenLabel.setStyle("-fx-text-alignment: right;");
+        Label diseaseTitle = new Label(disease.getName());
+        diseaseTitle.getStyleClass().add("disease-name");
+        diseaseCard.getChildren().add(diseaseTitle);
 
-        // Category
-        Label categoryLabel = new Label("Category: " + (disease.getCategory() != null
-                && !disease.getCategory().isBlank() ? disease.getCategory() : "Unknown"));
-        categoryLabel.getStyleClass().add("disease-category");
-        categoryLabel.setStyle("-fx-text-alignment: right;");
+        if (disease.getPathogen() != null && !disease.getPathogen().isBlank()) {
+            Label pathogenLabel = new Label("Pathogen: " + disease.getPathogen());
+            pathogenLabel.getStyleClass().add("disease-pathogen");
+            diseaseCard.getChildren().add(pathogenLabel);
+        }
 
-        // Description
-        Label descriptionLabel = new Label(disease.getDescription() != null
-                && !disease.getDescription().isBlank() ? disease.getDescription()
-                        : "Description not available.");
+        if (disease.getCategory() != null && !disease.getCategory().isBlank()) {
+            Label categoryLabel = new Label("Category: " + (disease.getCategory()));
+            categoryLabel.getStyleClass().add("disease-category");
+            diseaseCard.getChildren().add(categoryLabel);
+        }
+
+        Label descriptionLabel = null;
+        if (disease.getDescription() != null && !disease.getDescription().isBlank()) {
+            descriptionLabel = new Label(disease.getDescription());
+            descriptionLabel.setWrapText(true);
+        } else {
+            descriptionLabel = new Label("Description not available.");
+        }
         descriptionLabel.getStyleClass().add("disease-description");
-        descriptionLabel.setWrapText(true);
-        descriptionLabel.setStyle("-fx-text-alignment: right;");
+        diseaseCard.getChildren().add(descriptionLabel);
 
-        diseaseCard.getChildren().addAll(diseaseTitle, pathogenLabel, categoryLabel,
-                descriptionLabel);
-
-        // Try to load and display disease image
-        javafx.scene.image.ImageView diseaseImage = loadDiseaseImage(disease, crop);
+        ImageView diseaseImage = loadDiseaseImage(disease, crop);
         if (diseaseImage != null) {
             diseaseImage.setFitWidth(400);
             diseaseImage.setFitHeight(300);
@@ -817,36 +782,32 @@ public class HomePageController {
             root.getChildren().add(noImageContainer);
         }
 
-        // Treatments
         VBox treatmentCard = new VBox(10);
-        treatmentCard.getStyleClass().add("identification-crop-card");
-        treatmentCard.setAlignment(Pos.CENTER_RIGHT);
-        treatmentCard.setStyle("-fx-alignment: CENTER_RIGHT;");
+        treatmentCard.getStyleClass().add("disease-treatment-card");
 
         Label treatmentTitle = new Label("Treatments / Management");
         treatmentTitle.getStyleClass().add("disease-treatment-title");
-        treatmentTitle.setStyle("-fx-text-alignment: right;");
+        treatmentCard.getChildren().add(treatmentTitle);
 
-        VBox treatmentList = new VBox(6);
-        treatmentList.setStyle("-fx-alignment: CENTER_RIGHT;");
+
+        VBox treatmentList = new VBox();
+        treatmentList.getStyleClass().add("disease-treatment-list");
+        treatmentCard.getChildren().add(treatmentList);
+
         if (disease.getTreatments() != null && !disease.getTreatments().isEmpty()) {
             for (String treatment : disease.getTreatments()) {
                 Label treatmentItem = new Label("• " + treatment);
                 treatmentItem.getStyleClass().add("disease-treatment-item");
                 treatmentItem.setWrapText(true);
-                treatmentItem.setStyle("-fx-text-alignment: right;");
                 treatmentList.getChildren().add(treatmentItem);
             }
         } else {
             Label noTreatmentLabel = new Label("No treatments available.");
             noTreatmentLabel.getStyleClass().add("disease-treatment-item");
-            noTreatmentLabel.setStyle("-fx-text-alignment: right;");
             treatmentList.getChildren().add(noTreatmentLabel);
         }
 
-        treatmentCard.getChildren().addAll(treatmentTitle, treatmentList);
-
-        root.getChildren().addAll(title, diseaseCard, treatmentCard);
+        root.getChildren().addAll(diseaseCard, treatmentCard);
         return root;
     }
 
@@ -854,74 +815,54 @@ public class HomePageController {
      * Attempts to load a disease image from local or remote sources.
      *
      * @param disease the disease whose image to load
-     * @param crop    the crop context (used to determine local image availability)
+     * @param crop the crop context (used to determine local image availability)
      * @return a JavaFX ImageView if successful, null otherwise
      */
-    private javafx.scene.image.ImageView loadDiseaseImage(com.crop.app.domain.model.Disease disease, Crop crop) {
-        javafx.scene.image.Image image = null;
-        String cropName = crop.getName().toLowerCase(Locale.ROOT);
+    private ImageView loadDiseaseImage(Disease disease, Crop crop) {
+        ImageView imageContainer = null;
+        String imageUrl = disease.getImage();
 
-        try {
-            // For rice, search for local image by disease name
-            if (cropName.equals("rice")) {
-                String diseaseName = disease.getName().toLowerCase(Locale.ROOT);
-                try {
-                    // Try direct name match first
-                    image = com.crop.app.infrastructure.loader.ImageLoader
-                            .getImageAsImage("rice/" + diseaseName + ".png");
-                } catch (Exception e1) {
-                    // Try alternative formats (with hyphens, etc.)
-                    try {
-                        String dashName = diseaseName.replace(" ", "-");
-                        image = com.crop.app.infrastructure.loader.ImageLoader
-                                .getImageAsImage("rice/" + dashName + ".png");
-                    } catch (Exception e2) {
-                        // Try with suffix like "-2"
-                        try {
-                            String dashNameWithSuffix = diseaseName.replace(" ", "-") + "-2.png";
-                            image = com.crop.app.infrastructure.loader.ImageLoader
-                                    .getImageAsImage("rice/" + dashNameWithSuffix);
-                        } catch (Exception e3) {
-                            // Last attempt: try URL if available
-                            String imageUrl = disease.getImage();
-                            if (imageUrl != null && imageUrl.startsWith("http")) {
-                                image = new javafx.scene.image.Image(imageUrl, true);
-                            }
-                        }
-                    }
-                }
-            } else if (cropName.equals("jute")) {
-                // For jute, try to load from local jute/ folder if available
-                String diseaseName = disease.getName().toLowerCase(Locale.ROOT);
-                try {
-                    image = com.crop.app.infrastructure.loader.ImageLoader
-                            .getImageAsImage("jute/" + diseaseName.replace(" ", "-") + ".png");
-                } catch (Exception e) {
-                    // Jute folder doesn't exist or image not found
-                    String imageUrl = disease.getImage();
-                    if (imageUrl != null && imageUrl.startsWith("http")) {
-                        image = new javafx.scene.image.Image(imageUrl, true);
-                    }
-                }
-            } else {
-                // For other crops, try the URL if available
-                String imageUrl = disease.getImage();
-                if (imageUrl != null && imageUrl.startsWith("http")) {
-                    image = new javafx.scene.image.Image(imageUrl, true);
-                }
-            }
-
-            if (image != null && !image.isError()) {
-                javafx.scene.image.ImageView imageView = new javafx.scene.image.ImageView(image);
-                imageView.setSmooth(true);
-                imageView.setCache(true);
-                return imageView;
-            }
-        } catch (Exception e) {
-            // Silently ignore image loading errors
+        if (imageUrl == null || imageUrl.isBlank()) {
+            return null;
         }
 
-        return null;
+        if (imageUrl.startsWith("http")) {
+            try {
+                Image image = new Image(imageUrl, true);
+
+                if (image != null && !image.isError()) {
+                    imageContainer = new ImageView(image);
+                    imageContainer.setSmooth(true);
+                    imageContainer.setCache(true);
+                    return imageContainer;
+                }
+
+                return imageContainer;
+
+            } catch (Exception e) {
+                System.err.println(new ResourceLoaderException(
+                        "Failed to load disease image from URL: " + e.getMessage(), e));
+                return null;
+            }
+
+        }
+
+        try {
+            Image image = ImageLoader.getImageAsImage(crop.getId() + "/" + imageUrl);
+
+            if (image != null && !image.isError()) {
+                imageContainer = new ImageView(image);
+                imageContainer.setSmooth(true);
+                imageContainer.setCache(true);
+                return imageContainer;
+            }
+        } catch (Exception e) {
+            System.err.println(new ResourceLoaderException(
+                    "Failed to load disease image: " + e.getMessage(), e));
+            return null;
+        }
+
+        return imageContainer;
     }
 
     /**
@@ -952,40 +893,9 @@ public class HomePageController {
     }
 
     /**
-     * Finds a crop by exact name or id.
-     *
-     * @param cropNameId crop name or id
-     * @return matching crop metadata or null
-     */
-    private Crop findCropByNameOrId(String cropNameId) {
-        return cropCatalogService.findCropByNameOrId(cropNameId);
-    }
-
-    /**
-     * Collects unique symptoms for a crop from all its diseases.
-     *
-     * @param crop crop metadata
-     * @return sorted unique symptoms
-     */
-    private List<String> collectSymptoms(Crop crop) {
-        return cropCatalogService.collectSymptoms(crop);
-    }
-
-    /**
-     * Filters symptom suggestions based on user input.
-     *
-     * @param symptomPool all symptom options
-     * @param input       user input text
-     * @return filtered suggestions
-     */
-    private List<String> filterSymptoms(List<String> symptomPool, String input) {
-        return cropCatalogService.filterSymptoms(symptomPool, input, MAX_SYMPTOM_SUGGESTIONS);
-    }
-
-    /**
      * Builds an ellipsized summary string.
      *
-     * @param value     source text
+     * @param value source text
      * @param maxLength max output length
      * @return shortened text where needed
      */
@@ -1009,20 +919,11 @@ public class HomePageController {
      * @return the subtitle text
      */
     private String buildSearchResultDetails(Crop crop) {
-        String scientificName = crop.getScientificName() == null || crop.getScientificName().isBlank()
-                ? "Scientific name unavailable"
-                : crop.getScientificName();
+        String scientificName =
+                crop.getScientificName() == null || crop.getScientificName().isBlank()
+                        ? "Scientific name unavailable"
+                        : crop.getScientificName();
         int diseaseCount = crop.getDiseases() == null ? 0 : crop.getDiseases().size();
         return scientificName + " • " + diseaseCount + " diseases";
-    }
-
-    /**
-     * Finds crops that match the user's search query.
-     *
-     * @param query the search query
-     * @return a list of matching crops
-     */
-    private List<Crop> findMatchingCrops(String query) {
-        return cropCatalogService.findMatchingCrops(query, MAX_SEARCH_RESULTS);
     }
 }

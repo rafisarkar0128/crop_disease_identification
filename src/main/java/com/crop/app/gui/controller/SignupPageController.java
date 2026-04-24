@@ -154,8 +154,8 @@ public class SignupPageController {
 			return;
 		}
 
-		if (password.length() < 8) {
-			statusLabel.setText("Password must be at least 8 characters long.");
+		if (password.length() < 4) {
+			statusLabel.setText("Password must be at least 4 characters long.");
 			return;
 		}
 

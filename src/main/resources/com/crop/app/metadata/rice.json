@@ -10,7 +10,7 @@
             "pathogen": "Xanthomonas oryzae pv. oryzae",
             "category": "bacterial",
             "description": "A devastating bacterial disease characterized by wilting of young leaves and grayish-yellow stripes on leaf margins.",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Bacterial_blight_of_rice.jpeg/500px-Bacterial_blight_of_rice.jpeg",
+            "image": "bacterial-blight.png",
             "symptoms": [
                 "Water-soaked to yellowish stripes on leaf margins that enlarge and turn white to grayish-yellow",
                 "Wilting of young leaves (kresek phase in seedlings)",
@@ -30,7 +30,7 @@
             "pathogen": "Xanthomonas oryzae pv. oryzicola",
             "category": "bacterial",
             "description": "A bacterial disease causing translucent interveinal streaks that later turn brown.",
-            "image": "https://imgs.search.brave.com/Elh7Wb8GAah8hUj_xhysEWEBtKg3fujtJDzj1VZswm8/rs:fit:860:0:0:0/g:ce/aHR0cDovL3d3dy5rbm93bGVkZ2ViYW5rLmlycmkub3JnL2ltYWdlcy9zdG9yaWVzL2JhY3RlcmlhbC1sZWFmLXN0cmVhay0yLmpwZw",
+            "image": "bacterial-leaf-streak.png",
             "symptoms": [
                 "Interveinal, water-soaked, translucent streaks that turn brown and narrow",
                 "Lesions bordered by leaf veins and sometimes surrounded by a yellow halo",
@@ -50,7 +50,7 @@
             "pathogen": "Dickeya dadantii / Erwinia chrysanthemi",
             "category": "bacterial",
             "description": "A basal stem rot with foul smell that causes rapid collapse of affected tillers.",
-            "image": "https://imgs.search.brave.com/O1fXmZeaKwxQDjotGS2rV_LIcg8hgG6fWzOvhBRwQ-o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aC5iaW5nLmNvbS90aC9pZC9PSVAuRlZzZWVtQk1oa2xvSENIbERWQlVhZ0hhRXg_cnM9MSZwaWQ9SW1nRGV0TWFpbg",
+            "image": "foot-rot.png",
             "symptoms": [
                 "Dark, water-soaked rotting at the stem base",
                 "Characteristic foul odor",
@@ -70,7 +70,7 @@
             "pathogen": "Burkholderia glumae",
             "category": "bacterial",
             "description": "A bacterial panicle disease that causes floret rot, sterility, and shriveled grains.",
-            "image": "https://imgs.search.brave.com/9ecWuzbXvNBw8AC-AeZ8abIQhW1zXfhTmgXvmHNDWBA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cudWFleC51YWRhLmVkdS9mYXJtLXJhbmNoL3Blc3QtbWFuYWdlbWVudC9wbGFudC1kaXNlYXNlL2ltYWdlcy9yaWNlLWJsYXN0LmpwZw",
+            "image": "grain-rot.png",
             "symptoms": [
                 "Rotting of florets at or shortly after heading",
                 "Glumes turn pale brown to straw-colored",
@@ -90,7 +90,7 @@
             "pathogen": "Bacterial complex with insect-associated grain spotting",
             "category": "bacterial",
             "description": "Grain spotting disorder where bacterial damage contributes to dark discolored kernels.",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Sarocladium_oryzae_5390549.png/500px-Sarocladium_oryzae_5390549.png",
+            "image": "pecky-rice-bacterial.png",
             "symptoms": [
                 "Small dark discolored spots on pericarp and endosperm",
                 "Kernels appear chalky, discolored, or necrotic",
@@ -109,7 +109,7 @@
             "pathogen": "Pseudomonas fuscovaginae",
             "category": "bacterial",
             "description": "A bacterial sheath disease causing panicle sterility and grain discoloration.",
-            "image": "https://imgs.search.brave.com/JrOUm3b54CE7KBu8K1P2r48DqcNwhRkQPAN2mXVyKJY/rs:fit:860:0:0:0/g:ce/aHR0cDovL3d3dy5rbm93bGVkZ2ViYW5rLmlycmkub3JnL2ltYWdlcy9zdG9yaWVzL2JhY3RlcmlhbC1zaGVhdGgtYnJvd24tcm90LmpwZw",
+            "image": "sheath-brown-rot.png",
             "symptoms": [
                 "Brown water-soaked lesions on leaf sheaths around nodes",
                 "Rotting of sheath enclosing the young panicle",
@@ -129,7 +129,7 @@
             "pathogen": "Ceratobasidium oryzae-sativae / Rhizoctonia oryzae-sativae",
             "category": "fungal",
             "description": "A sheath disease with elongated lesions that can aggregate and coalesce.",
-            "image": "https://imgs.search.brave.com/CIwPnWBI6kWRj1UA2y9UTkd3v8HM8SHbH3eL1UP_dxQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9leHRlbnNpb24ubWlzc291cmkuZWR1L21lZGlhL3d5c2l3eWcvRXh0ZW5zaW9uZGF0YS9QdWIvaW1hZ2VzL21wMDY0NmFydDAzLmpwZw",
+            "image": "aggregate-sheath-spot.png",
             "symptoms": [
                 "Oval to elongated lesions on sheaths with straw-colored centers and brown borders",
                 "Lesions aggregate and coalesce",
@@ -149,7 +149,7 @@
             "pathogen": "Cochliobolus lunatus / Curvularia lunata",
             "category": "fungal",
             "description": "A Curvularia disease causing dark spotting on leaves and glumes with grain quality loss.",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/20201102.Hengnan.Hybrid_rice_Sanyou-1.6.jpg/500px-20201102.Hengnan.Hybrid_rice_Sanyou-1.6.jpg",
+            "image": "black-horse-riding.png",
             "symptoms": [
                 "Small brown to black spots on leaves and glumes",
                 "Spots may have yellow halos",
@@ -168,7 +168,7 @@
             "pathogen": "Pyricularia oryzae / Magnaporthe grisea",
             "category": "fungal",
             "description": "A major fungal disease affecting leaves, nodes, collars, and panicle necks, often causing whiteheads.",
-            "image": "https://imgs.search.brave.com/blb34saXzb51wwRs_miXlp_o73oNZQLb1kqUzKPCBiA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cubHN1YWdjZW50ZXIuY29tL34vbWVkaWEvc3lzdGVtL2EvZC9jL2MvYWRjY2ExN2QxMWY1YjQ1NWViMDQ2ZjhjMzgxNDFhYTAvYmxhc3QyMS5qcGc_aD0yNTkyJmxhPWVuJnc9Mzg3Mg",
+            "image": "blast.png",
             "symptoms": [
                 "Diamond-shaped leaf lesions with gray centers and brown to reddish borders",
                 "Neck infection causes panicle girdling and whitehead",
@@ -188,7 +188,7 @@
             "pathogen": "Cochliobolus miyabeanus / Bipolaris oryzae",
             "category": "fungal",
             "description": "A common foliar and grain disease with brown lesions and potential severe leaf blighting.",
-            "image": "https://imgs.search.brave.com/A3xf9fnKaxaV_NtQ9ldtrPaQNBLODEoZNeX6IGYSLXQ/rs:fit:860:0:0:0/g:ce/aHR0cDovL3d3dy5rbm93bGVkZ2ViYW5rLmlycmkub3JnL2ltYWdlcy9zdG9yaWVzL25hcnJvdy1icm93bi1zcG90LTIuanBn",
+            "image": "brown-spot.png",
             "symptoms": [
                 "Circular to oval brown spots with dark margins and gray to whitish centers",
                 "Spots can coalesce and kill leaves",
@@ -208,7 +208,7 @@
             "pathogen": "Gaeumannomyces graminis",
             "category": "fungal",
             "description": "A crown and lower sheath rot associated with root blackening and premature plant death.",
-            "image": "https://www.lsuagcenter.com/~/media/system/8/1/0/d/810d2cbb9cdaedcd5b81a384152b5336/crownsheathrot3.jpg?h=492&la=en&w=722",
+            "image": "crown-sheath-rot.png",
             "symptoms": [
                 "Dark rotting lesions at crown and lower sheaths",
                 "Blackening of roots",
@@ -228,7 +228,7 @@
             "pathogen": "Sclerophthora macrospora",
             "category": "fungal",
             "description": "An oomycete disease causing leaf distortion, downy growth, and malformed sterile panicles.",
-            "image": "https://i.ibb.co/zHGFVS68/image.jpg",
+            "image": "downy-mildew.png",
             "symptoms": [
                 "Yellowing and distortion of leaves",
                 "White to grayish downy growth on lower leaf surface",
@@ -248,7 +248,7 @@
             "pathogen": "Drechslera gigantea",
             "category": "fungal",
             "description": "A foliar disease with pale-centered concentric lesions that resemble an eye.",
-            "image": "https://i.ibb.co/VWxp35zx/image.jpg",
+            "image": "eyespot.png",
             "symptoms": [
                 "Oval to circular spots with pale centers and concentric brown rings",
                 "Eye-like lesions on leaf blades and sheaths",
@@ -267,7 +267,7 @@
             "pathogen": "Ustilaginoidea virens",
             "category": "fungal",
             "description": "A grain disease where kernels are replaced by orange to green-black velvety smut balls.",
-            "image": "https://i.ibb.co/ZRfWPZ1W/image.jpg",
+            "image": "false-smut.png",
             "symptoms": [
                 "Individual grains replaced by large velvety spore balls",
                 "Smut balls turn from orange-yellow to greenish-black",
@@ -286,7 +286,7 @@
             "pathogen": "Tilletia barclayana / Neovossia horrida",
             "category": "fungal",
             "description": "A smut disease where mature grains are filled with black powdery teliospores.",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Sarocladium_oryzae_5390549.png/500px-Sarocladium_oryzae_5390549.png",
+            "image": "kernel-smut.png",
             "symptoms": [
                 "Glumes gape open at maturity",
                 "Partially or fully smutted grains contain black powder",
@@ -305,7 +305,7 @@
             "pathogen": "Entyloma oryzae",
             "category": "fungal",
             "description": "A generally minor disease producing dark angular sori on both leaf surfaces.",
-            "image": "https://i.ibb.co/SXjC0dVX/image.jpg",
+            "image": "leaf-smut.png",
             "symptoms": [
                 "Small angular black to dark olive sori on both leaf surfaces",
                 "Surrounding tissue may remain green",
@@ -324,7 +324,7 @@
             "pathogen": "Microdochium oryzae / Rhynchosporium oryzae",
             "category": "fungal",
             "description": "A zonate leaf disease starting at tips and margins with concentric banding.",
-            "image": "https://i.ibb.co/zT02zdpM/image.jpg",
+            "image": "leaf-scald.png",
             "symptoms": [
                 "Light brown to tan irregular lesions from leaf tips or margins",
                 "Onion-ring pattern with alternating dark and light bands",
@@ -343,7 +343,7 @@
             "pathogen": "Cercospora janseana / Cercospora oryzae / Sphaerulina oryzina",
             "category": "fungal",
             "description": "A Cercospora disease with narrow vein-parallel brown streaks and premature leaf death.",
-            "image": "https://i.ibb.co/ZzfThz99/image.jpg",
+            "image": "narrow-brown-leaf-spot.png",
             "symptoms": [
                 "Very narrow linear brown streaks parallel to veins",
                 "Lesions are usually less than 2 mm wide",
@@ -362,7 +362,7 @@
             "pathogen": "Multiple fungi including Cochliobolus, Curvularia, Fusarium, Microdochium, and Sarocladium species",
             "category": "fungal",
             "description": "A complex grain spotting problem caused by multiple fungi, reducing milling quality.",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Sarocladium_oryzae_5390549.png/500px-Sarocladium_oryzae_5390549.png",
+            "image": "pecky-rice-fungal.png",
             "symptoms": [
                 "Brown, black, or pink spots on pericarp or endosperm",
                 "Chalky, empty, or shriveled kernels",
@@ -382,7 +382,7 @@
             "pathogen": "Fusarium spp. / Pythium spp.",
             "category": "fungal",
             "description": "Root decay complex causing poor tillering, stunting, and weak anchorage.",
-            "image": "https://imgs.search.brave.com/VorBcwVjGs-D75GjT7VtuovJI4M0jT-z0LXuuGYuE7A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cudWFleC51YWRhLmVkdS9mYXJtLXJhbmNoL2Nyb3BzLWNvbW1lcmNpYWwtaG9ydGljdWx0dXJlL2ltYWdlcy9Ba2lvY2hpJTIwMjAxMy5qcGc",
+            "image": "root-rots.png",
             "symptoms": [
                 "Browning and decay of roots",
                 "Yellowing and stunting of shoots",
@@ -397,22 +397,12 @@
             ]
         },
         {
-            "id": "rust",
-            "name": "Rust",
-            "pathogen": "Not applicable (rice is considered immune to rusts)",
-            "category": "fungal",
-            "description": "Rust is not considered a true disease concern in rice due to natural immunity.",
-            "image": "",
-            "symptoms": ["No rust symptoms in rice under normal field conditions"],
-            "treatments": ["No treatments needed"]
-        },
-        {
             "id": "seedling-blight",
             "name": "Seedling blight",
             "pathogen": "Cochliobolus, Curvularia, Fusarium, Rhizoctonia, and other fungi",
             "category": "fungal",
             "description": "A damping-off disease complex causing poor emergence and early seedling death.",
-            "image": "https://i.ibb.co/B26cNMwn/image.jpg",
+            "image": "seedling-blight.png",
             "symptoms": [
                 "Pre- or post-emergence damping-off",
                 "Yellowing, wilting, and death of seedlings",
@@ -432,7 +422,7 @@
             "pathogen": "Rhizoctonia solani",
             "category": "fungal",
             "description": "A major sheath disease with waterline lesions, upward canopy spread, and lodging risk.",
-            "image": "https://imgs.search.brave.com/w67dYhC33YGPqX8zBFvgRLnkTXH0e--cy_EyTPBdYds/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4ubW9zLmNtcy5mdXR1cmVjZG4ubmV0L2V4bldqZjZ5d1dwRFhIUzNvcm50SjcuanBn",
+            "image": "sheath-blight.png",
             "symptoms": [
                 "Greenish-gray sheath lesions with wavy brown margins near waterline",
                 "Lesions spread upward to leaves and canopy",
@@ -452,7 +442,7 @@
             "pathogen": "Sarocladium oryzae",
             "category": "fungal",
             "description": "A booting-stage sheath infection causing enclosed panicle sterility and chaffy grains.",
-            "image": "https://imgs.search.brave.com/2RIch5ShV9GsGFKpfR-niPUGrhwG_gWDeWBN4FTrjAs/rs:fit:860:0:0:0/g:ce/aHR0cDovL3d3dy5rbm93bGVkZ2ViYW5rLmlycmkub3JnL2ltYWdlcy9zdG9yaWVzL3NoZWF0aC1yb3QtMy5qcGc",
+            "image": "sheath-rot.png",
             "symptoms": [
                 "Irregular light brown sheath lesions with dark margins",
                 "Whitish to pinkish fungal growth inside sheath",
@@ -472,7 +462,7 @@
             "pathogen": "Waitea oryzae",
             "category": "fungal",
             "description": "A sheath disease with tan lesions and reddish-brown borders, often milder than sheath blight.",
-            "image": "https://i.ibb.co/G3Nyw4xj/image.jpg",
+            "image": "sheath-spot.png",
             "symptoms": [
                 "Oval to elongated lesions on sheath",
                 "Tan to light brown centers with reddish-brown borders",
@@ -491,7 +481,7 @@
             "pathogen": "Alternaria padwickii",
             "category": "fungal",
             "description": "An Alternaria disease causing leaf and grain spotting with poor seed viability.",
-            "image": "https://i.ibb.co/2Y17tF9f/image.jpg",
+            "image": "stackburn.png",
             "symptoms": [
                 "Brown to dark brown oval or circular spots with yellow halos",
                 "Spots can occur on leaves, glumes, and grains",
@@ -510,7 +500,7 @@
             "pathogen": "Magnaporthe salvinii / Sclerotium oryzae",
             "category": "fungal",
             "description": "A lower stem disease with sclerotia formation that causes culm collapse and yield loss.",
-            "image": "https://imgs.search.brave.com/FFpuRvBKuw6BDuXE1BKHpJ6g6GCw9beAtH28LKi1Rx8/rs:fit:860:0:0:0/g:ce/aHR0cDovL3d3dy5rbm93bGVkZ2ViYW5rLmlycmkub3JnL2ltYWdlcy9zdG9yaWVzL3N0ZW0tcm90LmpwZw",
+            "image": "stem-rot.png",
             "symptoms": [
                 "Small irregular black lesions on outer sheath near waterline",
                 "Rotting of inner stem tissue and culm collapse",
@@ -530,7 +520,7 @@
             "pathogen": "Achlya spp. / Fusarium spp. / Pythium spp.",
             "category": "fungal",
             "description": "A seed and seedling disease complex favored by cold, waterlogged nursery conditions.",
-            "image": "https://i.ibb.co/HTsxGKTN/image.jpg",
+            "image": "water-mold.png",
             "symptoms": [
                 "Pre-germination seed decay",
                 "Post-germination damping-off with yellowing and wilting",
