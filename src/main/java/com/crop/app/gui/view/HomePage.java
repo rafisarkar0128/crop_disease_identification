@@ -11,38 +11,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * View wrapper for creating and applying the home page scene.
- */
 public class HomePage {
-    /**
-     * Primary stage where the scene will be displayed.
-     */
     private final Stage primaryStage;
 
-    /**
-     * Primary stage where the scene will be displayed.
-     */
     private final User currentUser;
 
-    /**
-     * Creates a home page view bound to the given stage.
-     *
-     * @param primaryStage the main application stage
-     * @param currentUser the currently authenticated user
-     * @throws NullPointerException if {@code primaryStage} is null
-     */
     public HomePage(Stage primaryStage, User currentUser) {
         this.primaryStage = Objects.requireNonNull(primaryStage, "primaryStage");
         this.currentUser = Objects.requireNonNull(currentUser, "currentUser");
     }
 
-    /**
-     * Builds and returns the home page scene.
-     *
-     * @return the fully initialized home page scene
-     * @throws IllegalStateException if FXML loading fails
-     */
     public Scene createScene() {
         try {
             FXMLLoader loader = new FXMLLoader(FxmlLoader.getFxml("HomePage"));
@@ -60,18 +38,10 @@ public class HomePage {
         }
     }
 
-    /**
-     * Backward-compatible alias for {@link #createScene()}.
-     *
-     * @return the home page scene
-     */
     public Scene createPage() {
         return createScene();
     }
 
-    /**
-     * Creates the home scene and applies it to the primary stage.
-     */
     public void setSceneToStage() {
         primaryStage.setScene(createScene());
     }

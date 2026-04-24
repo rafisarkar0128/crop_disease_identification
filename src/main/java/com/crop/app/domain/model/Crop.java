@@ -1,33 +1,7 @@
-/*
- * Crop Disease Identification
- *
- * Copyright 2026-Present Md. Rafi Sarkar (rafisarkar0128), and contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- */
-
 package com.crop.app.domain.model;
 
 import java.util.ArrayList;
 
-/**
- * Mutable domain model representing a crop and its associated diseases.
- *
- * <p>
- * This type is used as a data container for metadata loaded from JSON and consumed by application
- * services and UI components.
- *
- * @author Md. Rafi Sarkar (rafisarkar0128)
- * @version 1.0
- * @since 14-04-2026
- */
 public class Crop {
 
     private String id;
@@ -36,9 +10,6 @@ public class Crop {
     private String description;
     private ArrayList<Disease> diseases;
 
-    /**
-     * Creates an empty crop model with initialized collection fields.
-     */
     public Crop() {
         this.id = "";
         this.name = "";
@@ -47,15 +18,6 @@ public class Crop {
         this.diseases = new ArrayList<Disease>();
     }
 
-    /**
-     * Creates a crop model with all fields initialized.
-     *
-     * @param id the unique identifier for the crop
-     * @param name the common name of the crop
-     * @param scientificName the scientific name of the crop
-     * @param description a brief description of the crop
-     * @param diseases a list of diseases that affect the crop
-     */
     public Crop(String id, String name, String scientificName, String description,
             ArrayList<Disease> diseases) {
         this.id = id;
@@ -65,94 +27,43 @@ public class Crop {
         this.diseases = diseases;
     }
 
-    /**
-     * Sets the unique identifier for the crop.
-     *
-     * @param id the unique identifier for the crop
-     */
     public void setId(String id) {
         this.id = id;
     }
 
-    /**
-     * Returns the unique identifier for the crop.
-     *
-     * @return the unique identifier for the crop
-     */
     public String getId() {
         return id;
     }
 
-    /**
-     * Sets the common name of the crop.
-     *
-     * @param name the common name of the crop
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * Returns the common name of the crop.
-     *
-     * @return the common name of the crop
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * Sets the scientific name of the crop.
-     *
-     * @param scientificName the scientific name of the crop
-     */
     public void setScientificName(String scientificName) {
         this.scientificName = scientificName;
     }
 
-    /**
-     * Returns the scientific name of the crop.
-     *
-     * @return the scientific name of the crop
-     */
     public String getScientificName() {
         return scientificName;
     }
 
-    /**
-     * Sets the description of the crop.
-     *
-     * @param description a brief description of the crop
-     */
     public void setDescription(String description) {
         this.description = description;
     }
 
-    /**
-     * Returns the description of the crop.
-     *
-     * @return a brief description of the crop
-     */
     public String getDescription() {
         return description;
     }
 
-    /**
-     * Sets the list of diseases that affect the crop.
-     *
-     * @param diseases a list of diseases that affect the crop
-     */
     public void setDiseases(ArrayList<Disease> diseases) {
         this.diseases = diseases;
     }
 
-    /**
-     * Returns the list of diseases that affect the crop.
-     *
-     * @return a list of diseases that affect the crop
-     */
     public ArrayList<Disease> getDiseases() {
         return diseases;
     }
-
 }

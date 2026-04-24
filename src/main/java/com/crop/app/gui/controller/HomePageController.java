@@ -1,18 +1,3 @@
-/*
- * Crop Disease Identification
- *
- * Copyright 2026-Present Md. Rafi Sarkar (rafisarkar0128), and contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- */
-
 package com.crop.app.gui.controller;
 
 import java.io.IOException;
@@ -46,185 +31,81 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-/**
- * Controller for the home page UI.
- *
- * <p>
- * Handles navigation and initial setup for the home page.
- *
- * @author Md. Rafi Sarkar (rafisarkar0128)
- * @version 1.0
- * @since 19-04-2026
- */
 public class HomePageController {
-    /**
-     * Maximum number of crops to show in the search results.
-     */
+
     private static final int MAX_SEARCH_RESULTS = 6;
 
-    /**
-     * Fixed width for search-result cards.
-     */
     private static final double SEARCH_RESULT_CARD_WIDTH = 560.0;
 
-    /**
-     * Fixed height for search-result cards.
-     */
     private static final double SEARCH_RESULT_CARD_HEIGHT = 96.0;
 
-    /**
-     * Maximum number of symptom suggestions in autocomplete list.
-     */
     private static final int MAX_SYMPTOM_SUGGESTIONS = 12;
 
-    /**
-     * Crop catalog/search/symptom service used by this controller.
-     */
     private final CropCatalogService cropCatalogService = new CropCatalogService();
 
-    /**
-     * The primary stage of the application, used for scene navigation. Must be set before handling
-     * any user interactions.
-     */
     private Stage stage;
 
-    /**
-     * The currently logged-in user.
-     */
     private User currentUser;
 
-    /**
-     * The selected crop metadata used by disease-identification mode.
-     */
     private Crop selectedCropData;
 
-    /**
-     * The background image for the home page.
-     */
     @FXML
     private ImageView backgroundImage;
 
-    /**
-     * The header section of the home page, containing the search field and navigation buttons.
-     */
     @FXML
     private HBox header;
 
-    /**
-     * The home button in the header for navigation.
-     */
     @FXML
     private Button homeButton;
 
-    /**
-     * The news button in the header for navigation.
-     */
     @FXML
     private Button newsButton;
 
-    /**
-     * The feeds button in the header for navigation.
-     */
     @FXML
     private Button feedsButton;
 
-    /**
-     * The settings button in the header for navigation.
-     */
     @FXML
     private Button settingsButton;
 
-    /**
-     * The text field for entering or selecting a crop.
-     */
     @FXML
     private TextField cropSearchField;
 
-    /**
-     * The panel for displaying trending crops, which can be toggled visible or hidden.
-     */
     @FXML
     private VBox trendingPanel;
 
-    /**
-     * The panel for displaying informational messages, which can be toggled visible or hidden.
-     */
     @FXML
     private StackPane infoPanel;
 
-    /**
-     * The panel containing settings options, which can be toggled visible or hidden.
-     */
     @FXML
     private VBox settingsPanel;
 
-    /**
-     * Tracks whether search mode is currently active.
-     */
     private boolean searchModeActive;
 
-    /**
-     * Remembers whether the settings panel was visible before search mode started.
-     */
     private boolean settingsPanelVisibleBeforeSearch;
 
-    /**
-     * Default constructor required for FXML loading. The primary stage must be set via
-     * {@link #setStage} before any user interactions.
-     */
     public HomePageController() {}
 
-    /**
-     * Creates a home page controller with an initialized primary stage.
-     *
-     * @param stage the primary stage
-     * @param currentUser the currently logged-in user
-     * @throws NullPointerException if either {@code stage} or {@code currentUser} is null
-     */
     public HomePageController(Stage stage, User currentUser) {
         this.stage = Objects.requireNonNull(stage, "stage");
         this.currentUser = Objects.requireNonNull(currentUser, "currentUser");
     }
 
-    /**
-     * Sets the primary stage used by this controller.
-     *
-     * @param stage the primary stage
-     */
     public void setStage(Stage stage) {
         this.stage = Objects.requireNonNull(stage, "stage");
     }
 
-    /**
-     * Gets the primary stage used by this controller.
-     *
-     * @return the primary stage
-     */
     public Stage getStage() {
         return stage;
     }
 
-    /**
-     * Sets the currently logged-in user for this controller.
-     *
-     * @param currentUser the user to set as currently logged in
-     */
     public void setCurrentUser(User currentUser) {
         this.currentUser = Objects.requireNonNull(currentUser, "currentUser");
     }
 
-    /**
-     * Gets the currently logged-in user for this controller.
-     *
-     * @return the currently logged-in user
-     */
     public User getCurrentUser() {
         return currentUser;
     }
 
-    /**
-     * Restores the default info panel content.
-     */
     private void showDefaultInfoPanel() {
         Label defaultLabel = new Label("ADVERTISEMENT");
         defaultLabel.getStyleClass().add("ad-label");
@@ -234,9 +115,6 @@ public class HomePageController {
         StackPane.setAlignment(defaultLabel, Pos.CENTER);
     }
 
-    /**
-     * Restores the header buttons when returning to the home layout.
-     */
     private void showHomeNavigation() {
         if (homeButton != null) {
             homeButton.setVisible(true);
@@ -259,9 +137,6 @@ public class HomePageController {
         }
     }
 
-    /**
-     * Restores the home-page layout from search mode.
-     */
     private void restoreHomeLayout() {
         searchModeActive = false;
 
@@ -274,11 +149,6 @@ public class HomePageController {
         showHomeNavigation();
     }
 
-    /**
-     * Handles the home button action to navigate back to the home page.
-     *
-     * @param event the action event fired by the home button
-     */
     @FXML
     private void showHome(ActionEvent event) {
         try {
@@ -295,11 +165,6 @@ public class HomePageController {
         }
     }
 
-    /**
-     * Handles the news button action to show news related to crops and diseases.
-     *
-     * @param event the action event fired by the news button
-     */
     @FXML
     private void showNews(ActionEvent event) {
         try {
@@ -313,11 +178,6 @@ public class HomePageController {
         }
     }
 
-    /**
-     * Handles the feeds button action to show news related to crops and diseases.
-     *
-     * @param event the action event fired by the feeds button
-     */
     @FXML
     private void showFeeds(ActionEvent event) {
         infoPanel.getChildren().clear();
@@ -326,11 +186,6 @@ public class HomePageController {
         infoPanel.getChildren().add(feedsLabel);
     }
 
-    /**
-     * Handles the settings button action to show news related to crops and diseases.
-     *
-     * @param event the action event fired by the settings button
-     */
     @FXML
     private void showSettings(ActionEvent event) {
         boolean isCurrentlyVisible = settingsPanel.isVisible();
@@ -338,11 +193,6 @@ public class HomePageController {
         settingsPanel.setManaged(!isCurrentlyVisible);
     }
 
-    /**
-     * Handles the account info button action to show user account information.
-     *
-     * @param event the action event fired by the account info button
-     */
     @FXML
     private void showAccountInfo(ActionEvent event) {
         try {
@@ -360,11 +210,6 @@ public class HomePageController {
         }
     }
 
-    /**
-     * Handles the notifications button action to show user notifications.
-     *
-     * @param event the action event fired by the notifications button
-     */
     @FXML
     private void showNotifications(ActionEvent event) {
         infoPanel.getChildren().clear();
@@ -373,11 +218,6 @@ public class HomePageController {
         infoPanel.getChildren().add(notificationsLabel);
     }
 
-    /**
-     * Handles the theme button action to show theme selection options.
-     *
-     * @param event the action event fired by the theme button
-     */
     @FXML
     private void showThemeSettings(ActionEvent event) {
         infoPanel.getChildren().clear();
@@ -386,12 +226,6 @@ public class HomePageController {
         infoPanel.getChildren().add(themesLabel);
     }
 
-    /**
-     * Handles the logout button action to navigate to the login page.
-     *
-     * @param event the action event fired by the logout button
-     * @throws IllegalStateException if the primary stage has not been initialized
-     */
     @FXML
     private void handleLogout(ActionEvent event) {
         if (stage == null) {
@@ -401,11 +235,6 @@ public class HomePageController {
         stage.setScene(new LoginPage(stage).createScene());
     }
 
-    /**
-     * Handles crop selection via button click.
-     *
-     * @param event the action event
-     */
     @FXML
     private void handleCropSelection(ActionEvent event) {
         String cropName;
@@ -426,11 +255,6 @@ public class HomePageController {
         showDiseaseIdentification(crop);
     }
 
-    /**
-     * Handles crop selection via text field input and search button click.
-     *
-     * @param event the action event
-     */
     @FXML
     private void handleCropSearch(ActionEvent event) {
         String cropName = cropSearchField.getText();
@@ -451,9 +275,6 @@ public class HomePageController {
         showSearchResults(cropName.trim());
     }
 
-    /**
-     * Hides the header buttons that should disappear during search mode.
-     */
     private void hideHomeNavigation() {
         if (newsButton != null) {
             newsButton.setVisible(false);
@@ -471,9 +292,6 @@ public class HomePageController {
         }
     }
 
-    /**
-     * Switches the layout into focused mode used by search and disease-identification views.
-     */
     private void applyFocusedLayout() {
         if (!searchModeActive) {
             settingsPanelVisibleBeforeSearch = settingsPanel.isVisible();
@@ -488,11 +306,6 @@ public class HomePageController {
         settingsPanel.setManaged(false);
     }
 
-    /**
-     * Switches the page into search mode and renders crop cards matching the query.
-     *
-     * @param query the user-entered search text
-     */
     private void showSearchResults(String query) {
         applyFocusedLayout();
 
@@ -501,13 +314,6 @@ public class HomePageController {
         infoPanel.getChildren().setAll(createScrollableInfoContent(searchRoot));
     }
 
-    /**
-     * Builds the search-results content shown inside the main info panel.
-     *
-     * @param query the search query
-     * @param matches the matching crop entries
-     * @return the root panel for search results
-     */
     private VBox buildSearchResultsPanel(String query, List<Crop> matches) {
         VBox root = new VBox(16);
         root.getStyleClass().add("search-results-shell");
@@ -546,12 +352,6 @@ public class HomePageController {
         return root;
     }
 
-    /**
-     * Creates a pressable card for a single crop search result.
-     *
-     * @param crop the crop to represent
-     * @return the styled button card
-     */
     private Button createSearchResultCard(Crop crop) {
         Label title = new Label(crop.getName());
         title.getStyleClass().add("search-result-title");
@@ -583,12 +383,6 @@ public class HomePageController {
         return cardButton;
     }
 
-    /**
-     * Opens disease-identification mode for the selected crop.
-     *
-     * @param crop selected crop metadata
-     * @throws NullPointerException if {@code crop} is null
-     */
     private void showDiseaseIdentification(Crop crop) {
         selectedCropData = Objects.requireNonNull(crop, "crop");
         applyFocusedLayout();
@@ -597,12 +391,6 @@ public class HomePageController {
         infoPanel.getChildren().setAll(createScrollableInfoContent(identificationRoot));
     }
 
-    /**
-     * Builds the disease-identification content for the selected crop.
-     *
-     * @param crop selected crop metadata
-     * @return disease-identification panel root
-     */
     private VBox buildDiseaseIdentificationPanel(Crop crop) {
         VBox root = new VBox(16);
         root.getStyleClass().add("identification-shell");
@@ -678,12 +466,6 @@ public class HomePageController {
         return root;
     }
 
-    /**
-     * Displays disease results for a selected symptom within the current crop.
-     *
-     * @param crop the selected crop
-     * @param symptom the selected symptom
-     */
     private void showDiseaseResult(Crop crop, String symptom) {
         if (crop == null || symptom == null || symptom.isBlank()) {
             return;
@@ -715,13 +497,6 @@ public class HomePageController {
         infoPanel.getChildren().setAll(createScrollableInfoContent(diseaseDetailsPanel));
     }
 
-    /**
-     * Builds a detailed panel displaying information about a specific disease.
-     *
-     * @param disease the disease to display
-     * @param crop the crop context
-     * @return a panel containing disease details
-     */
     private VBox buildDiseaseDetailsPanel(Disease disease, Crop crop) {
         VBox root = new VBox(16);
         root.getStyleClass().add("identification-shell");
@@ -810,13 +585,6 @@ public class HomePageController {
         return root;
     }
 
-    /**
-     * Attempts to load a disease image from local or remote sources.
-     *
-     * @param disease the disease whose image to load
-     * @param crop the crop context (used to determine local image availability)
-     * @return a JavaFX ImageView if successful, null otherwise
-     */
     private ImageView loadDiseaseImage(Disease disease, Crop crop) {
         ImageView imageContainer = null;
         String imageUrl = disease.getImage();
@@ -864,12 +632,6 @@ public class HomePageController {
         return imageContainer;
     }
 
-    /**
-     * Wraps content in a scroll pane so tall home-page states stay within the existing layout.
-     *
-     * @param content the content to display inside the scroll pane
-     * @return a styled scroll pane containing the content
-     */
     private ScrollPane createScrollableInfoContent(VBox content) {
         ScrollPane scrollPane = new ScrollPane(content);
         scrollPane.getStyleClass().add("info-scroll-pane");
@@ -884,11 +646,6 @@ public class HomePageController {
         return scrollPane;
     }
 
-    /**
-     * Shows a focused-mode message when trending crop metadata is not available.
-     *
-     * @param cropName selected crop name
-     */
     private void showUnavailableCropMessage(String cropName) {
         applyFocusedLayout();
 
@@ -911,13 +668,6 @@ public class HomePageController {
         StackPane.setAlignment(root, Pos.TOP_CENTER);
     }
 
-    /**
-     * Builds an ellipsized summary string.
-     *
-     * @param value source text
-     * @param maxLength max output length
-     * @return shortened text where needed
-     */
     private String ellipsis(String value, int maxLength) {
         if (value == null || value.isBlank()) {
             return "Description not available.";
@@ -931,12 +681,6 @@ public class HomePageController {
         return trimmed.substring(0, maxLength - 3) + "...";
     }
 
-    /**
-     * Builds subtitle text for a crop search card.
-     *
-     * @param crop the crop to describe
-     * @return the subtitle text
-     */
     private String buildSearchResultDetails(Crop crop) {
         String scientificName =
                 crop.getScientificName() == null || crop.getScientificName().isBlank()

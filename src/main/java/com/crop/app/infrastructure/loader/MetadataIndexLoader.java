@@ -1,18 +1,3 @@
-/*
- * Crop Disease Identification
- *
- * Copyright 2026-Present Md. Rafi Sarkar (rafisarkar0128), and contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- */
-
 package com.crop.app.infrastructure.loader;
 
 import java.io.IOException;
@@ -28,31 +13,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-/**
- * Loads and parses metadata index resources.
- *
- * <p>
- * Provides helper methods for resolving active crop metadata files from
- * {@code metadata-index.json}.
- *
- * @author Md. Rafi Sarkar (rafisarkar0128)
- * @version 1.0
- * @since 23-04-2026
- */
 public final class MetadataIndexLoader {
-    /**
-     * Private constructor to prevent instantiation.
-     */
-    private MetadataIndexLoader() {
-        // Utility class
-    }
 
-    /**
-     * Loads file names for active crop metadata entries from metadata index.
-     *
-     * @return list of metadata file names, such as {@code rice.json}
-     * @throws MetadataReadException if index file cannot be read or parsed
-     */
+    private MetadataIndexLoader() {}
+
     public static List<String> loadActiveMetadataFiles() {
         String indexPath = ResourceConstants.METADATA_PATH + "/" + ResourceConstants.METADATA_INDEX;
 
@@ -87,13 +51,6 @@ public final class MetadataIndexLoader {
         }
     }
 
-    /**
-     * Helper to safely extract string properties from JSON objects.
-     *
-     * @param item JSON object to extract from
-     * @param property property name to extract
-     * @return string value if present and non-null, otherwise null
-     */
     private static String getJsonString(JsonObject item, String property) {
         return item != null && item.has(property) && !item.get(property).isJsonNull()
                 ? item.get(property).getAsString()
