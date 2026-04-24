@@ -36,10 +36,12 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -496,8 +498,7 @@ public class HomePageController {
 
         List<Crop> matches = cropCatalogService.findMatchingCrops(query, MAX_SEARCH_RESULTS);
         VBox searchRoot = buildSearchResultsPanel(query, matches);
-        infoPanel.getChildren().setAll(searchRoot);
-        StackPane.setAlignment(searchRoot, Pos.TOP_CENTER);
+        infoPanel.getChildren().setAll(createScrollableInfoContent(searchRoot));
     }
 
     /**
@@ -593,8 +594,7 @@ public class HomePageController {
         applyFocusedLayout();
 
         VBox identificationRoot = buildDiseaseIdentificationPanel(crop);
-        infoPanel.getChildren().setAll(identificationRoot);
-        StackPane.setAlignment(identificationRoot, Pos.TOP_CENTER);
+        infoPanel.getChildren().setAll(createScrollableInfoContent(identificationRoot));
     }
 
     /**
@@ -706,14 +706,13 @@ public class HomePageController {
             title.getStyleClass().add("identification-title");
 
             noResultsPanel.getChildren().addAll(title, noDiseaseLabel);
-            infoPanel.getChildren().setAll(noResultsPanel);
+            infoPanel.getChildren().setAll(createScrollableInfoContent(noResultsPanel));
             return;
         }
 
         Disease selectedDisease = matchingDiseases.get(0);
         VBox diseaseDetailsPanel = buildDiseaseDetailsPanel(selectedDisease, crop);
-        infoPanel.getChildren().setAll(diseaseDetailsPanel);
-        StackPane.setAlignment(diseaseDetailsPanel, Pos.TOP_CENTER);
+        infoPanel.getChildren().setAll(createScrollableInfoContent(diseaseDetailsPanel));
     }
 
     /**
@@ -863,6 +862,26 @@ public class HomePageController {
         }
 
         return imageContainer;
+    }
+
+    /**
+     * Wraps content in a scroll pane so tall home-page states stay within the existing layout.
+     *
+     * @param content the content to display inside the scroll pane
+     * @return a styled scroll pane containing the content
+     */
+    private ScrollPane createScrollableInfoContent(VBox content) {
+        ScrollPane scrollPane = new ScrollPane(content);
+        scrollPane.getStyleClass().add("info-scroll-pane");
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(false);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.setPannable(true);
+        scrollPane.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        scrollPane.setPrefViewportWidth(Region.USE_COMPUTED_SIZE);
+        scrollPane.setPrefViewportHeight(Region.USE_COMPUTED_SIZE);
+        return scrollPane;
     }
 
     /**
