@@ -21,7 +21,7 @@ The goal is to keep disease knowledge easy to expand by editing metadata, not co
     - Metadata index parsing in loader layer
     - Crop catalog search/symptom logic in domain service layer
 
-## 🚀 Current Feature Set
+## 🚀 Implemented Features
 
 ### 🔐 Authentication and Session
 
@@ -31,7 +31,7 @@ The goal is to keep disease knowledge easy to expand by editing metadata, not co
 
 ### 🏠 Home and Navigation
 
-- Header actions: Home, News, Feeds, Settings
+- Header actions: Home, News, Settings, with Feeds reserved as a coming-soon placeholder
 - Collapsible settings panel with account and session actions
 - Trending crop shortcuts
 
@@ -42,7 +42,7 @@ The goal is to keep disease knowledge easy to expand by editing metadata, not co
 - Uniform, clickable crop result cards
 - Empty state messaging when no match is found
 
-### 🧪 Disease Identification (Current UX Stage)
+### 🧪 Disease Identification
 
 - Opened from either:
     - Search result card click
